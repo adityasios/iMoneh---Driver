@@ -7,21 +7,93 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		405505A4222418F200456FC8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405505A3222418F200456FC8 /* HomeVC.swift */; };
+		405505A622241FC800456FC8 /* NewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405505A522241FC800456FC8 /* NewVC.swift */; };
+		405505A822241FD900456FC8 /* AssignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405505A722241FD900456FC8 /* AssignVC.swift */; };
+		405505AA22241FE800456FC8 /* CompletedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405505A922241FE800456FC8 /* CompletedVC.swift */; };
+		405505AD222428D100456FC8 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405505AB222428D100456FC8 /* OrderCell.swift */; };
+		405505AE222428D100456FC8 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405505AC222428D100456FC8 /* OrderCell.xib */; };
 		409562912223E2B900A9290F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562902223E2B900A9290F /* AppDelegate.swift */; };
 		409562932223E2B900A9290F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562922223E2B900A9290F /* ViewController.swift */; };
 		409562962223E2B900A9290F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 409562942223E2B900A9290F /* Main.storyboard */; };
-		409562982223E2BC00A9290F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 409562972223E2BC00A9290F /* Assets.xcassets */; };
 		4095629B2223E2BC00A9290F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 409562992223E2BC00A9290F /* LaunchScreen.storyboard */; };
+		409562A32223E44F00A9290F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 409562A22223E44F00A9290F /* README.md */; };
+		409562AF2223ED3900A9290F /* Gilroy-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562A52223ED3800A9290F /* Gilroy-Medium.otf */; };
+		409562B02223ED3900A9290F /* Gilroy-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562A62223ED3800A9290F /* Gilroy-Black.otf */; };
+		409562B12223ED3900A9290F /* Gilroy-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562A72223ED3800A9290F /* Gilroy-Heavy.otf */; };
+		409562B22223ED3900A9290F /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562A82223ED3800A9290F /* Gilroy-ExtraBold.otf */; };
+		409562B32223ED3900A9290F /* Gilroy-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562A92223ED3800A9290F /* Gilroy-Regular.otf */; };
+		409562B42223ED3900A9290F /* Gilroy-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562AA2223ED3800A9290F /* Gilroy-UltraLight.otf */; };
+		409562B52223ED3900A9290F /* Gilroy-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562AB2223ED3800A9290F /* Gilroy-Thin.otf */; };
+		409562B62223ED3900A9290F /* Gilroy-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562AC2223ED3800A9290F /* Gilroy-SemiBold.otf */; };
+		409562B72223ED3900A9290F /* Gilroy-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562AD2223ED3800A9290F /* Gilroy-Bold.otf */; };
+		409562B82223ED3900A9290F /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 409562AE2223ED3800A9290F /* Gilroy-Light.otf */; };
+		409562C02223F0CB00A9290F /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562BD2223F0CA00A9290F /* AppConstant.swift */; };
+		409562C12223F0CB00A9290F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562BE2223F0CA00A9290F /* Validation.swift */; };
+		409562C42223F13B00A9290F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 409562C32223F13B00A9290F /* Colors.xcassets */; };
+		409562C62223F2C000A9290F /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562C52223F2C000A9290F /* AppFont.swift */; };
+		409562C82223F2D000A9290F /* BasicUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562C72223F2D000A9290F /* BasicUtility.swift */; };
+		409562CA2223F32400A9290F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562C92223F32400A9290F /* Extension.swift */; };
+		409562D12223F67A00A9290F /* Reg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562CF2223F67A00A9290F /* Reg.swift */; };
+		409562D22223F67A00A9290F /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562D02223F67A00A9290F /* Login.swift */; };
+		409562D52223F76300A9290F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562D32223F76300A9290F /* Keychain.swift */; };
+		409562D62223F76300A9290F /* FloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562D42223F76300A9290F /* FloatingLabelTextField.swift */; };
+		409562D82223F79D00A9290F /* DashBoardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562D72223F79D00A9290F /* DashBoardModels.swift */; };
+		409562DA2223F7DF00A9290F /* ApiUrlFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562D92223F7DF00A9290F /* ApiUrlFactory.swift */; };
+		409562DC2223F82100A9290F /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562DB2223F82000A9290F /* Singleton.swift */; };
+		409562DE2223F85000A9290F /* DialCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562DD2223F85000A9290F /* DialCodeVC.swift */; };
+		409562E02223FA4000A9290F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 409562DF2223FA4000A9290F /* Assets.xcassets */; };
+		409562E622240BC400A9290F /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 409562E522240BC400A9290F /* Menu.storyboard */; };
+		409562EA22240C2100A9290F /* LeftMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562E822240C2100A9290F /* LeftMenuVC.swift */; };
+		409562EB22240C2100A9290F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562E922240C2100A9290F /* RootViewController.swift */; };
+		E55DF850A90C9538E4D1A3A6 /* Pods_iMoneh_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FBEFC72A2DEB4F9E2345E7 /* Pods_iMoneh_Driver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		242EFE77D1285D0F56B44AB8 /* Pods-iMoneh Driver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMoneh Driver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver.debug.xcconfig"; sourceTree = "<group>"; };
+		35FBEFC72A2DEB4F9E2345E7 /* Pods_iMoneh_Driver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMoneh_Driver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		405505A3222418F200456FC8 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		405505A522241FC800456FC8 /* NewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVC.swift; sourceTree = "<group>"; };
+		405505A722241FD900456FC8 /* AssignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignVC.swift; sourceTree = "<group>"; };
+		405505A922241FE800456FC8 /* CompletedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedVC.swift; sourceTree = "<group>"; };
+		405505AB222428D100456FC8 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		405505AC222428D100456FC8 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		4095628D2223E2B900A9290F /* iMoneh Driver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iMoneh Driver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		409562902223E2B900A9290F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		409562922223E2B900A9290F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		409562952223E2B900A9290F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		409562972223E2BC00A9290F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4095629A2223E2BC00A9290F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4095629C2223E2BC00A9290F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		409562A22223E44F00A9290F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		409562A52223ED3800A9290F /* Gilroy-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.otf"; sourceTree = "<group>"; };
+		409562A62223ED3800A9290F /* Gilroy-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Black.otf"; sourceTree = "<group>"; };
+		409562A72223ED3800A9290F /* Gilroy-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Heavy.otf"; sourceTree = "<group>"; };
+		409562A82223ED3800A9290F /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
+		409562A92223ED3800A9290F /* Gilroy-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.otf"; sourceTree = "<group>"; };
+		409562AA2223ED3800A9290F /* Gilroy-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-UltraLight.otf"; sourceTree = "<group>"; };
+		409562AB2223ED3800A9290F /* Gilroy-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Thin.otf"; sourceTree = "<group>"; };
+		409562AC2223ED3800A9290F /* Gilroy-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.otf"; sourceTree = "<group>"; };
+		409562AD2223ED3800A9290F /* Gilroy-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.otf"; sourceTree = "<group>"; };
+		409562AE2223ED3800A9290F /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
+		409562BD2223F0CA00A9290F /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		409562BE2223F0CA00A9290F /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		409562C32223F13B00A9290F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		409562C52223F2C000A9290F /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		409562C72223F2D000A9290F /* BasicUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicUtility.swift; sourceTree = "<group>"; };
+		409562C92223F32400A9290F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		409562CF2223F67A00A9290F /* Reg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reg.swift; sourceTree = "<group>"; };
+		409562D02223F67A00A9290F /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		409562D32223F76300A9290F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		409562D42223F76300A9290F /* FloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingLabelTextField.swift; sourceTree = "<group>"; };
+		409562D72223F79D00A9290F /* DashBoardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBoardModels.swift; sourceTree = "<group>"; };
+		409562D92223F7DF00A9290F /* ApiUrlFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrlFactory.swift; sourceTree = "<group>"; };
+		409562DB2223F82000A9290F /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		409562DD2223F85000A9290F /* DialCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialCodeVC.swift; sourceTree = "<group>"; };
+		409562DF2223FA4000A9290F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		409562E522240BC400A9290F /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		409562E822240C2100A9290F /* LeftMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuVC.swift; sourceTree = "<group>"; };
+		409562E922240C2100A9290F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMoneh Driver.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +101,70 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55DF850A90C9538E4D1A3A6 /* Pods_iMoneh_Driver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0622BA31186476A89D195BB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35FBEFC72A2DEB4F9E2345E7 /* Pods_iMoneh_Driver.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4055059F222418B500456FC8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				405505A0222418C000456FC8 /* Modal */,
+				405505A1222418C600456FC8 /* View */,
+				405505A2222418CE00456FC8 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		405505A0222418C000456FC8 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		405505A1222418C600456FC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				405505AB222428D100456FC8 /* OrderCell.swift */,
+				405505AC222428D100456FC8 /* OrderCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		405505A2222418CE00456FC8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				405505A3222418F200456FC8 /* HomeVC.swift */,
+				405505A522241FC800456FC8 /* NewVC.swift */,
+				405505A722241FD900456FC8 /* AssignVC.swift */,
+				405505A922241FE800456FC8 /* CompletedVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		409562842223E2B900A9290F = {
 			isa = PBXGroup;
 			children = (
+				409562A22223E44F00A9290F /* README.md */,
+				409562BA2223F04700A9290F /* ExternalLib */,
+				409562BB2223F05700A9290F /* Utility */,
+				409562BC2223F08D00A9290F /* NetWork */,
 				4095628F2223E2B900A9290F /* iMoneh Driver */,
 				4095628E2223E2B900A9290F /* Products */,
+				409562A42223ECFC00A9290F /* Resources */,
+				565FADFC616AC900615CE1B7 /* Pods */,
+				0622BA31186476A89D195BB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +180,126 @@
 			isa = PBXGroup;
 			children = (
 				409562902223E2B900A9290F /* AppDelegate.swift */,
-				409562922223E2B900A9290F /* ViewController.swift */,
+				409562CB2223F56800A9290F /* DashBoard */,
+				409562E722240C0E00A9290F /* Menu */,
+				4055059F222418B500456FC8 /* Home */,
 				409562942223E2B900A9290F /* Main.storyboard */,
-				409562972223E2BC00A9290F /* Assets.xcassets */,
+				409562E522240BC400A9290F /* Menu.storyboard */,
 				409562992223E2BC00A9290F /* LaunchScreen.storyboard */,
 				4095629C2223E2BC00A9290F /* Info.plist */,
 			);
 			path = "iMoneh Driver";
+			sourceTree = "<group>";
+		};
+		409562A42223ECFC00A9290F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				409562C32223F13B00A9290F /* Colors.xcassets */,
+				409562DF2223FA4000A9290F /* Assets.xcassets */,
+				409562B92223F03300A9290F /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		409562B92223F03300A9290F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				409562A62223ED3800A9290F /* Gilroy-Black.otf */,
+				409562AD2223ED3800A9290F /* Gilroy-Bold.otf */,
+				409562A82223ED3800A9290F /* Gilroy-ExtraBold.otf */,
+				409562A72223ED3800A9290F /* Gilroy-Heavy.otf */,
+				409562AE2223ED3800A9290F /* Gilroy-Light.otf */,
+				409562A52223ED3800A9290F /* Gilroy-Medium.otf */,
+				409562A92223ED3800A9290F /* Gilroy-Regular.otf */,
+				409562AC2223ED3800A9290F /* Gilroy-SemiBold.otf */,
+				409562AB2223ED3800A9290F /* Gilroy-Thin.otf */,
+				409562AA2223ED3800A9290F /* Gilroy-UltraLight.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		409562BA2223F04700A9290F /* ExternalLib */ = {
+			isa = PBXGroup;
+			children = (
+				409562D32223F76300A9290F /* Keychain.swift */,
+				409562D42223F76300A9290F /* FloatingLabelTextField.swift */,
+			);
+			path = ExternalLib;
+			sourceTree = "<group>";
+		};
+		409562BB2223F05700A9290F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				409562DB2223F82000A9290F /* Singleton.swift */,
+				409562BD2223F0CA00A9290F /* AppConstant.swift */,
+				409562C52223F2C000A9290F /* AppFont.swift */,
+				409562C72223F2D000A9290F /* BasicUtility.swift */,
+				409562C92223F32400A9290F /* Extension.swift */,
+				409562BE2223F0CA00A9290F /* Validation.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		409562BC2223F08D00A9290F /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				409562D92223F7DF00A9290F /* ApiUrlFactory.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		409562CB2223F56800A9290F /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				409562CC2223F56F00A9290F /* Modal */,
+				409562CD2223F57600A9290F /* View */,
+				409562CE2223F57C00A9290F /* Controller */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		409562CC2223F56F00A9290F /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				409562D72223F79D00A9290F /* DashBoardModels.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		409562CD2223F57600A9290F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		409562CE2223F57C00A9290F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				409562922223E2B900A9290F /* ViewController.swift */,
+				409562D02223F67A00A9290F /* Login.swift */,
+				409562CF2223F67A00A9290F /* Reg.swift */,
+				409562DD2223F85000A9290F /* DialCodeVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		409562E722240C0E00A9290F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				409562E922240C2100A9290F /* RootViewController.swift */,
+				409562E822240C2100A9290F /* LeftMenuVC.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		565FADFC616AC900615CE1B7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				242EFE77D1285D0F56B44AB8 /* Pods-iMoneh Driver.debug.xcconfig */,
+				73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +309,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4095629F2223E2BC00A9290F /* Build configuration list for PBXNativeTarget "iMoneh Driver" */;
 			buildPhases = (
+				132EDE90AF5B781E05A85A17 /* [CP] Check Pods Manifest.lock */,
 				409562892223E2B900A9290F /* Sources */,
 				4095628A2223E2B900A9290F /* Frameworks */,
 				4095628B2223E2B900A9290F /* Resources */,
+				B0309BE85AB76CFF50D0943D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,21 +362,104 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409562C42223F13B00A9290F /* Colors.xcassets in Resources */,
+				409562B72223ED3900A9290F /* Gilroy-Bold.otf in Resources */,
 				4095629B2223E2BC00A9290F /* LaunchScreen.storyboard in Resources */,
-				409562982223E2BC00A9290F /* Assets.xcassets in Resources */,
+				409562B12223ED3900A9290F /* Gilroy-Heavy.otf in Resources */,
+				409562E02223FA4000A9290F /* Assets.xcassets in Resources */,
+				405505AE222428D100456FC8 /* OrderCell.xib in Resources */,
+				409562B52223ED3900A9290F /* Gilroy-Thin.otf in Resources */,
+				409562B62223ED3900A9290F /* Gilroy-SemiBold.otf in Resources */,
+				409562B32223ED3900A9290F /* Gilroy-Regular.otf in Resources */,
+				409562B22223ED3900A9290F /* Gilroy-ExtraBold.otf in Resources */,
+				409562B82223ED3900A9290F /* Gilroy-Light.otf in Resources */,
+				409562B42223ED3900A9290F /* Gilroy-UltraLight.otf in Resources */,
+				409562E622240BC400A9290F /* Menu.storyboard in Resources */,
+				409562AF2223ED3900A9290F /* Gilroy-Medium.otf in Resources */,
+				409562A32223E44F00A9290F /* README.md in Resources */,
 				409562962223E2B900A9290F /* Main.storyboard in Resources */,
+				409562B02223ED3900A9290F /* Gilroy-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		132EDE90AF5B781E05A85A17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iMoneh Driver-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0309BE85AB76CFF50D0943D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AKSideMenu/AKSideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKSideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		409562892223E2B900A9290F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409562C02223F0CB00A9290F /* AppConstant.swift in Sources */,
+				409562EB22240C2100A9290F /* RootViewController.swift in Sources */,
+				409562DC2223F82100A9290F /* Singleton.swift in Sources */,
+				405505A4222418F200456FC8 /* HomeVC.swift in Sources */,
+				409562DA2223F7DF00A9290F /* ApiUrlFactory.swift in Sources */,
+				405505A622241FC800456FC8 /* NewVC.swift in Sources */,
+				409562DE2223F85000A9290F /* DialCodeVC.swift in Sources */,
+				409562EA22240C2100A9290F /* LeftMenuVC.swift in Sources */,
+				409562C82223F2D000A9290F /* BasicUtility.swift in Sources */,
+				409562D12223F67A00A9290F /* Reg.swift in Sources */,
+				409562CA2223F32400A9290F /* Extension.swift in Sources */,
+				409562D82223F79D00A9290F /* DashBoardModels.swift in Sources */,
+				405505AD222428D100456FC8 /* OrderCell.swift in Sources */,
+				409562C62223F2C000A9290F /* AppFont.swift in Sources */,
+				405505AA22241FE800456FC8 /* CompletedVC.swift in Sources */,
 				409562932223E2B900A9290F /* ViewController.swift in Sources */,
+				409562D22223F67A00A9290F /* Login.swift in Sources */,
+				409562D62223F76300A9290F /* FloatingLabelTextField.swift in Sources */,
+				409562C12223F0CB00A9290F /* Validation.swift in Sources */,
 				409562912223E2B900A9290F /* AppDelegate.swift in Sources */,
+				409562D52223F76300A9290F /* Keychain.swift in Sources */,
+				405505A822241FD900456FC8 /* AssignVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,37 +603,41 @@
 		};
 		409562A02223E2BC00A9290F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 242EFE77D1285D0F56B44AB8 /* Pods-iMoneh Driver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPK4XC758S;
 				INFOPLIST_FILE = "iMoneh Driver/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wm.iMoneh-Driver";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wm.driver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		409562A12223E2BC00A9290F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPK4XC758S;
 				INFOPLIST_FILE = "iMoneh Driver/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.wm.iMoneh-Driver";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wm.driver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

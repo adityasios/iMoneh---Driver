@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CompletedVC.swift
 //  iMoneh Driver
 //
 //  Created by Rakhi on 25/02/19.
@@ -8,13 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CompletedVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-
 }
-
