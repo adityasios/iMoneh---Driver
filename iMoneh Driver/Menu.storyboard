@@ -11,8 +11,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Gilroy-Medium.otf">
-            <string>Gilroy-Medium</string>
+        <array key="Gilroy-Bold.otf">
+            <string>Gilroy-Bold</string>
         </array>
         <array key="Gilroy-Regular.otf">
             <string>Gilroy-Regular</string>
@@ -41,7 +41,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TX7-wA-HYH">
-                                            <rect key="frame" x="80" y="60" width="80" height="80"/>
+                                            <rect key="frame" x="31" y="40" width="80" height="80"/>
                                             <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="DVs-Oi-rMe"/>
@@ -54,19 +54,32 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EN TEST MARKET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlm-eK-jzC">
-                                            <rect key="frame" x="67" y="156" width="106.5" height="17"/>
-                                            <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EN TEST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlm-eK-jzC">
+                                            <rect key="frame" x="31" y="136" width="51" height="17"/>
+                                            <fontDescription key="fontDescription" name="Gilroy-Bold" family="Gilroy" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_filled" translatesAutoresizingMaskIntoConstraints="NO" id="PSu-WY-iaw">
+                                            <rect key="frame" x="23" y="155" width="28" height="28"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5y-PD-EV2">
+                                            <rect key="frame" x="55" y="160.5" width="42" height="17"/>
+                                            <fontDescription key="fontDescription" name="Gilroy-SemiBold" family="Gilroy" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="TX7-wA-HYH" firstAttribute="centerY" secondItem="c55-fY-cru" secondAttribute="centerY" id="2oh-dM-UcX"/>
-                                        <constraint firstItem="TX7-wA-HYH" firstAttribute="centerX" secondItem="c55-fY-cru" secondAttribute="centerX" multiplier="0.75" id="6en-rt-6lv"/>
+                                        <constraint firstItem="PSu-WY-iaw" firstAttribute="leading" secondItem="Jlm-eK-jzC" secondAttribute="leading" constant="-8" id="5ys-U7-2H5"/>
                                         <constraint firstItem="Jlm-eK-jzC" firstAttribute="top" secondItem="TX7-wA-HYH" secondAttribute="bottom" constant="16" id="Frp-c0-RTq"/>
-                                        <constraint firstItem="Jlm-eK-jzC" firstAttribute="centerX" secondItem="TX7-wA-HYH" secondAttribute="centerX" id="Xxk-dO-sAx"/>
+                                        <constraint firstItem="E5y-PD-EV2" firstAttribute="leading" secondItem="PSu-WY-iaw" secondAttribute="trailing" constant="4" id="OtV-xJ-Fqb"/>
+                                        <constraint firstItem="PSu-WY-iaw" firstAttribute="top" secondItem="Jlm-eK-jzC" secondAttribute="bottom" constant="2" id="Vh3-rN-1no"/>
+                                        <constraint firstItem="TX7-wA-HYH" firstAttribute="centerY" secondItem="c55-fY-cru" secondAttribute="centerY" multiplier="0.8" id="f6l-wb-0K6"/>
+                                        <constraint firstItem="Jlm-eK-jzC" firstAttribute="leading" secondItem="c55-fY-cru" secondAttribute="leading" constant="31" id="oav-NH-u96"/>
+                                        <constraint firstItem="TX7-wA-HYH" firstAttribute="leading" secondItem="Jlm-eK-jzC" secondAttribute="leading" id="qk2-hC-YXs"/>
+                                        <constraint firstItem="E5y-PD-EV2" firstAttribute="centerY" secondItem="PSu-WY-iaw" secondAttribute="centerY" id="z1x-HZ-Nxi"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -101,21 +114,11 @@
                                 <rect key="frame" x="0.0" y="500" width="320" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-Zd-RrJ">
-                                        <rect key="frame" x="97" y="14" width="30" height="30"/>
+                                        <rect key="frame" x="31" y="14" width="30" height="30"/>
                                         <state key="normal" image="lang"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foy-GX-znw">
-                                        <rect key="frame" x="94.5" y="42" width="35" height="18"/>
-                                        <fontDescription key="fontDescription" name="Gilroy-Regular" family="Gilroy" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biB-BV-iy2">
-                                        <rect key="frame" x="27" y="12" width="30" height="34"/>
-                                        <state key="normal" image="acct"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tED-D6-Vmv">
-                                        <rect key="frame" x="13" y="42" width="58" height="18"/>
+                                        <rect key="frame" x="28.5" y="42" width="35" height="18"/>
                                         <fontDescription key="fontDescription" name="Gilroy-Regular" family="Gilroy" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -123,13 +126,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="foy-GX-znw" firstAttribute="top" secondItem="w4X-Zd-RrJ" secondAttribute="bottom" constant="-2" id="Avd-gJ-aOY"/>
-                                    <constraint firstItem="tED-D6-Vmv" firstAttribute="centerX" secondItem="biB-BV-iy2" secondAttribute="centerX" id="DSf-2Q-dKq"/>
-                                    <constraint firstItem="tED-D6-Vmv" firstAttribute="centerY" secondItem="foy-GX-znw" secondAttribute="centerY" id="FOM-WK-Oud"/>
-                                    <constraint firstItem="w4X-Zd-RrJ" firstAttribute="centerX" secondItem="8ja-xA-NIg" secondAttribute="centerX" multiplier="0.7" id="SRe-NB-qgC"/>
                                     <constraint firstItem="foy-GX-znw" firstAttribute="centerY" secondItem="8ja-xA-NIg" secondAttribute="centerY" multiplier="1.5" id="VTT-Ss-VCy"/>
-                                    <constraint firstItem="biB-BV-iy2" firstAttribute="centerY" secondItem="w4X-Zd-RrJ" secondAttribute="centerY" id="a1p-4P-A2B"/>
-                                    <constraint firstItem="w4X-Zd-RrJ" firstAttribute="leading" secondItem="biB-BV-iy2" secondAttribute="trailing" constant="40" id="qId-bp-VMN"/>
-                                    <constraint firstItem="tED-D6-Vmv" firstAttribute="top" secondItem="biB-BV-iy2" secondAttribute="bottom" constant="-4" id="qZy-YZ-zfp"/>
+                                    <constraint firstItem="w4X-Zd-RrJ" firstAttribute="leading" secondItem="8ja-xA-NIg" secondAttribute="leading" constant="31" id="b01-ux-83M"/>
                                     <constraint firstItem="foy-GX-znw" firstAttribute="centerX" secondItem="w4X-Zd-RrJ" secondAttribute="centerX" id="qpJ-QO-qQu"/>
                                 </constraints>
                             </view>
@@ -367,13 +365,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ii1-kC-ItQ">
-                                <rect key="frame" x="0.0" y="99.5" width="320" height="468.5"/>
+                                <rect key="frame" x="0.0" y="107.5" width="320" height="460.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="G9Z-c7-byZ" id="iZQ-YU-Re6"/>
+                                    <outlet property="delegate" destination="G9Z-c7-byZ" id="fps-Nt-nlG"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ii1-kC-ItQ" firstAttribute="height" secondItem="pbw-WC-TTB" secondAttribute="height" multiplier="0.93" id="FXP-a5-jls"/>
+                            <constraint firstItem="Ii1-kC-ItQ" firstAttribute="height" secondItem="pbw-WC-TTB" secondAttribute="height" multiplier="0.93" constant="-8" id="FXP-a5-jls"/>
                             <constraint firstItem="Ii1-kC-ItQ" firstAttribute="trailing" secondItem="pbw-WC-TTB" secondAttribute="trailing" id="N9C-D0-SVy"/>
                             <constraint firstItem="Ii1-kC-ItQ" firstAttribute="leading" secondItem="pbw-WC-TTB" secondAttribute="leading" id="nX3-9m-fUw"/>
                             <constraint firstItem="pbw-WC-TTB" firstAttribute="bottom" secondItem="Ii1-kC-ItQ" secondAttribute="bottom" id="vo5-0r-deI"/>
@@ -381,6 +383,9 @@
                         <viewLayoutGuide key="safeArea" id="pbw-WC-TTB"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tblv" destination="Ii1-kC-ItQ" id="Phu-LT-Y3h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7k3-Wt-DHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -395,20 +400,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U3o-cd-wG4">
-                                <rect key="frame" x="0.0" y="99.5" width="320" height="468.5"/>
+                                <rect key="frame" x="0.0" y="107.5" width="320" height="460.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="GCW-af-ddv" id="Xsw-rS-d7f"/>
+                                    <outlet property="delegate" destination="GCW-af-ddv" id="noS-XZ-fqq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="U3o-cd-wG4" firstAttribute="trailing" secondItem="ajB-Az-xaE" secondAttribute="trailing" id="Awk-SR-FR3"/>
-                            <constraint firstItem="U3o-cd-wG4" firstAttribute="height" secondItem="ajB-Az-xaE" secondAttribute="height" multiplier="0.93" id="DPc-ex-ajT"/>
+                            <constraint firstItem="U3o-cd-wG4" firstAttribute="height" secondItem="ajB-Az-xaE" secondAttribute="height" multiplier="0.93" constant="-8" id="DPc-ex-ajT"/>
                             <constraint firstItem="U3o-cd-wG4" firstAttribute="leading" secondItem="ajB-Az-xaE" secondAttribute="leading" id="oLT-Uq-jxT"/>
                             <constraint firstItem="ajB-Az-xaE" firstAttribute="bottom" secondItem="U3o-cd-wG4" secondAttribute="bottom" id="zee-Uo-h7v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ajB-Az-xaE"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tblv" destination="U3o-cd-wG4" id="aC0-41-bsY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-Xa-MnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -435,7 +447,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="acct" width="30" height="30"/>
+        <image name="circle_filled" width="28" height="28"/>
         <image name="lang" width="30" height="30"/>
         <image name="menu" width="24" height="24"/>
         <image name="splash_bg" width="576" height="1024"/>

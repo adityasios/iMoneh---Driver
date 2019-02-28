@@ -7,24 +7,24 @@
 //
 
 import UIKit
+import SDWebImage
 
-class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
-    
-    
+class Reg: UITableViewController,DialCodeVCDelegate {
     
     @IBOutlet var lblJoin : UILabel!
     @IBOutlet var lblDialCode : UILabel!
     @IBOutlet var imgVFlag : UIImageView!
-    @IBOutlet var txfdMark: FloatingLabelTextField!
-    @IBOutlet var txfdArMark: FloatingLabelTextField!
+    @IBOutlet var btnTerms : UIButton!
+    
+    @IBOutlet var txfdName: FloatingLabelTextField!
     @IBOutlet var txfdEmailAdd: FloatingLabelTextField!
     @IBOutlet var txfdPhone: FloatingLabelTextField!
+    @IBOutlet var txfdGender: FloatingLabelTextField!
     @IBOutlet var txfdLoc: FloatingLabelTextField!
     @IBOutlet var txfdPass: FloatingLabelTextField!
     
     var arr_ctry : [CountryMod] = []
-    
-    
+    var str_gender:String = "0"
     
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
@@ -34,13 +34,10 @@ class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
         getCountryList()
     }
     
-    
-    
     override  func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
     }
-    
     
     // MARK:- INIT METHOD
     func initMethod() {
@@ -51,23 +48,12 @@ class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
         setTxfd()
     }
     
-    
-    
-    
-    
-    
-    
     func setTxfd() {
         
-        //mark
-        txfdMark.font = AppFont.GilroyReg.fontReg15
-        txfdMark.titleActiveTextColour = appDarkYellow
-        txfdMark.titleFont = AppFont.GilroyBold.fontBold14!
-        
-        //ar mark
-        txfdArMark.font = AppFont.GilroyReg.fontReg15
-        txfdArMark.titleActiveTextColour = appDarkYellow
-        txfdArMark.titleFont = AppFont.GilroyBold.fontBold14!
+        //name
+        txfdName.font = AppFont.GilroyReg.fontReg15
+        txfdName.titleActiveTextColour = appDarkYellow
+        txfdName.titleFont = AppFont.GilroyBold.fontBold14!
         
         //email address
         txfdEmailAdd.font = AppFont.GilroyReg.fontReg15
@@ -79,12 +65,15 @@ class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
         txfdPhone.titleActiveTextColour = appDarkYellow
         txfdPhone.titleFont = AppFont.GilroyBold.fontBold14!
         
+        //gender
+        txfdGender.font = AppFont.GilroyReg.fontReg15
+        txfdGender.titleActiveTextColour = appDarkYellow
+        txfdGender.titleFont = AppFont.GilroyBold.fontBold14!
         
         //location
         txfdLoc.font = AppFont.GilroyReg.fontReg15
         txfdLoc.titleActiveTextColour = appDarkYellow
         txfdLoc.titleFont = AppFont.GilroyBold.fontBold14!
-        
         
         //password
         txfdPass.font = AppFont.GilroyReg.fontReg15
@@ -92,21 +81,17 @@ class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
         txfdPass.titleFont = AppFont.GilroyBold.fontBold14!
     }
     
-    
     func setDialCodeData(_ ctrMod:CountryMod) {
         DispatchQueue.main.async {
             self.lblDialCode.text = ctrMod.dial_code
+            if  let flagimg =  ctrMod.flag_image,let urlimg = URL.init(string: APIURLFactory.country_flag + flagimg) {
+                self.imgVFlag.sd_setImage(with: urlimg, completed: nil)
+            }
         }
     }
     
     
-    // MARK:- TEXTFIELD DELEGATE
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    
+    // MARK:- BUTTON ACTION
     @IBAction func btnDialCodeClicked(_ sender: UIButton) {
         if arr_ctry.isEmpty {
             BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"No country found for dial code")
@@ -117,8 +102,18 @@ class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
             controller.modalPresentationStyle = .overCurrentContext
             controller.arr_Pass = arr_ctry
             controller.delegate = self
+            if let dial_code = lblDialCode.text {
+                controller.crt_dial_code = dial_code
+            }
             present(controller, animated: true)
         }
+    }
+    
+    @IBAction func btnCheckBoxClicked(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    @IBAction func btnTermsClicked(_ sender: UIButton) {
     }
     
     // MARK:- DELEGATE METHODS
@@ -127,11 +122,16 @@ class Reg: UITableViewController,UITextFieldDelegate,DialCodeVCDelegate {
     }
 }
 
-
-// MARK:- API CALL  METHODS
+// MARK:- Ext - API CALL  METHODS
 extension Reg {
     
     func getCountryList() {
+        
+        //already_saved_json
+        if let json_saved = UserDefaults.standard.object(forKey: AppUserDefault.ctry_data.rawValue) {
+            self.jsonParsingCountryList(json: json_saved)
+            return
+        }
         
         //url
         let strUrl = APIURLFactory.country_list
@@ -150,7 +150,6 @@ extension Reg {
                 }
             }
             
-            
             if let err = err {
                 BasicUtility.getAlert(view: self, titletop: "Error", subtitle:err)
             }
@@ -158,17 +157,10 @@ extension Reg {
     }
 }
 
-
-
-
-
-
-
-// MARK:- API PARSING METHODS
+// MARK:- Ext - API PARSING METHODS
 extension Reg {
     
     func jsonParsingCountryList(json:Any) {
-        
         if let json_res = json as? [String: Any]  {
             guard let arr_data = json_res["data"] as? [[String:Any]] else {
                 return
@@ -179,6 +171,7 @@ extension Reg {
                 let decoder = JSONDecoder()
                 arr_ctry = try decoder.decode([CountryMod].self, from: data_ctr)
                 if arr_ctry.count > 0 {
+                    UserDefaults.standard.set(json, forKey: AppUserDefault.ctry_data.rawValue)
                     self.setDialCodeData(arr_ctry.first!)
                 }
             } catch let parsingError  {
@@ -186,5 +179,38 @@ extension Reg {
                 BasicUtility.getAlert(view: self, titletop: "Error", subtitle:parsingError.localizedDescription)
             }
         }
+    }
+}
+
+// MARK:- Ext- UITextFieldDelegate
+extension Reg : UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == txfdGender {
+            genderSelected()
+            return false
+        }else{
+            return true
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func genderSelected(){
+        let alert = UIAlertController(title: "Select Gender", message: "Please Select an Option", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Male", style: .default , handler:{ (UIAlertAction)in
+            self.txfdGender.text = "Male"
+            self.str_gender = Parameters.kMale
+        }))
+        alert.addAction(UIAlertAction(title: "Female", style: .default , handler:{ (UIAlertAction)in
+            self.txfdGender.text = "Female"
+            self.str_gender = Parameters.kFemale
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+        }))
+        self.present(alert, animated: true, completion: {
+        })
     }
 }

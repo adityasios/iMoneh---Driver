@@ -250,7 +250,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="RN1-7V-VbZ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9fb-hz-Qdi" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9fb-hz-Qdi" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="10" width="266" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="zqT-4N-Lxf"/>
@@ -286,7 +286,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="a4m-h3-yao"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xl5-PP-bNX" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xl5-PP-bNX" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="10" width="266" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="dJG-YN-Am1"/>
@@ -344,10 +344,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="ofJ-dA-5ir">
-                            <rect key="frame" x="0.0" y="404" width="320" height="1"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="GWV-A7-i3f">
+                            <rect key="frame" x="0.0" y="454" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <sections>
                             <tableViewSection id="BQz-cZ-gqJ">
@@ -359,8 +359,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Market Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Hk-Q3x">
-                                                    <rect key="frame" x="8" y="13" width="219.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Driver Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Hk-Q3x">
+                                                    <rect key="frame" x="8" y="13" width="212" height="18"/>
                                                     <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -387,14 +387,14 @@
                                                         <constraint firstAttribute="width" constant="30" id="PQ5-55-0Db"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Market Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W80-bI-EmX" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W80-bI-EmX" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="10" width="266" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="CfS-2w-m7q"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="332-n8-VSR" id="MRV-jK-kY5"/>
                                                     </connections>
@@ -409,44 +409,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="bS7-of-Sky">
-                                        <rect key="frame" x="0.0" y="104" width="320" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bS7-of-Sky" id="9tz-SB-kDG">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="nqw-Yi-RdG">
-                                                    <rect key="frame" x="10" y="15" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="FZk-TG-YL6"/>
-                                                        <constraint firstAttribute="width" constant="30" id="zsQ-dc-5fi"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Arabic Market Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLq-tf-pAw" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
-                                                    <rect key="frame" x="48" y="10" width="266" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="lEW-mh-cOc"/>
-                                                    </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="332-n8-VSR" id="TeK-V2-nLU"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nqw-Yi-RdG" firstAttribute="centerY" secondItem="9tz-SB-kDG" secondAttribute="centerY" id="8gH-LU-Vga"/>
-                                                <constraint firstItem="QLq-tf-pAw" firstAttribute="leading" secondItem="nqw-Yi-RdG" secondAttribute="trailing" constant="8" id="J7C-QO-BK5"/>
-                                                <constraint firstAttribute="trailing" secondItem="QLq-tf-pAw" secondAttribute="trailing" constant="6" id="PlB-ab-HfC"/>
-                                                <constraint firstItem="nqw-Yi-RdG" firstAttribute="leading" secondItem="9tz-SB-kDG" secondAttribute="leading" constant="10" id="oSh-zQ-MjH"/>
-                                                <constraint firstItem="QLq-tf-pAw" firstAttribute="centerY" secondItem="9tz-SB-kDG" secondAttribute="centerY" id="vEq-vx-jrV"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="RLi-XL-oJU">
-                                        <rect key="frame" x="0.0" y="164" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="104" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RLi-XL-oJU" id="bya-IZ-xAN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -459,14 +423,14 @@
                                                         <constraint firstAttribute="height" constant="30" id="LQl-9k-eeW"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rMX-2Y-J4c" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rMX-2Y-J4c" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="10" width="266" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="6ye-P5-XUg"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="332-n8-VSR" id="RIX-fZ-suY"/>
                                                     </connections>
@@ -482,7 +446,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="zXC-84-5OD">
-                                        <rect key="frame" x="0.0" y="224" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="164" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zXC-84-5OD" id="zK3-5f-iyl">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
@@ -496,14 +460,14 @@
                                                         <constraint firstAttribute="height" constant="28" id="SaW-ez-Rci"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gL6-Z6-53N" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gL6-Z6-53N" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="126" y="10" width="188" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Zll-5V-Ww1"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" textContentType="tel"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="332-n8-VSR" id="hNF-Sm-NiI"/>
                                                     </connections>
@@ -542,6 +506,42 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="bS7-of-Sky">
+                                        <rect key="frame" x="0.0" y="224" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bS7-of-Sky" id="9tz-SB-kDG">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="nqw-Yi-RdG">
+                                                    <rect key="frame" x="10" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="FZk-TG-YL6"/>
+                                                        <constraint firstAttribute="width" constant="30" id="zsQ-dc-5fi"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLq-tf-pAw" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
+                                                    <rect key="frame" x="48" y="10" width="266" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="lEW-mh-cOc"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="332-n8-VSR" id="TeK-V2-nLU"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nqw-Yi-RdG" firstAttribute="centerY" secondItem="9tz-SB-kDG" secondAttribute="centerY" id="8gH-LU-Vga"/>
+                                                <constraint firstItem="QLq-tf-pAw" firstAttribute="leading" secondItem="nqw-Yi-RdG" secondAttribute="trailing" constant="8" id="J7C-QO-BK5"/>
+                                                <constraint firstAttribute="trailing" secondItem="QLq-tf-pAw" secondAttribute="trailing" constant="6" id="PlB-ab-HfC"/>
+                                                <constraint firstItem="nqw-Yi-RdG" firstAttribute="leading" secondItem="9tz-SB-kDG" secondAttribute="leading" constant="10" id="oSh-zQ-MjH"/>
+                                                <constraint firstItem="QLq-tf-pAw" firstAttribute="centerY" secondItem="9tz-SB-kDG" secondAttribute="centerY" id="vEq-vx-jrV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="nf1-BG-4Ih">
                                         <rect key="frame" x="0.0" y="284" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -556,14 +556,14 @@
                                                         <constraint firstAttribute="width" constant="30" id="WY2-bG-8jN"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rfF-4j-fAf" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rfF-4j-fAf" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="10" width="266" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="ADj-1t-kFP"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" textContentType="location"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="332-n8-VSR" id="JkV-UE-UuJ"/>
                                                     </connections>
@@ -592,14 +592,14 @@
                                                         <constraint firstAttribute="width" constant="30" id="qsv-Nm-zAo"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJH-ve-CDt" customClass="FloatingLabelTextField" customModule="iMonehMarket" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJH-ve-CDt" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
                                                     <rect key="frame" x="48" y="10" width="266" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Tk1-DW-lds"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="332-n8-VSR" id="WYe-rX-6JR"/>
                                                     </connections>
@@ -614,6 +614,122 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="fcx-0H-f8x">
+                                        <rect key="frame" x="0.0" y="404" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fcx-0H-f8x" id="WBr-3x-xRz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v7q-bc-Of5">
+                                                    <rect key="frame" x="48" y="11" width="195" height="28"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="I">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Gilroy-Medium"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Gilroy-Medium"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content=" ">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="have">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Gilroy-Medium"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Gilroy-Medium"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content=" ">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="read">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Gilroy-Medium"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Gilroy-Medium"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content=" ">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="Terms">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Gilroy-Medium"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Gilroy-Medium"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content=" ">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="&amp;">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Gilroy-Medium"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Gilroy-Medium"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content=" ">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Helvetica"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Helvetica"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="Condition">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="14" name="Gilroy-Medium"/>
+                                                                    <font key="NSOriginalFont" size="14" name="Gilroy-Medium"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="btnTermsClicked:" destination="332-n8-VSR" eventType="touchUpInside" id="dcH-nc-3gv"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvb-Wb-Idp">
+                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                                    <state key="normal" image="checkbox"/>
+                                                    <state key="selected" image="tickbox"/>
+                                                    <connections>
+                                                        <action selector="btnCheckBoxClicked:" destination="332-n8-VSR" eventType="touchUpInside" id="2Fs-Ho-Oqz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="v7q-bc-Of5" firstAttribute="leading" secondItem="Nvb-Wb-Idp" secondAttribute="trailing" constant="8" id="D9F-zq-mKT"/>
+                                                <constraint firstItem="Nvb-Wb-Idp" firstAttribute="centerY" secondItem="WBr-3x-xRz" secondAttribute="centerY" id="ZXK-ok-eA9"/>
+                                                <constraint firstItem="v7q-bc-Of5" firstAttribute="centerY" secondItem="WBr-3x-xRz" secondAttribute="centerY" id="iY4-zw-TKt"/>
+                                                <constraint firstItem="Nvb-Wb-Idp" firstAttribute="leading" secondItem="WBr-3x-xRz" secondAttribute="leading" constant="10" id="yEU-z5-ErD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -623,13 +739,14 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="btnTerms" destination="Nvb-Wb-Idp" id="61u-hN-Dzk"/>
                         <outlet property="imgVFlag" destination="A18-XO-STi" id="IdG-EL-JP1"/>
                         <outlet property="lblDialCode" destination="zmZ-5d-VPR" id="Kry-Qe-srM"/>
                         <outlet property="lblJoin" destination="BAu-Hk-Q3x" id="o36-vL-h4a"/>
-                        <outlet property="txfdArMark" destination="QLq-tf-pAw" id="qYF-ZM-ftF"/>
                         <outlet property="txfdEmailAdd" destination="rMX-2Y-J4c" id="mmt-IF-tM0"/>
+                        <outlet property="txfdGender" destination="QLq-tf-pAw" id="Q9y-Th-I2A"/>
                         <outlet property="txfdLoc" destination="rfF-4j-fAf" id="Ktt-lt-OtM"/>
-                        <outlet property="txfdMark" destination="W80-bI-EmX" id="drq-bZ-6hc"/>
+                        <outlet property="txfdName" destination="W80-bI-EmX" id="r8E-bL-P8N"/>
                         <outlet property="txfdPass" destination="uJH-ve-CDt" id="tAJ-vp-Ek3"/>
                         <outlet property="txfdPhone" destination="gL6-Z6-53N" id="6Uh-x5-TMx"/>
                     </connections>
@@ -641,7 +758,7 @@
         <!--Dial CodeVC-->
         <scene sceneID="CyH-qt-96e">
             <objects>
-                <viewController storyboardIdentifier="DialCodeVC" id="JuY-Mv-1Ww" customClass="DialCodeVC" customModule="iMonehMarket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DialCodeVC" id="JuY-Mv-1Ww" customClass="DialCodeVC" customModule="iMoneh_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dMH-xg-miu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -725,7 +842,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Country Dial Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWA-5N-Yt7">
                                 <rect key="frame" x="0.0" y="224" width="320" height="36"/>
-                                <color key="backgroundColor" name="appDarkYellow"/>
+                                <color key="backgroundColor" name="appYellow"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="6Is-n7-KPZ"/>
                                 </constraints>
@@ -757,14 +874,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkbox" width="30" height="30"/>
         <image name="cross" width="30" height="30"/>
         <image name="email" width="30" height="30"/>
         <image name="logo" width="125" height="46"/>
         <image name="password" width="30" height="30"/>
+        <image name="tickbox" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
-        <namedColor name="appDarkYellow">
-            <color red="1" green="0.70588235294117652" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="appTrans">
             <color red="0.92799997329711914" green="0.92799997329711914" blue="0.92799997329711914" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

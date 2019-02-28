@@ -8,21 +8,17 @@
 
 import UIKit
 
-
 protocol DialCodeVCDelegate : class {
     func dialCodeSelected(countMod: CountryMod)
 }
 
-
-
 class DialCodeVC: UIViewController {
     
-    
     @IBOutlet weak var tblv: UITableView!
+    
+    var crt_dial_code : String = ""
     var arr_Pass : [CountryMod] = []
     weak var delegate: DialCodeVCDelegate?
-    
-    
     
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
@@ -37,7 +33,7 @@ class DialCodeVC: UIViewController {
     
     // MARK:- SET UI METHOD
     func setUI() {
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor =  appTrans
     }
     
     // MARK:- BUTTON ACTION
@@ -47,7 +43,7 @@ class DialCodeVC: UIViewController {
 }
 
 
-// MARK:- TABLEV VIEW DATASOURCE
+// MARK:- Ext-TABLEV VIEW DATASOURCE
 extension DialCodeVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr_Pass.count
@@ -58,18 +54,30 @@ extension DialCodeVC : UITableViewDataSource {
         let ctryMod = arr_Pass[indexPath.row]
         
         let imgV = tcell.viewWithTag(10) as! UIImageView
+        imgV.layer.cornerRadius = 2
+        imgV.clipsToBounds = true
         let lblDC = tcell.viewWithTag(20) as! UILabel
         let lblCtry = tcell.viewWithTag(30) as! UILabel
         
         lblDC.text = ctryMod.dial_code
         lblCtry.text = ctryMod.country_name
+        if  let flagimg =  ctryMod.flag_image,let urlimg = URL.init(string: APIURLFactory.country_flag + flagimg) {
+            imgV.sd_setImage(with: urlimg, completed: nil)
+        }
+        
+        //acessory check mark
+        tcell.tintColor = appDarkYellow
+        if ctryMod.dial_code ==  crt_dial_code{
+            tcell.accessoryType = .checkmark
+        }else{
+            tcell.accessoryType = .none
+        }
         
         return tcell
     }
 }
 
-
-// MARK:- TABLEV VIEW DELEGATE
+// MARK:- Ext-TABLEV VIEW DELEGATE
 extension DialCodeVC : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let ctryMod = arr_Pass[indexPath.row]
@@ -77,3 +85,5 @@ extension DialCodeVC : UITableViewDelegate {
         dismiss(animated: true, completion: nil)
     }
 }
+
+

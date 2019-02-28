@@ -46,6 +46,9 @@
 		409562E622240BC400A9290F /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 409562E522240BC400A9290F /* Menu.storyboard */; };
 		409562EA22240C2100A9290F /* LeftMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562E822240C2100A9290F /* LeftMenuVC.swift */; };
 		409562EB22240C2100A9290F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409562E922240C2100A9290F /* RootViewController.swift */; };
+		40BAACF02226F3DE007C125A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40BAACEF2226F3DE007C125A /* GoogleService-Info.plist */; };
+		40C2BEC622267D4C00B1A550 /* MenuItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C2BEC522267D4C00B1A550 /* MenuItems.storyboard */; };
+		40C2BEC922267F4C00B1A550 /* MyProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C2BEC822267F4C00B1A550 /* MyProfileVC.swift */; };
 		E55DF850A90C9538E4D1A3A6 /* Pods_iMoneh_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FBEFC72A2DEB4F9E2345E7 /* Pods_iMoneh_Driver.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,10 @@
 		409562E522240BC400A9290F /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		409562E822240C2100A9290F /* LeftMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuVC.swift; sourceTree = "<group>"; };
 		409562E922240C2100A9290F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		40BAACEF2226F3DE007C125A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		40BAACF12226F4D5007C125A /* iMoneh Driver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iMoneh Driver.entitlements"; sourceTree = "<group>"; };
+		40C2BEC522267D4C00B1A550 /* MenuItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuItems.storyboard; sourceTree = "<group>"; };
+		40C2BEC822267F4C00B1A550 /* MyProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVC.swift; sourceTree = "<group>"; };
 		73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMoneh Driver.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +163,7 @@
 		409562842223E2B900A9290F = {
 			isa = PBXGroup;
 			children = (
+				40BAACEF2226F3DE007C125A /* GoogleService-Info.plist */,
 				409562A22223E44F00A9290F /* README.md */,
 				409562BA2223F04700A9290F /* ExternalLib */,
 				409562BB2223F05700A9290F /* Utility */,
@@ -179,12 +187,15 @@
 		4095628F2223E2B900A9290F /* iMoneh Driver */ = {
 			isa = PBXGroup;
 			children = (
+				40BAACF12226F4D5007C125A /* iMoneh Driver.entitlements */,
 				409562902223E2B900A9290F /* AppDelegate.swift */,
 				409562CB2223F56800A9290F /* DashBoard */,
 				409562E722240C0E00A9290F /* Menu */,
 				4055059F222418B500456FC8 /* Home */,
+				40C2BEC722267F2B00B1A550 /* MyProfile */,
 				409562942223E2B900A9290F /* Main.storyboard */,
 				409562E522240BC400A9290F /* Menu.storyboard */,
+				40C2BEC522267D4C00B1A550 /* MenuItems.storyboard */,
 				409562992223E2BC00A9290F /* LaunchScreen.storyboard */,
 				4095629C2223E2BC00A9290F /* Info.plist */,
 			);
@@ -293,6 +304,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		40C2BEC722267F2B00B1A550 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				40C2BEC822267F4C00B1A550 /* MyProfileVC.swift */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
 		565FADFC616AC900615CE1B7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +355,11 @@
 				TargetAttributes = {
 					4095628C2223E2B900A9290F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -373,9 +397,11 @@
 				409562B32223ED3900A9290F /* Gilroy-Regular.otf in Resources */,
 				409562B22223ED3900A9290F /* Gilroy-ExtraBold.otf in Resources */,
 				409562B82223ED3900A9290F /* Gilroy-Light.otf in Resources */,
+				40BAACF02226F3DE007C125A /* GoogleService-Info.plist in Resources */,
 				409562B42223ED3900A9290F /* Gilroy-UltraLight.otf in Resources */,
 				409562E622240BC400A9290F /* Menu.storyboard in Resources */,
 				409562AF2223ED3900A9290F /* Gilroy-Medium.otf in Resources */,
+				40C2BEC622267D4C00B1A550 /* MenuItems.storyboard in Resources */,
 				409562A32223E44F00A9290F /* README.md in Resources */,
 				409562962223E2B900A9290F /* Main.storyboard in Resources */,
 				409562B02223ED3900A9290F /* Gilroy-Black.otf in Resources */,
@@ -417,14 +443,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AKSideMenu/AKSideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKSideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -445,6 +479,7 @@
 				409562DA2223F7DF00A9290F /* ApiUrlFactory.swift in Sources */,
 				405505A622241FC800456FC8 /* NewVC.swift in Sources */,
 				409562DE2223F85000A9290F /* DialCodeVC.swift in Sources */,
+				40C2BEC922267F4C00B1A550 /* MyProfileVC.swift in Sources */,
 				409562EA22240C2100A9290F /* LeftMenuVC.swift in Sources */,
 				409562C82223F2D000A9290F /* BasicUtility.swift in Sources */,
 				409562D12223F67A00A9290F /* Reg.swift in Sources */,
@@ -606,6 +641,7 @@
 			baseConfigurationReference = 242EFE77D1285D0F56B44AB8 /* Pods-iMoneh Driver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iMoneh Driver/iMoneh Driver.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPK4XC758S;
 				INFOPLIST_FILE = "iMoneh Driver/Info.plist";
@@ -614,7 +650,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wm.driver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wm.imdriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -626,6 +662,7 @@
 			baseConfigurationReference = 73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iMoneh Driver/iMoneh Driver.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPK4XC758S;
 				INFOPLIST_FILE = "iMoneh Driver/Info.plist";
@@ -634,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wm.driver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wm.imdriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

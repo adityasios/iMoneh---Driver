@@ -20,25 +20,26 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gilroy-Heavy.otf</string>
+		<string>Gilroy-ExtraBold.otf</string>
+		<string>Gilroy-Bold.otf</string>
+		<string>Gilroy-SemiBold.otf</string>
+		<string>Gilroy-Black.otf</string>
+		<string>Gilroy-Medium.otf</string>
+		<string>Gilroy-Regular.otf</string>
+		<string>Gilroy-Light.otf</string>
+		<string>Gilroy-Thin.otf</string>
+		<string>Gilroy-UltraThin.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-    
-    <key>UIAppFonts</key>
-    <array>
-        <string>Gilroy-Heavy.otf</string>
-        <string>Gilroy-ExtraBold.otf</string>
-        <string>Gilroy-Bold.otf</string>
-        <string>Gilroy-SemiBold.otf</string>
-        <string>Gilroy-Black.otf</string>
-        <string>Gilroy-Medium.otf</string>
-        <string>Gilroy-Regular.otf</string>
-        <string>Gilroy-Light.otf</string>
-        <string>Gilroy-Thin.otf</string>
-        <string>Gilroy-UltraThin.otf</string>
-    </array>
-    
-    
-    
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -7,18 +7,21 @@
 //
 
 import Foundation
+import RSLoadingView
 
 
+// MARK:- BASE URLS
 private let baseURL: String = "http://142.93.210.141:3000/api/"
 private let aWSImgBaseURL: String = "http://d3kijqoezpm7i6.cloudfront.net/"
 
-
+// MARK:- APIURLFactory
 struct APIURLFactory {
     
     //paths
+    static let sign_up : String =  baseURL + "driver/register"
+    
     static let login : String =  baseURL + "vendor/login"
     static let country_list : String =  baseURL + "countries/list"
-    static let sign_up : String =  baseURL + "vendor/register"
     static let categories : String =  baseURL + "vendor/categories/list"
     static let products : String =  baseURL + "vendor/products/list"
     static let product_detail : String =  baseURL + "vendor/products/details"
@@ -34,23 +37,12 @@ struct APIURLFactory {
     static let not_delete : String =  baseURL + "vendor/notification/delete/"
     static let user_detail : String =  baseURL + "vendor/bid/user/details/"
    
-    
-    
-    
-    
-  
-    
-   
-    
     //img_paths
     static let profile_img : String =  aWSImgBaseURL + "uploads/vendors/"
     static let cat_img : String =  aWSImgBaseURL + "uploads/categories/"
     static let pro_img : String =  aWSImgBaseURL + "uploads/products/"
     static let cust_proimg : String =  aWSImgBaseURL + "uploads/images/"
-    
-    
-    
-    
+    static let country_flag : String =  aWSImgBaseURL + "uploads/countries/"
     
     //requests - post
     static func createPostRequest(url : URL, isToken : Bool) -> URLRequest{
@@ -83,11 +75,10 @@ struct APIURLFactory {
             }
             request.httpBody = httpBody
         }
-        
-        
         return request
     }
     
+    //requests - get
     static func createGetRequestWithPara(strAbs : String, isToken : Bool,para : [String:String]) -> URLRequest?{
         
         guard var components = URLComponents(string: strAbs) else {
@@ -105,8 +96,6 @@ struct APIURLFactory {
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         guard let url = components.url  else { return nil}
         
-        
-        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
@@ -118,11 +107,9 @@ struct APIURLFactory {
     }
 }
 
-
-
-
-
+// MARK:- Parameters
 struct Parameters {
+    static let name = "name"
     static let email = "email"
     static let pass = "password"
     static let fcmId = "fcm_id"
@@ -145,25 +132,17 @@ struct Parameters {
     static let vendor_id = "vendor_id"
     static let new_password = "new_password"
     static let status = "status"
+    static let gender = "gender"
     
+    
+    static let kMale = "1"
+    static let kFemale = "2"
 }
 
-
-
-
-
-
-
-
-
-
-
-
+// MARK:- URlSessionWrapper
 struct URlSessionWrapper {
     
-    
     static func getDatefromSession(request : URLRequest,completionHandler: @escaping (_ data: Data?, _ error: String? ) -> Void){
-        
         print("request -  \(request)")
         let session = URLSession.shared
         let dataTask =  session.dataTask(with: request) { (data, response, error) in
@@ -185,21 +164,14 @@ struct URlSessionWrapper {
                 completionHandler(nil,err.localizedDescription)
             }
         }
-        
         dataTask.resume()
     }
 }
 
-
-
-
-
-
+// MARK:- URlErrorHandling
 struct URlErrorHandling {
-    
     static func checkErrorInResponse(json : Any){
         var msgError = ""
-        
         if let errJson = json as? [[String: Any]]  {
             for dict in errJson {
                 guard let msg = dict["msg"] as? String else {
@@ -216,5 +188,17 @@ struct URlErrorHandling {
     }
 }
 
-
-
+// MARK:- Loader
+struct Loader {
+    static private let loadingView = RSLoadingView()
+    static func showLoadingView(view:UIView){
+        Loader.loadingView.shouldTapToDismiss = false
+        Loader.loadingView.mainColor = appDarkYellow!
+        Loader.loadingView.show(on: view)
+    }
+    static func hideLoadingView(view:UIView){
+        DispatchQueue.main.async {
+            Loader.loadingView.hide()
+        }
+    }
+}

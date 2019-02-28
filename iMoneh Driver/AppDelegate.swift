@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseMessaging
+import UserNotifications
+import UserNotificationsUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        initPushNotification(application)
+        setDeviceId()
         setNavBarApperance()
         return true
     }
@@ -41,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
     // MARK:- SET UI
     func setNavBarApperance(){
         UINavigationBar.appearance().barTintColor = appYellow
@@ -49,4 +53,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white,NSAttributedString.Key.font:AppFont.GilroySemiBold.fontSemiBold17!]
     }
 }
+
+// MARK:- Ex- NOTIFICATION
+extension AppDelegate : UNUserNotificationCenterDelegate,MessagingDelegate {
+    
+    func initPushNotification(_ application: UIApplication) {
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { (bool, err) in
+            if bool {
+                print("Persmission granted")
+            }
+            if let error = err {
+                print("Persmission error \(error.localizedDescription)")
+            }
+        }
+        application.registerForRemoteNotifications()
+    }
+    
+    
+    // MARK:- MESSAGEING DELEGATE
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        Singleton.shared.fcm_Id = fcmToken
+        print("Singleton.shared.fcm_Id: \(Singleton.shared.fcm_Id)")
+    }
+    
+    // MARK:- UNUserNotificationCenterDelegate
+    func userNotificationCenter(_ center: UNUserNotificationCenter,willPresent notification: UNNotification,withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        print(userInfo)
+        completionHandler([.alert,.sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        print(userInfo)
+        completionHandler()
+    }
+}
+
+// MARK:- Ex- Device Id registration
+extension AppDelegate{
+    func setDeviceId(){
+        let keychain = Keychain(service: "com.wm.imdriver")
+        if let token = keychain[Parameters.deviceId] {
+            Singleton.shared.device_Id = token
+        }else{
+            let deviceIdent  = UIDevice.current.identifierForVendor?.uuidString
+            keychain[Parameters.deviceId] = deviceIdent
+            Singleton.shared.device_Id = deviceIdent!
+        }
+        print("Singleton.shared.device_Id = \(Singleton.shared.device_Id!)")
+    }
+}
+
 
