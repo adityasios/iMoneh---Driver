@@ -25,6 +25,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Camera Access Required for Updating Profile Image</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Gallery Access Required for Updating Profile Image</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Gilroy-Heavy.otf</string>

@@ -19,24 +19,25 @@ struct APIURLFactory {
     
     //paths
     static let sign_up : String =  baseURL + "driver/register"
-    
-    static let login : String =  baseURL + "vendor/login"
+    static let login : String =  baseURL + "driver/login"
     static let country_list : String =  baseURL + "countries/list"
-    static let categories : String =  baseURL + "vendor/categories/list"
-    static let products : String =  baseURL + "vendor/products/list"
-    static let product_detail : String =  baseURL + "vendor/products/details"
-    static let profile_update : String =  baseURL + "vendor/profile/update"
-    static let fgt_pass : String =  baseURL + "vendor/forgot/password"
-    static let verify_otp : String =  baseURL + "vendor/verify/otp"
-    static let reset_pass : String =  baseURL + "vendor/reset/password"
-    static let not_list : String =  baseURL + "vendor/notifications/list"
-    static let order_list : String =  baseURL + "vendor/orders/list"
-    static let pro_list : String =  baseURL + "vendor/order/products/list/"
-    static let bid_list : String =  baseURL + "vendor/bids/list"
-    static let bid_prods : String =  baseURL + "vendor/bids/products/list/"
-    static let not_delete : String =  baseURL + "vendor/notification/delete/"
-    static let user_detail : String =  baseURL + "vendor/bid/user/details/"
-   
+    static let fgt_pass : String =  baseURL + "driver/forgot/password"
+    static let verify_otp : String =  baseURL + "driver/verify/otp"
+    static let reset_pass : String =  baseURL + "driver/reset/password"
+    static let profile_info : String =  baseURL + "driver/profile/info"
+    static let update_pro_img : String =  baseURL + "driver/profile/image/update"
+    static let update_vehicle_img : String =  baseURL + "driver/profile/vehicle/update"
+    static let driver_online : String =  baseURL + "driver/change/online/status"
+    static let order_list : String =  baseURL + "driver/orders/list"
+    static let not_list : String =  baseURL + "driver/notifications/list"
+    static let not_delete : String =  baseURL + "driver/notification/delete/"
+    static let driver_review : String =  baseURL + "driver/reviews/list"
+    static let order_detail : String =  baseURL + "driver/orders/details/"
+    static let about_us : String =  baseURL + "cms/about_us"
+    static let payment_terms : String =  baseURL + "cms/payment_terms"
+    static let cms_faq : String =  baseURL + "cms/faq"
+    static let cms_terms : String =  baseURL + "cms/terms_conditions"
+    
     //img_paths
     static let profile_img : String =  aWSImgBaseURL + "uploads/vendors/"
     static let cat_img : String =  aWSImgBaseURL + "uploads/categories/"
@@ -105,6 +106,34 @@ struct APIURLFactory {
         }
         return request
     }
+    
+    static func createMultipartFileUploadRequestWithPara(strAbs : String, isToken : Bool,para : [String:String],filename:String,imgData:Data,img_para:String) -> (req: URLRequest?,dta: Data?){
+        // generate boundary string using a unique per-app string
+        let boundary = UUID().uuidString
+        //get url
+        guard let url = URL(string: strAbs) else { return (nil,nil)}
+        // Set the URLRequest to POST and to the specified URL
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        // Set Content-Type Header to multipart/form-data, this is equivalent to submitting form data with file upload in a web browser
+        // And the boundary is also set here
+        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue(Singleton.shared.locale, forHTTPHeaderField: Parameters.locale)
+        if isToken {
+            urlRequest.setValue(Singleton.shared.token!, forHTTPHeaderField: "x-access-token")
+        }
+        
+        var data = Data()
+        // Add the image data to the raw http request data
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"\(img_para)\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+        data.append(imgData)
+        // End the raw http request data, note that there is 2 extra dash ("-") at the end, this is to indicate the end of the data
+        // According to the HTTP 1.1 specification https://tools.ietf.org/html/rfc7230
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        return (urlRequest,data)
+    }
 }
 
 // MARK:- Parameters
@@ -129,15 +158,21 @@ struct Parameters {
     static let country_id = "country_id"
     static let page = "page"
     static let otp = "otp"
-    static let vendor_id = "vendor_id"
+    static let driver_id = "driver_id"
     static let new_password = "new_password"
     static let status = "status"
     static let gender = "gender"
+    static let profile_image = "profile_image"
+    static let vehicle_image = "vehicle_image"
     
     
     static let kMale = "1"
     static let kFemale = "2"
 }
+
+
+
+
 
 // MARK:- URlSessionWrapper
 struct URlSessionWrapper {
@@ -146,7 +181,6 @@ struct URlSessionWrapper {
         print("request -  \(request)")
         let session = URLSession.shared
         let dataTask =  session.dataTask(with: request) { (data, response, error) in
-            
             //metadata of request
             if let httpResponse = response as? HTTPURLResponse {
                 print("response code -  \(httpResponse.statusCode)")
@@ -161,10 +195,35 @@ struct URlSessionWrapper {
             
             //error
             if let err = error {
-                completionHandler(nil,err.localizedDescription)
+                DispatchQueue.main.async {
+                    completionHandler(nil,err.localizedDescription)
+                }
             }
         }
         dataTask.resume()
+    }
+    
+    static func uploadDatefromSession(request:URLRequest,data_req:Data,completionHandler: @escaping (_ data: Data?, _ error: String? ) -> Void){
+        let session = URLSession.shared
+        let uploadTask = session.uploadTask(with: request, from: data_req) { (data_res, response, error) in
+            //metadata of request
+            if let httpResponse = response as? HTTPURLResponse {
+                print("response code -  \(httpResponse.statusCode)")
+            }
+            //error
+            if(error != nil){
+                DispatchQueue.main.async {
+                    completionHandler(nil,error!.localizedDescription)
+                }
+            }
+            //data
+            if let dt = data_res {
+                DispatchQueue.main.async {
+                    completionHandler(dt,nil)
+                }
+            }
+        }
+        uploadTask.resume()
     }
 }
 
@@ -186,6 +245,8 @@ struct URlErrorHandling {
             BasicUtility.getAlertWithoutVC(titletop: "Error", subtitle: msgError)
         }
     }
+    
+    
 }
 
 // MARK:- Loader
@@ -202,3 +263,6 @@ struct Loader {
         }
     }
 }
+
+
+

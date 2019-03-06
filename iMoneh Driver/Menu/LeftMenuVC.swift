@@ -9,13 +9,14 @@
 import UIKit
 import AKSideMenu
 
-
-
 class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var imgVProfile: UIImageView!
+    @IBOutlet weak var imgVStatus: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblOnline: UILabel!
     @IBOutlet weak var tblv: UITableView!
+    
     
     let menuArray = ["Home","My Profile","Notifications" ,"Ratings & Reviews", "Help", "Share","Log Out"]
     
@@ -31,16 +32,23 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     // MARK: - INIT METHOD
-    func initMethod(){
+    private func initMethod(){
     }
     
     // MARK: - SET UI
-    func setUI(){
+    private func setUI(){
         //profile_image
         imgVProfile.backgroundColor = appTrans
         imgVProfile.layer.borderColor = appDarkYellow?.cgColor
         imgVProfile.layer.borderWidth = 2
+        //name
+        lblName.text = Singleton.shared.userMod?.name
+        lblOnline.text = (Singleton.shared.userMod?.is_online == 1) ? "Online" : "Offline"
+        imgVStatus.image = (Singleton.shared.userMod?.is_online == 1) ? UIImage.init(named: "online") : UIImage.init(named: "offline")
     }
+    
+    
+    
     
     // MARK: - TABLEVIEW DATASOURCE
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +75,32 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let nav = UINavigationController.init(rootViewController: vc)
             self.sideMenuViewController?.setContentViewController(nav, animated: true)
             self.sideMenuViewController!.hideMenuViewController()
+        case 2:
+            let story = UIStoryboard.init(name: "MenuItems", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "NotVC") as! NotVC
+            let nav = UINavigationController.init(rootViewController: vc)
+            self.sideMenuViewController?.setContentViewController(nav, animated: true)
+            self.sideMenuViewController!.hideMenuViewController()
+        case 3:
+            let story = UIStoryboard.init(name: "MenuItems", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "RatingVC") as! RatingVC
+            let nav = UINavigationController.init(rootViewController: vc)
+            self.sideMenuViewController?.setContentViewController(nav, animated: true)
+            self.sideMenuViewController!.hideMenuViewController()
+        case 4:
+            let story = UIStoryboard.init(name: "Help", bundle: Bundle.main)
+            let vc = story.instantiateViewController(withIdentifier: "HelpVC") as! HelpVC
+            let nav = UINavigationController.init(rootViewController: vc)
+            self.sideMenuViewController?.setContentViewController(nav, animated: true)
+            self.sideMenuViewController?.hideMenuViewController()
+        case 5:
+            let story = UIStoryboard.init(name: "Help", bundle: Bundle.main)
+            let vc = story.instantiateViewController(withIdentifier: "ShareVC") as! ShareVC
+            let nav = UINavigationController.init(rootViewController: vc)
+            self.sideMenuViewController?.setContentViewController(nav, animated: true)
+            self.sideMenuViewController?.hideMenuViewController()
         case 6:
+            logoutCall()
             let story = UIStoryboard.init(name: "Main", bundle: nil)
             let root = story.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -76,7 +109,76 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             break
         }
     }
+    
+    private func logoutCall(){
+        BasicUtility.removeAllUserDefault()
+        Singleton.shared.img_profile = nil
+    }
+    
+    // MARK: - BTN ACTION
+    @IBAction func btnStatusChangeClicked(_ sender: UIButton) {
+        let text =  (Singleton.shared.userMod?.is_online == 1) ? "Offline" : "Online"
+        let st = (Singleton.shared.userMod?.is_online == 1) ? 0 : 1
+        let alert = UIAlertController(title: "Update Status", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: text, style: .default , handler:{ (UIAlertAction) in
+            self.changeOnlineStatus(status: st)
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction) in
+        }))
+        self.present(alert, animated: true, completion: {
+        })
+    }
 }
+
+// MARK:- Ex - API PARSING METHODS
+extension LeftMenuVC {
+    private func changeOnlineStatus(status:Int) {
+        let paraDict = [Parameters.status:String(status)]
+        //url
+        let strUrl = APIURLFactory.driver_online
+        guard let req = APIURLFactory.createPostRequestWithPara(strAbs: strUrl, isToken: true, para: paraDict) else {
+            print("invalid request for  \(strUrl)")
+            return
+        }
+        
+        URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    self.jsonParsingOnlineStatus(json: json, status: status)
+                } catch {
+                    BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not Able to Parse Json")
+                }
+            }
+            if let err = err {
+                BasicUtility.getAlert(view: self, titletop: "Error", subtitle:err)
+            }
+        }
+    }
+    
+    private func jsonParsingOnlineStatus(json:Any,status:Int) {
+        if let json_tmp = json as? [String: Any]  {
+            guard let msg = json_tmp["msg"] as? [String:Any] else {
+                return
+            }
+            Singleton.shared.userMod?.is_online = status
+            ProjectHelper.saveUserModel(userMod: Singleton.shared.userMod!)
+        }else {
+            URlErrorHandling.checkErrorInResponse(json: json)
+        }
+    }
+}
+
+
+
+
+/*
+ Change Online Status
+ driver/change/online/status
+ POST
+ Yes
+ status: 1
+ */
 
 
 

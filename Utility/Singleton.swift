@@ -18,6 +18,7 @@ class Singleton {
     var token: String?
     var userMod: UserMod?
     var keyboard_ht: CGFloat?
+    var img_profile: UIImage?
 }
 
 

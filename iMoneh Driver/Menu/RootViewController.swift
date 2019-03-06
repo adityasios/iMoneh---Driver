@@ -9,12 +9,8 @@
 import UIKit
 import AKSideMenu
 
-
-
-
 public class RootViewController: AKSideMenu {
 
-    
     // MARK: - LIFE CYCLE
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -26,16 +22,8 @@ public class RootViewController: AKSideMenu {
         }
     }
     
-    
-    
-    
-    
-    
     // MARK: - INIT METHOD
     private func initMethod() {
-        
-        
-        
         self.menuPreferredStatusBarStyle = .lightContent
         self.contentViewShadowColor = .black
         self.contentViewShadowOffset = CGSize(width: 0, height: 0)
@@ -52,24 +40,19 @@ public class RootViewController: AKSideMenu {
     }
 }
 
-
+// MARK: Ex - <AKSideMenuDelegate>
 extension RootViewController:AKSideMenuDelegate {
-    
-    // MARK: - <AKSideMenuDelegate>
     public func sideMenu(_ sideMenu: AKSideMenu, willShowMenuViewController menuViewController: UIViewController) {
         let left =  self.leftMenuViewController as! LeftMenuVC
+        ProjectHelper.setProfileImage(imgV: left.imgVProfile)
     }
-    
     public func sideMenu(_ sideMenu: AKSideMenu, didShowMenuViewController menuViewController: UIViewController) {
         print("didShowMenuViewController")
     }
-    
     public func sideMenu(_ sideMenu: AKSideMenu, willHideMenuViewController menuViewController: UIViewController) {
         print("willHideMenuViewController")
     }
-    
     public func sideMenu(_ sideMenu: AKSideMenu, didHideMenuViewController menuViewController: UIViewController) {
         print("didHideMenuViewController")
     }
-    
 }

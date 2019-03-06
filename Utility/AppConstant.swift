@@ -9,19 +9,13 @@
 import Foundation
 import UIKit
 
-
 //MARK: - APP COLORS
 let appDarkYellow = UIColor(named: "appDarkYellow")
 let appYellow = UIColor(named: "appYellow")
 let appTrans = UIColor(named: "appTrans")
 
-
-
 //MARK: - PLACEHOLDER
 let imgPro_place = UIImage.init(named: "place_prod")
-
-
-
 
 //MARK: - USER DEFAULT
 enum AppUserDefault: String {
@@ -31,26 +25,23 @@ enum AppUserDefault: String {
     case token = "token"
 }
 
-
-
-
+//MARK: - OrderStatus
+enum OrderStatus: String {
+    case new = "1"
+    case assigned = "2"
+    case completed = "3"
+}
 
 //MARK: - DEVICE SIZE
 struct AppDevice {
-    
-    struct ScreenSize
-    {
+    struct ScreenSize{
         static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
         static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
         static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
         static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
     }
     
-    
-    
-    
-    struct DeviceType
-    {
+    struct DeviceType{
         static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
         static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
         static let IS_IPHONE_6_7          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
@@ -59,3 +50,6 @@ struct AppDevice {
         static let IS_IPAD_PRO          = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1366.0
     }
 }
+
+
+

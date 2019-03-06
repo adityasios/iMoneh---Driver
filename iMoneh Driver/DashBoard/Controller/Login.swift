@@ -35,16 +35,8 @@ class Login: UITableViewController,UITextFieldDelegate {
     
     
     func setTxfd() {
-        
-        /*
-         txfdId.text = "market@imoneh.com"
-         txfdPass.text = "121212"
-         */
-        
-        
-        txfdId.text = "test1@gmail.com"
-        txfdPass.text = "123456789"
-        
+        txfdId.text = "infojo@imoneh.com"
+        txfdPass.text = "111111"
         
         //id
         txfdId.font = AppFont.GilroyReg.fontReg15

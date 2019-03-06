@@ -13,50 +13,68 @@ struct BookMod : Codable {
     let close_time, open_time: String?
 }
 
+
 /*
- market_name
- en_market_name" = "EN Test Market";
- 
- "en_owner_name" = iMoneh;
- "owner_name" = "\U0623\U064a \U0645\U0648\U0646\U0629";
- */
-
-
+"id": 3,
+"delivery_company_id": 2,
+"name": "Driver2",
+"email": "info@imoneh.com",
+"dial_code": "966",
+"mobile": "0795757845",
+"gender": null,
+"transportation_type": 1,
+"country_id": 1,
+"city_id": 1,
+"area_id": 22,
+"address": "Amman",
+"zip_code": "111",
+"vehicle_no": "",
+"is_online": 0,
+"total_rejected_orders": 0,
+"total_accepted_orders": 0,
+"status": 1,
+"created_at": null,
+"updated_at": null
+*/
 
 struct UserMod : Codable {
+    let id,country_id: Int?
+    var is_online: Int?
+    let total_rejected_orders: Int?
+    let total_accepted_orders: Int?
+    let transportation_type: Int?
+    let delivery_company_id: Int?
+    let gender: Int?
     
-    let id,total_rating,country_id: Int?
-    let enName,enMarketName,arMarketName,arOwner_name: String?
-    let description,image : String?
-    let address, email,dial_code,mobile: String?
+    let name: String?
+    let email: String?
+    var profile_image,vehicle_image: String?
+    let dial_code: String?
+    let mobile: String?
+    let address: String?
     let created_at: String?
-    let business_timing : BookMod?
-    
+    let updated_at: String?
     
     enum CodingKeys: String, CodingKey {
-        
         case id
-        case total_rating
+        case delivery_company_id
+        case transportation_type
+        case country_id
+        case is_online
+        case total_rejected_orders
+        case total_accepted_orders
+        case gender
+        case name
+        case email
+        case profile_image
+        case vehicle_image
         case dial_code
         case mobile
-        case email
         case address
-        case country_id
-        case business_timing
-        case image
         case created_at
-        
-        case enName = "en_owner_name"
-        case enMarketName = "en_market_name"
-        
-        case arMarketName = "market_name"
-        case arOwner_name = "owner_name"
-        
-        case description
-        
+        case updated_at
     }
 }
-
 
 struct CountryMod : Codable {
     let id,tax : Int?

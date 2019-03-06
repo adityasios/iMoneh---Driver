@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initPushNotification(application)
         setDeviceId()
         setNavBarApperance()
+        checkAutoLogin()
         return true
     }
 
@@ -109,4 +110,27 @@ extension AppDelegate{
     }
 }
 
-
+// MARK:- Ex- Auto Login Check
+extension AppDelegate{
+    func checkAutoLogin(){
+        if let storedObject: Data = UserDefaults.standard.object(forKey: AppUserDefault.login_data.rawValue) as? Data {
+            print("auto login")
+            //user data
+            let user: UserMod = try! PropertyListDecoder().decode(UserMod.self, from: storedObject)
+            Singleton.shared.userMod = user
+            //save token
+            let token = UserDefaults.standard.object(forKey: AppUserDefault.token.rawValue) as! String
+            Singleton.shared.token = token
+            navigateToHome()
+        }else{
+            print("login required")
+        }
+    }
+    
+    private func navigateToHome() {
+        let story = UIStoryboard.init(name: "Menu", bundle: nil)
+        let root = story.instantiateViewController(withIdentifier: "rootController") as! RootViewController
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDel.window!.rootViewController = root
+    }
+}

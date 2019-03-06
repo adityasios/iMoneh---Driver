@@ -10,11 +10,7 @@
 import Foundation
 import UIKit
 
-
-
-
 struct AppFont {
-    
     static let FontFamily = "Gilroy"
     
     struct GilroyFamily {
@@ -28,8 +24,6 @@ struct AppFont {
         static let FontThin = "Gilroy-Thin"
         static let FontUltraLight = "Gilroy-UltraLight"
     }
-    
-    
     
     struct GilroyHeavy {
         static let fontHeavy10 = UIFont(name: GilroyFamily.FontHeavy, size: 10)
@@ -46,8 +40,6 @@ struct AppFont {
         static let fontHeavy30 = UIFont(name: GilroyFamily.FontHeavy, size: 30)
     }
     
-    
-    
     struct GilroyBlack {
         static let fontBlack10 = UIFont(name: GilroyFamily.FontBlack, size: 10)
         static let fontBlack11 = UIFont(name: GilroyFamily.FontBlack, size: 11)
@@ -63,8 +55,6 @@ struct AppFont {
         static let fontBlack34 = UIFont(name: GilroyFamily.FontBlack, size: 34)
     }
     
-    
-    
     struct GilroyBold {
         static let fontBold10 = UIFont(name: GilroyFamily.FontBold, size: 10)
         static let fontBold11 = UIFont(name: GilroyFamily.FontBold, size: 11)
@@ -76,7 +66,6 @@ struct AppFont {
         static let fontBold17 = UIFont(name: GilroyFamily.FontBold, size: 17)
     }
     
-    
     struct GilroySemiBold {
         static let fontSemiBold10 = UIFont(name: GilroyFamily.FontSemiBold, size: 10)
         static let fontSemiBold11 = UIFont(name: GilroyFamily.FontSemiBold, size: 11)
@@ -87,9 +76,6 @@ struct AppFont {
         static let fontSemiBold17 = UIFont(name: GilroyFamily.FontSemiBold, size: 17)
         static let fontSemiBold20 = UIFont(name: GilroyFamily.FontSemiBold, size: 20)
     }
-    
-    
-    
     
     struct GilroyReg {
         static let fontReg10 = UIFont(name: GilroyFamily.FontRegular, size: 10)

@@ -178,8 +178,10 @@ extension ViewController {
         setUI()
     }
     
-    
     @IBAction func btnFgotPassClicked(_ sender: UIButton) {
+        let forgot = storyboard?.instantiateViewController(withIdentifier: "ForgotPassVC") as! ForgotPassVC
+        let nav = UINavigationController.init(rootViewController: forgot)
+        self.present(nav, animated: true, completion: nil)
     }
     
     @IBAction func btnBtmLoginClicked(_ sender: UIButton) {
@@ -195,11 +197,49 @@ extension ViewController {
 extension ViewController {
     
     func validateLoginApiCall() {
+        
         let  arrChild = pageViewControl.children
         guard let  login = arrChild.first as? Login else {
             return
         }
+        
+        //email
+        guard var email = login.txfdId.text,Validation.isValidEmail(strEmail: email) == true else {
+            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Email")
+            return
+        }
+        email =  Validation.removeWhiteSpaceAndNewLine(strTemp: email)
+        email =  Validation.removeDoubleSpace(email)
+        
+        //password
+        guard var pass = login.txfdPass.text  else {
+            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Password")
+            return
+        }
+        pass =  Validation.removeWhiteSpaceAndNewLine(strTemp: pass)
+        pass =  Validation.removeDoubleSpace(pass)
+        if pass.count < 5 || pass.count > 15 {
+            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Password should be greater than 3 characters")
+            return
+        }
+    
+        //device_id
+        guard let device_Id = Singleton.shared.device_Id  else {
+            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not able to get Device Id")
+            return
+        }
+        
+        //fcm
+        guard let fcm = Singleton.shared.fcm_Id  else {
+            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please register for Push Notification")
+            return
+        }
+        
+        
+        let paraDict = [Parameters.email : email, Parameters.pass : pass,Parameters.deviceId:device_Id,Parameters.fcmId:fcm,Parameters.deviceType:Parameters.deviceTypeiOS]
+        postLoginAction(para: paraDict)
     }
+
     
     func validateSignUpApiCall() {
         let  arrChild = pageViewControl.children
@@ -289,6 +329,34 @@ extension ViewController {
 
 // MARK:- API CALL  METHODS
 extension ViewController {
+
+    func postLoginAction(para:[String:String]) {
+        
+        //url
+        let strUrl = APIURLFactory.login
+        
+        guard let req = APIURLFactory.createPostRequestWithPara(strAbs: strUrl, isToken: false, para: para) else {
+            print("invalid request for  \(strUrl)")
+            return
+        }
+        
+        Loader.showLoadingView(view: self.view)
+        URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
+            Loader.hideLoadingView(view: self.view)
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    self.jsonParsingLoginApi(json: json)
+                } catch {
+                    BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not Able to Parse Json")
+                }
+            }
+            if let err = err {
+                BasicUtility.getAlert(view: self, titletop: "Error", subtitle:err)
+            }
+        }
+    }
+    
     func postRegAction(para:[String:String]) {
         
         //url
@@ -319,6 +387,49 @@ extension ViewController {
 
 // MARK:- API PARSING METHODS
 extension ViewController {
+    
+    func jsonParsingLoginApi(json:Any) {
+        print("json for Login  = \(json)")
+        if let jsonArray = json as? [String: Any]  {
+            
+            //token
+            guard let token = jsonArray["token"] as? String else {
+                return
+            }
+            Singleton.shared.token = token
+            
+            //user
+            guard let user = jsonArray["user"] as? [String:Any] else {
+                return
+            }
+            
+            do {
+                let dataUser = try JSONSerialization.data(withJSONObject: user, options:[])
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(UserMod.self, from: dataUser)
+                saveUserModel(userMod: model)
+                } catch let parsingError {
+                print("parsingError login \(parsingError)")
+                BasicUtility.getAlert(view: self, titletop: "Error", subtitle:parsingError.localizedDescription)
+            }
+        }else {
+            URlErrorHandling.checkErrorInResponse(json: json)
+        }
+    }
+
+    func saveUserModel(userMod:UserMod) {
+        DispatchQueue.main.async {
+            Singleton.shared.userMod = userMod
+            //save token
+            UserDefaults.standard.set(Singleton.shared.token!, forKey: AppUserDefault.token.rawValue)
+            
+            //save login data
+            let data = try! PropertyListEncoder().encode(userMod)
+            UserDefaults.standard.set(data, forKey: AppUserDefault.login_data.rawValue)
+            self.navigateToHome()
+        }
+    }
+    
     func jsonParsingRegApi(json:Any) {
         print("json for sign up \(json)")
         if let jsonTmp = json as? [String: Any]  {
@@ -343,10 +454,19 @@ extension ViewController {
         reg.txfdGender.text = nil
         reg.txfdLoc.text = nil
         reg.txfdPass.text = nil
+        reg.btnTerms.isSelected = false
     }
 }
 
-
+// MARK:- NAVIGATE METHODS
+extension ViewController {
+    private func navigateToHome() {
+        let story = UIStoryboard.init(name: "Menu", bundle: nil)
+        let root = story.instantiateViewController(withIdentifier: "rootController") as! RootViewController
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDel.window!.rootViewController = root
+    }
+}
 
 
 /*
@@ -366,3 +486,18 @@ extension ViewController {
  "device_type": "1",
  "fcm_id": "fts1phfklxE:APA91bHPTNTOv27YIGaCP-RjNsT0a_SOQG-zLvDpuEO-Oqhi_rleps9sr2FML_qnk7UqDO9WtpIzfyahqaQmXvB6TMTqBgr0LI8azjz4_10WrkV6cRtRgdIxOYvsh27FmXFAi1898TtC"
  */
+
+
+
+/*
+Login
+driver/login
+POST
+No
+
+"email": "info@imoneh.com",
+"password":"111111",
+"fcm_id": "2sd1f2ds1f32s",
+"device_id": "dsfjlsfs",
+"device_type": 1
+*/
