@@ -175,17 +175,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="6DD-FE-5Z4">
                                         <rect key="frame" x="0.0" y="219" width="320" height="108.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfq-MA-FWt">
-                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="108.5"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfq-MA-FWt">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="108.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCh-uC-03i">
-                                                        <rect key="frame" x="45" y="77.5" width="69.5" height="18"/>
+                                                        <rect key="frame" x="-35" y="77.5" width="70" height="18"/>
                                                         <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZg-aQ-IEj">
-                                                        <rect key="frame" x="50" y="13.5" width="60" height="60"/>
+                                                        <rect key="frame" x="-30" y="13.5" width="60" height="60"/>
                                                         <state key="normal" image="feadback"/>
                                                         <connections>
                                                             <action selector="btnAboutUsClicked:" destination="UFB-DQ-UHx" eventType="touchUpInside" id="1Vi-ro-jEs"/>
@@ -201,16 +201,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1U-L6-Nv9">
-                                                <rect key="frame" x="160.5" y="0.0" width="159.5" height="108.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="108.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfF-51-3FK">
-                                                        <rect key="frame" x="59.5" y="77.5" width="40.5" height="18"/>
+                                                        <rect key="frame" x="140" y="77.5" width="40.5" height="18"/>
                                                         <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-gx-R0d">
-                                                        <rect key="frame" x="50" y="13.5" width="60" height="60"/>
+                                                        <rect key="frame" x="130" y="13.5" width="60" height="60"/>
                                                         <state key="normal" image="terms"/>
                                                         <connections>
                                                             <action selector="btnAboutUsClicked:" destination="UFB-DQ-UHx" eventType="touchUpInside" id="g3E-VN-NPD"/>
@@ -247,11 +247,21 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="YMF-UW-llj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="presentLeftMenuViewController:" destination="UFB-DQ-UHx" id="i9v-fC-TAX"/>
+                                <action selector="btnMenuButtonClicked:" destination="UFB-DQ-UHx" id="E4l-Ds-a0K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="lblAbout" destination="Udi-Zj-4W2" id="z4R-Hw-Spw"/>
+                        <outlet property="lblContact" destination="iZO-K6-RY7" id="ysh-W4-SRQ"/>
+                        <outlet property="lblFAQ" destination="mwm-Ew-lHd" id="2sr-8V-qVd"/>
+                        <outlet property="lblFeedback" destination="fCh-uC-03i" id="Cmy-PY-EPE"/>
+                        <outlet property="lblGetLost" destination="4qV-VF-P9o" id="h0c-cn-9bJ"/>
+                        <outlet property="lblHelpTitle" destination="cSa-zb-pOu" id="SWb-NI-T75"/>
+                        <outlet property="lblPayment" destination="al1-Vb-bUN" id="g8W-v0-n6d"/>
+                        <outlet property="lblTerms" destination="lfF-51-3FK" id="2DK-Rb-Z5Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMD-h9-qnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,13 +270,14 @@
         <!--Contact Us-->
         <scene sceneID="1bc-TO-dbQ">
             <objects>
-                <viewController storyboardIdentifier="ContactUs" id="Tc2-jF-PlS" customClass="ContactUs" customModule="iMoneh_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactUs" id="Tc2-jF-PlS" customClass="ContactUs" customModule="iMoneh_Driver" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G1l-cP-0ua">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="splash_bg" translatesAutoresizingMaskIntoConstraints="NO" id="iNM-Ql-7LQ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contact_circle" translatesAutoresizingMaskIntoConstraints="NO" id="UNB-wp-iRm">
                                 <rect key="frame" x="110" y="80" width="100" height="100"/>
@@ -466,6 +477,14 @@
                         <viewLayoutGuide key="safeArea" id="p8W-O3-yCZ"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="lblEmail" destination="4cL-0H-Umm" id="q1V-3z-JEz"/>
+                        <outlet property="lblFaceBook" destination="vHb-wb-Nlr" id="04z-HR-5vW"/>
+                        <outlet property="lblInsta" destination="56g-86-L1n" id="XYh-G1-5Tq"/>
+                        <outlet property="lblTitle" destination="3et-No-E94" id="8oU-pJ-XDL"/>
+                        <outlet property="lblTwitter" destination="UvY-7N-LNV" id="JUl-qS-CMe"/>
+                        <outlet property="lblWebsite" destination="9uR-kw-0Me" id="8mc-Wg-vRe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fon-OX-SmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -803,11 +822,14 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="dRk-sQ-xpy">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="presentLeftMenuViewController:" destination="mdP-R9-XC2" id="cML-Er-R68"/>
+                                <action selector="btnMenuButtonClicked:" destination="mdP-R9-XC2" id="dH6-B6-vp2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="lblShareOnSocial" destination="6pr-Sx-nf5" id="RXH-8p-9cy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="reB-io-owd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -824,14 +846,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_feadback_circle" translatesAutoresizingMaskIntoConstraints="NO" id="JVA-gk-LV7">
                                 <rect key="frame" x="110" y="80" width="100" height="100"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggest an Item for iMoneh  We might add it for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKV-ma-D14">
-                                <rect key="frame" x="16" y="188" width="288" height="38.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggest an Item for iMoneh " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKV-ma-D14">
+                                <rect key="frame" x="16" y="188" width="288" height="19.5"/>
                                 <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Cj-VV-nKP" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
-                                <rect key="frame" x="29" y="248" width="262" height="38"/>
+                                <rect key="frame" x="29" y="235" width="262" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="7vb-oE-odF"/>
                                 </constraints>
@@ -851,7 +873,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write Your FeedBack Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCn-L6-2AF" customClass="FloatingLabelTextField" customModule="iMoneh_Driver" customModuleProvider="target">
-                                <rect key="frame" x="29" y="302" width="262" height="38"/>
+                                <rect key="frame" x="29" y="289" width="262" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="1KS-Xa-Hwh"/>
                                 </constraints>
@@ -871,7 +893,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-Ed-1Ra">
-                                <rect key="frame" x="25" y="286" width="270" height="1"/>
+                                <rect key="frame" x="25" y="273" width="270" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Rql-1c-QUd"/>
@@ -881,7 +903,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pd-ax-r0f">
-                                <rect key="frame" x="29" y="340" width="262" height="1"/>
+                                <rect key="frame" x="29" y="327" width="262" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="YU4-ur-TGx"/>
@@ -891,29 +913,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qy-Ni-oQN">
-                                <rect key="frame" x="0.0" y="522.5" width="320" height="45.5"/>
+                                <rect key="frame" x="0.0" y="533" width="320" height="35"/>
                                 <color key="backgroundColor" name="appYellow"/>
                                 <fontDescription key="fontDescription" name="Gilroy-SemiBold" family="Gilroy" pointSize="16"/>
                                 <state key="normal" title="SEND"/>
+                                <connections>
+                                    <action selector="btnBtmSendClicked:" destination="G31-jV-OeJ" eventType="touchUpInside" id="LwP-Pw-6VX"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We might add it for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-bx-XbA">
+                                <rect key="frame" x="76" y="207.5" width="168" height="19.5"/>
+                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0Cj-VV-nKP" firstAttribute="width" secondItem="pub-Q0-7QW" secondAttribute="width" multiplier="0.82" id="23p-Lk-quW"/>
-                            <constraint firstItem="2Qy-Ni-oQN" firstAttribute="height" secondItem="pub-Q0-7QW" secondAttribute="height" multiplier="0.08" id="3PF-5B-q0l"/>
+                            <constraint firstItem="P2G-bx-XbA" firstAttribute="centerX" secondItem="pKV-ma-D14" secondAttribute="centerX" id="2eD-xT-S10"/>
+                            <constraint firstItem="2Qy-Ni-oQN" firstAttribute="height" secondItem="pub-Q0-7QW" secondAttribute="height" multiplier="0.062" id="3PF-5B-q0l"/>
                             <constraint firstItem="JVA-gk-LV7" firstAttribute="centerX" secondItem="2nW-VL-vqV" secondAttribute="centerX" id="5Tu-oA-9F9"/>
                             <constraint firstItem="5Pd-ax-r0f" firstAttribute="leading" secondItem="CCn-L6-2AF" secondAttribute="leading" id="96a-Ey-8QZ"/>
                             <constraint firstItem="JVA-gk-LV7" firstAttribute="top" secondItem="2nW-VL-vqV" secondAttribute="top" constant="16" id="CKJ-HS-z5W"/>
                             <constraint firstItem="CCn-L6-2AF" firstAttribute="leading" secondItem="0Cj-VV-nKP" secondAttribute="leading" id="EWD-NH-4Ki"/>
                             <constraint firstItem="2Qy-Ni-oQN" firstAttribute="trailing" secondItem="2nW-VL-vqV" secondAttribute="trailing" id="EY5-4b-ZA6"/>
                             <constraint firstItem="2Qy-Ni-oQN" firstAttribute="bottom" secondItem="2nW-VL-vqV" secondAttribute="bottom" id="FBo-By-bU0"/>
-                            <constraint firstItem="0Cj-VV-nKP" firstAttribute="top" secondItem="pKV-ma-D14" secondAttribute="bottom" constant="21.5" id="M6d-kl-Ub0"/>
+                            <constraint firstItem="0Cj-VV-nKP" firstAttribute="top" secondItem="P2G-bx-XbA" secondAttribute="bottom" constant="8" id="M1v-WK-xPI"/>
                             <constraint firstItem="CCn-L6-2AF" firstAttribute="top" secondItem="0Cj-VV-nKP" secondAttribute="bottom" constant="16" id="OHR-TS-YSa"/>
                             <constraint firstItem="bxi-Ed-1Ra" firstAttribute="trailing" secondItem="0Cj-VV-nKP" secondAttribute="trailing" constant="4" id="ORa-yp-nbe"/>
                             <constraint firstItem="bxi-Ed-1Ra" firstAttribute="leading" secondItem="0Cj-VV-nKP" secondAttribute="leading" constant="-4" id="SNT-1h-4xy"/>
                             <constraint firstItem="0Cj-VV-nKP" firstAttribute="centerX" secondItem="2nW-VL-vqV" secondAttribute="centerX" id="WDv-oy-ZHY"/>
                             <constraint firstItem="2nW-VL-vqV" firstAttribute="trailing" secondItem="pKV-ma-D14" secondAttribute="trailing" constant="16" id="WRN-b7-BIL"/>
                             <constraint firstItem="pKV-ma-D14" firstAttribute="top" secondItem="JVA-gk-LV7" secondAttribute="bottom" constant="8" id="e7U-w0-7GT"/>
+                            <constraint firstItem="P2G-bx-XbA" firstAttribute="top" secondItem="pKV-ma-D14" secondAttribute="bottom" id="g3p-fZ-8d4"/>
                             <constraint firstItem="bxi-Ed-1Ra" firstAttribute="top" secondItem="0Cj-VV-nKP" secondAttribute="bottom" id="iWu-Aj-0E9"/>
                             <constraint firstItem="pKV-ma-D14" firstAttribute="leading" secondItem="2nW-VL-vqV" secondAttribute="leading" constant="16" id="mb1-Yn-7Ct"/>
                             <constraint firstItem="2Qy-Ni-oQN" firstAttribute="leading" secondItem="2nW-VL-vqV" secondAttribute="leading" id="qPM-bF-hPs"/>
@@ -925,6 +958,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="btnSend" destination="2Qy-Ni-oQN" id="Ud5-2i-06j"/>
+                        <outlet property="lblMightAdd" destination="P2G-bx-XbA" id="BS3-U9-2Gj"/>
+                        <outlet property="lblSuggest" destination="pKV-ma-D14" id="WIi-Zs-LJ2"/>
                         <outlet property="txfdTitle" destination="0Cj-VV-nKP" id="mKS-Wd-31k"/>
                         <outlet property="txfddesc" destination="CCn-L6-2AF" id="IPA-Mv-Fd1"/>
                     </connections>
@@ -941,10 +977,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="splash_bg" translatesAutoresizingMaskIntoConstraints="NO" id="KUV-sQ-Z4K">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUV-sQ-Z4K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_about_us_circle" translatesAutoresizingMaskIntoConstraints="NO" id="zzG-jv-ToU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_us_circle" translatesAutoresizingMaskIntoConstraints="NO" id="zzG-jv-ToU">
                                 <rect key="frame" x="110" y="80" width="100" height="100"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_bg" translatesAutoresizingMaskIntoConstraints="NO" id="QgG-xl-qHh">
@@ -954,7 +991,7 @@
                                 <rect key="frame" x="0.0" y="188" width="320" height="269"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Gilroy-SemiBold" family="Gilroy" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -989,6 +1026,7 @@
     </scenes>
     <resources>
         <image name="about_bg" width="256" height="87"/>
+        <image name="about_us_circle" width="100" height="100"/>
         <image name="abouts" width="60" height="60"/>
         <image name="circle_close" width="50" height="50"/>
         <image name="circle_payment" width="100" height="100"/>
@@ -998,7 +1036,6 @@
         <image name="faq" width="60" height="60"/>
         <image name="feadback" width="60" height="60"/>
         <image name="help" width="100" height="100"/>
-        <image name="ic_about_us_circle" width="100" height="100"/>
         <image name="ic_facebook_support" width="60" height="60"/>
         <image name="ic_faq_cicle" width="100" height="100"/>
         <image name="ic_feadback_circle" width="100" height="100"/>

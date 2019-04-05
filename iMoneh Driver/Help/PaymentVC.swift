@@ -15,7 +15,7 @@ class PaymentVC: UIViewController {
     //MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Payment"
+        title = "Payment".localized
         tblv.estimatedRowHeight = 50
         tblv.rowHeight = UITableView.automaticDimension
         getPaymentAPI()

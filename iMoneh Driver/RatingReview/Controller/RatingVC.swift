@@ -11,6 +11,7 @@ import UIKit
 class RatingVC: UIViewController {
     @IBOutlet weak var tblv: UITableView!
     @IBOutlet weak var viewNodata: UIView!
+    @IBOutlet weak var lblNodata: UILabel!
     var arrRating :[RatingMod] = []
     
     
@@ -24,13 +25,24 @@ class RatingVC: UIViewController {
     
     // MARK: - INIT METHOD
     private func initMethod(){
-        title = "Rating & Review"
+        title = "Rating & Review".localized
     }
     
     // MARK: - SET UI
     private func setUI(){
         tblv.rowHeight = UITableView.automaticDimension
         tblv.estimatedRowHeight = 170
+        lblNodata.text = "No Review Found".localized
+    }
+    
+    // MARK: - BUTTON ACTION
+    @IBAction func btnMenuButtonClicked(_ sender: UIBarButtonItem) {
+        switch Language.language {
+        case .english:
+            self.sideMenuViewController?.presentLeftMenuViewController()
+        case .arabic:
+            self.sideMenuViewController?.presentRightMenuViewController()
+        }
     }
 }
 

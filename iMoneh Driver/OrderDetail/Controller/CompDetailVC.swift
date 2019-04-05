@@ -12,7 +12,7 @@ class CompDetailVC: UIViewController {
     @IBOutlet weak var tblv: UITableView!
     @IBOutlet weak var viewBg: UIView!
     @IBOutlet weak var imgVSign: UIImageView!
-
+    
     var order_pass : OrderMod! = nil
     var arr_temp1 : [OrderTemoMod] = []
     var arr_temp2 : [OrderTemoMod] = []
@@ -179,7 +179,7 @@ extension CompDetailVC : UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (section == 0) ? "Order Info" : "Payment Info"
+        return (section == 0) ? "Order Info".localized : "Payment Info".localized
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -201,33 +201,33 @@ extension CompDetailVC {
         
         //cust name & mobile
         let phone = (order_pass.customer?.dial_code)! + " " +  (order_pass.customer?.mobile)!
-        let mod1 = OrderTemoMod.init(title_one: "Customer Name", desc_one:order_pass.customer?.name, img_one:"cust_name", title_two: "Contact Details", desc_two:phone, img_two:"cust_mob")
+        let mod1 = OrderTemoMod.init(title_one: "Customer Name".localized, desc_one:order_pass.customer?.name, img_one:"cust_name", title_two: "Contact Details".localized, desc_two:phone, img_two:"cust_mob")
         arr_temp1.append(mod1)
         
         //delivery date  & time
         let del_date = DateHelper.getDeliveryDateInLocalFromUTC(crt: order_pass.deliver_datetime!)
         let del_time = DateHelper.getDeliveryTimeInLocalFromUTC(crt: order_pass.deliver_datetime!)
-        let mod2 = OrderTemoMod.init(title_one: "Delivery Date", desc_one:del_date, img_one:"et", title_two: "Delivery Time", desc_two:del_time, img_two:"et")
+        let mod2 = OrderTemoMod.init(title_one: "Delivery Date".localized, desc_one:del_date, img_one:"et", title_two: "Delivery Time".localized, desc_two:del_time, img_two:"et")
         arr_temp1.append(mod2)
         
         //pick up date  & time
         let pick_date = DateHelper.getDeliveryDateInLocalFromUTC(crt: order_pass.pickup_datetime!)
         let pick_time = DateHelper.getDeliveryDateInLocalFromUTC(crt: order_pass.pickup_datetime!)
-        let mod3 = OrderTemoMod.init(title_one: "PickUp Date", desc_one:pick_date, img_one:"et", title_two: "PickUp Time", desc_two:pick_time, img_two:"et")
+        let mod3 = OrderTemoMod.init(title_one: "PickUp Date".localized, desc_one:pick_date, img_one:"et", title_two: "PickUp Time".localized, desc_two:pick_time, img_two:"et")
         arr_temp1.append(mod3)
         
         //receiver name  & sender
-        let mod4 = OrderTemoMod.init(title_one: "Receiver Name", desc_one:order_pass.receiver_name, img_one:"cust_name", title_two: "Sender Name", desc_two:order_pass.sender_name, img_two:"cust_name")
+        let mod4 = OrderTemoMod.init(title_one: "Receiver Name".localized, desc_one:order_pass.receiver_name, img_one:"cust_name", title_two: "Sender Name".localized, desc_two:order_pass.sender_name, img_two:"cust_name")
         arr_temp1.append(mod4)
         
         //total amt & delivery cost
-        let mod5 = OrderTemoMod.init(title_one: "Total Amount", desc_one:(String(order_pass.currency!) + " " + String(order_pass.total_amount!)), img_one: "total_amt", title_two: "Delivery Cost", desc_two:(String(order_pass.currency!) + String(order_pass.delivery_cost!)), img_two: "del_cost")
+        let mod5 = OrderTemoMod.init(title_one: "Total Amount".localized, desc_one:(String(order_pass.currency!) + " " + String(order_pass.total_amount!)), img_one: "total_amt", title_two: "Delivery Cost".localized, desc_two:(String(order_pass.currency!) + String(order_pass.delivery_cost!)), img_two: "del_cost")
         arr_temp2.append(mod5)
         
         //payment_staus & payment_method
         let pay_method =  ProjectHelper.getPaymentMethod(st: order_pass.payment_method!)
         let pay_status =  ProjectHelper.getPaymentStatus(st: order_pass.payment_status!)
-        let mod6 = OrderTemoMod.init(title_one: "Payment Method", desc_one:pay_method, img_one:"pay_method", title_two: "Payment Status", desc_two:pay_status, img_two:"et")
+        let mod6 = OrderTemoMod.init(title_one: "Payment Method".localized, desc_one:pay_method, img_one:"pay_method", title_two: "Payment Status".localized, desc_two:pay_status, img_two:"et")
         arr_temp2.append(mod6)
         
         //sign image

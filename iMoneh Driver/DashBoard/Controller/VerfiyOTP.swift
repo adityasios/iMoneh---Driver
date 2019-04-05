@@ -10,6 +10,10 @@ import UIKit
 class VerfiyOTP: UIViewController {
     @IBOutlet weak var txfdOTP: UITextField!
     @IBOutlet weak var constraint_btm: NSLayoutConstraint!
+    @IBOutlet weak var lblVerify: UILabel!
+    @IBOutlet weak var lblEnterOTP: UILabel!
+    @IBOutlet weak var btnVerify: UIButton!
+    
     var id_driver = 0
     
     // MARK:- VC LIFE CYCLE
@@ -30,23 +34,28 @@ class VerfiyOTP: UIViewController {
     
     // MARK:- SET UI METHOD
     func setUI() {
+        lblVerify.text = "VERIFY OTP".localized
+        lblEnterOTP.text = "Please enter OTP".localized
+        btnVerify.setTitle("Verify".localized, for: .normal)
+        
         txfdOTP.layer.cornerRadius = 4
         txfdOTP.clipsToBounds = true
         txfdOTP.layer.borderColor = UIColor.gray.cgColor
         txfdOTP.layer.borderWidth = 1
+        txfdOTP.placeholder = "Enter OTP".localized
     }
     
     // MARK:- BUTTON ACTION
     @IBAction func btnSubmitOTP(_ sender: UIButton) {
         guard var otp = txfdOTP.text else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter 4 digit OTP")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter 4 digit OTP".localized)
             return
         }
         otp =  Validation.removeWhiteSpaceAndNewLine(strTemp: otp)
         otp =  Validation.removeDoubleSpace(otp)
         
         if otp.count != 4 {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter 4 digit OTP")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter 4 digit OTP".localized)
             return
         }
         let paraDict = [Parameters.otp : otp,Parameters.driver_id:String(id_driver)]

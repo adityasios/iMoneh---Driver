@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 enum EditImageType {
     case editProfile
@@ -27,7 +28,10 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblNoDeliveries: UILabel!
     @IBOutlet weak var lblNoRejected: UILabel!
-    
+    @IBOutlet weak var lblMyEmail: UILabel!
+    @IBOutlet weak var lblMyPhone: UILabel!
+    @IBOutlet weak var lblDel: UILabel!
+    @IBOutlet weak var lblReject: UILabel!
     
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
@@ -43,11 +47,16 @@ class MyProfileVC: UIViewController {
     
     // MARK: - INIT METHOD
     private func initMethod(){
-        title = "Profile"
+        title = "Profile".localized
     }
     
     // MARK: - SET UI
     private func setUI(){
+        
+        lblMyEmail.text = "my email".localized
+        lblMyPhone.text = "my phone".localized
+        lblDel.text = "Deliveries".localized
+        lblReject.text = "Rejected".localized
         
         //view
         viewHead.layer.cornerRadius = 4
@@ -63,7 +72,7 @@ class MyProfileVC: UIViewController {
         
         //gender
         if let gender_id = Singleton.shared.userMod?.gender {
-            lblGender.text = (gender_id == 1) ? "Male" : "Female"
+            lblGender.text = (gender_id == 1) ? "Male".localized : "Female".localized
         }else{
             lblGender.text = ""
         }
@@ -252,6 +261,15 @@ extension MyProfileVC {
         edit_imge_type = .editVehicle
         actionsheetForSelection()
     }
+    
+    @IBAction func btnMenuButtonClicked(_ sender: UIBarButtonItem) {
+        switch Language.language {
+        case .english:
+            self.sideMenuViewController?.presentLeftMenuViewController()
+        case .arabic:
+            self.sideMenuViewController?.presentRightMenuViewController()
+        }
+    }
 }
 
 // MARK:- Ex - UIImagePickerControllerDelegate
@@ -290,15 +308,29 @@ extension MyProfileVC : UIImagePickerControllerDelegate,UINavigationControllerDe
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        if edit_imge_type == .editVehicle {
-            imgVCar.image = chosenImage
-            self.postUpdateVehicleImage(proImg: chosenImage)
-        }else{
-            imgVPro.image = chosenImage
-            self.postUpdateProfileImage(proImg: chosenImage)
+        guard info[UIImagePickerController.InfoKey.mediaType] != nil else { return }
+        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
+        switch mediaType {
+        case kUTTypeImage:
+            let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            if edit_imge_type == .editVehicle {
+                imgVCar.image = chosenImage
+                self.postUpdateVehicleImage(proImg: chosenImage)
+            }else{
+                imgVPro.image = chosenImage
+                self.postUpdateProfileImage(proImg: chosenImage)
+            }
+            dismiss(animated:true, completion: nil)
+        case kUTTypeMovie:
+            print("kUTTypeMovie selected")
+            break
+        case kUTTypeLivePhoto:
+            print("kUTTypeLivePhoto selected")
+            break
+        default:
+            break
         }
-        dismiss(animated:true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 

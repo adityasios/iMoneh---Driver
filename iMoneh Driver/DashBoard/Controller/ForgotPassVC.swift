@@ -12,6 +12,8 @@ class ForgotPassVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var btnActivate: UIButton!
     @IBOutlet weak var txfdEmail: UITextField!
     @IBOutlet weak var constraint_btm: NSLayoutConstraint!
+    @IBOutlet weak var lblForgotPass: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
     
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
@@ -42,6 +44,11 @@ class ForgotPassVC: UIViewController,UITextFieldDelegate {
         txfdEmail.clipsToBounds = true
         txfdEmail.layer.borderColor = UIColor.gray.cgColor
         txfdEmail.layer.borderWidth = 1
+        txfdEmail.placeholder = "Enter Email".localized
+        
+        lblForgotPass.text = "FORGOT PASSWORD".localized
+        lblEmail.text = "Please enter your email address".localized
+        btnActivate.setTitle("Activate".localized, for: .normal)
     }
     
     func setNavigationBar() {
@@ -52,7 +59,7 @@ class ForgotPassVC: UIViewController,UITextFieldDelegate {
     // MARK:- BUTTON ACTION
     @IBAction func btnActivateClicked(_ sender: UIButton) {
         guard var email = txfdEmail.text,Validation.isValidEmail(strEmail: email) == true else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Email")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Valid Email".localized)
             return
         }
         email =  Validation.removeWhiteSpaceAndNewLine(strTemp: email)

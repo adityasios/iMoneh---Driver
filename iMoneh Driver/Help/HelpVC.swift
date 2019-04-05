@@ -9,6 +9,15 @@
 import UIKit
 class HelpVC: UIViewController {
     
+    @IBOutlet weak var lblHelpTitle: UILabel!
+    @IBOutlet weak var lblGetLost: UILabel!
+    @IBOutlet weak var lblAbout: UILabel!
+    @IBOutlet weak var lblContact: UILabel!
+    @IBOutlet weak var lblPayment: UILabel!
+    @IBOutlet weak var lblFAQ: UILabel!
+    @IBOutlet weak var lblFeedback: UILabel!
+    @IBOutlet weak var lblTerms: UILabel!
+    
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +27,20 @@ class HelpVC: UIViewController {
     
     // MARK:- INIT METHOD
     private func initMethod() {
-        title = "Help"
+        title = "Help".localized
     }
     
     // MARK:- SET UI METHOD
     private func setUI() {
         setNavigationBar()
+        lblHelpTitle.text = "Need Some helps".localized
+        lblGetLost.text = "help_desc".localized
+        lblAbout.text = "About".localized
+        lblContact.text = "Contact".localized
+        lblPayment.text = "Payments".localized
+        lblFAQ.text = "FAQ".localized
+        lblFeedback.text = "Feedback".localized
+        lblTerms.text = "Terms".localized
     }
     
     private func setNavigationBar() {
@@ -54,6 +71,15 @@ class HelpVC: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
+        }
+    }
+    
+    @IBAction func btnMenuButtonClicked(_ sender: UIBarButtonItem) {
+        switch Language.language {
+        case .english:
+            self.sideMenuViewController?.presentLeftMenuViewController()
+        case .arabic:
+            self.sideMenuViewController?.presentRightMenuViewController()
         }
     }
 }

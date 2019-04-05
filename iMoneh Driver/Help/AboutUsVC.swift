@@ -22,7 +22,7 @@ class AboutUsVC: UIViewController {
     
     //MARK: - SET UI
     private func setUI () {
-        self.title = "About Us"
+        self.title = "About".localized
         txtViewAbout.text = nil
     }
 }

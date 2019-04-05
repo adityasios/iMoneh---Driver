@@ -1,0 +1,151 @@
+/*
+ Localizable.strings
+ iMoneh Driver
+ 
+ Created by Rakhi on 14/03/19.
+ Copyright © 2019 Webmaazix. All rights reserved.
+ */
+
+//dashboard
+"LOGIN" = "LOGIN";
+"Please Enter Market Login ID" = "Please Enter Market Login ID";
+"ID" = "ID";
+"Password" = "Password";
+"Forget Password" = "Forgot Password ?";
+"Login" = "Login";
+"JOIN" = "JOIN";
+"Please Enter Driver Information" = "Please Enter Driver Information";
+"Name" = "Name";
+"Email Address" = "Email Address";
+"Phone Number" = "Phone Number";
+"Select Gender" = "Select Gender";
+"Please Select an Option" = "Please Select an Option";
+"Male" = "Male";
+"Female" = "Female";
+"Dismiss" = "Dismiss";
+"Address" = "Address";
+"I have read Terms & Condition" = "I have read Terms & Conditio";
+"Create Account" = "Create Account";
+
+//dashboard alerts
+"Please enter Valid Email" = "Please enter Valid Email";
+"Please enter Valid Password" = "Please enter Valid Password";
+"Password should be greater than 4 characters" = "Password should be greater than 4 characters";
+"Not able to get Device Id" = "Not able to get Device Id";
+"Please register for Push Notification" = "Please register for Push Notification";
+"Please select Terms & Condition" = "Please select Terms & Condition";
+"Please enter Name" = "Please enter Name";
+"Name should be greater then 5 characters and lesser then 30 characters" = "Name should be greater then 5 characters and lesser then 30 characters";
+"Please Select Dial Code" = "Please Select Dial Code";
+"Please Enter Valid Mobile Number" = "Please Enter Valid Mobile Number";
+"Please Select Gender" = "Please Select Gender";
+
+//forgot password
+"FORGOT PASSWORD" = "FORGOT PASSWORD";
+"Please enter your email address" = "Please enter your email address";
+"Activate" = "Activate";
+"Enter Email" = "Enter Email";
+
+"VERIFY OTP" = "VERIFY OTP";
+"Please enter OTP" = "Please enter OTP";
+"Verify" = "Verify";
+"Enter OTP" = "Enter OTP";
+"Please enter 4 digit OTP" = "Please enter 4 digit OTP";
+
+"SET NEW PASSWORD" = "SET NEW PASSWORD";
+"Please enter new Password" = "Please enter new Password";
+"Submit" = "Submit";
+"Enter new password" = "Enter new password";
+
+//menu
+"Online" = "Online";
+"Update Status" = "Update Status";
+"Offline" = "Offline";
+"Home" = "Home";
+"My Profile" = "My Profile";
+"Notifications" = "Notifications";
+"Ratings & Reviews" = "Ratings & Reviews";
+"Help" = "Help";
+"Share" = "Share";
+"Log Out" = "Log Out";
+"Lang" = "Lang";
+"Change Language" = "Change Language";
+"Cancel" = "Cancel";
+"Please Select Language" = "Please Select Language";
+
+//home
+"Market Order List" = "Market Order List";
+"New" = "New";
+"Assigned" = "Assigned";
+"Completed" = "Completed";
+"No New Order Found" = "No New Order Found";
+"No Assigned Order Found" = "No Assigned Order Found";
+"No Completed Order Found" = "No Completed Order Found";
+"Orders" = "Orders";
+"From" = "From :";
+"To" = "To :";
+"Delivery Date" = "Delivery Date";
+
+//home - comp - details
+"DELIVERED" = "DELIVERED";
+"Order Info" = "Order Info";
+"Customer Name" = "Customer Name";
+"Contact Details" = "Contact Details";
+"Delivery Date" = "Delivery Date";
+"Delivery Time" = "Delivery Time";
+"PickUp Date" = "PickUp Date";
+"PickUp Time" = "PickUp Time";
+"Receiver Name" = "Receiver Name";
+"Sender Name" = "Sender Name";
+"Payment Info" = "Payment Info";
+"Total Amount" = "Total Amount";
+"Delivery Cost" = "Delivery Cost";
+"Payment Method" = "Payment Method";
+"Payment Status" = "Payment Status";
+"Recipient's Signature" = "Recipient's Signature";
+
+//home - assigned - details
+"Sender Name" = "Sender Name";
+"Sender Signature" = "Sender Signature";
+"Clear" = "Clear";
+
+//profile
+"my phone" = "my phone";
+"my email" = "my email";
+"Deliveries" = "Deliveries";
+"Rejected" = "Rejected";
+"Profile" = "Profile";
+
+//notfication
+"Notification List" =  "Notification List";
+"No Notification Found" =  "No Notification Found";
+
+//rating & reviews
+"Rating & Review" =  "Rating & Review";
+
+//help
+"Help" =  "Help";
+"Need Some helps" =  "Need Some helps ?";
+"help_desc" =  "Gets lost ? Don't know how to use our App ? Feel free to get in touch with us";
+"About" =  "About";
+"Contact" =  "Contact";
+"Payments" =  "Payments";
+"FAQ" =  "FAQ";
+"Feedback" =  "Feedback";
+"Terms" =  "Terms";
+"Have Something" =  "Have Something ?";
+"Don't hesitate to contact us" =  "Don't hesitate to contact us";
+"Email" =  "Email";
+"Website" =  "Website";
+"Facebook" =  "Facebook";
+"Twitter" =  "Twitter";
+"Instgram" =  "Instgram";
+"Suggest an Item for iMoneh" =  "Suggest an Item for iMoneh";
+"We might add it for you" =  "We might add it for you";
+"Title" =  "Title";
+"Write Your Feedback Here" =  "Write Your Feedback Here";
+"Send" = "Send";
+"contact_title" = "Have Something ?\n Don't hesitate to contact us!";
+
+//share
+"Share on Social Media" = "Share on Social Media";

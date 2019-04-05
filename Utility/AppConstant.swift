@@ -23,6 +23,7 @@ enum AppUserDefault: String {
     case user_data = "user_data"
     case login_data = "login_data"
     case token = "token"
+    case appleLanguagesKey = "AppleLanguages"
 }
 
 //MARK: - OrderStatus

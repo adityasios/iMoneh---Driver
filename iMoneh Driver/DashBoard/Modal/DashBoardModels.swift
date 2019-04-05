@@ -81,6 +81,11 @@ struct CountryMod : Codable {
     let country_name, currency_code, flag_image ,dial_code: String?
 }
 
+struct LocMod : Codable {
+    let id : Int?
+    let city_name: String?
+    let area_name: String?
+}
 
 
 

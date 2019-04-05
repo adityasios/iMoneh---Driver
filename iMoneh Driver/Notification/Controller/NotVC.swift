@@ -11,6 +11,7 @@ class NotVC: UIViewController {
     
     @IBOutlet weak var viewNoData: UIView!
     @IBOutlet weak var tblv: UITableView!
+     @IBOutlet weak var lblNoData: UILabel!
     var arrNot:[NotMod] = []
     
     // MARK:- VC LIFE CYCLE
@@ -27,13 +28,14 @@ class NotVC: UIViewController {
     
     // MARK:- INIT METHOD
     private  func initMethod() {
-        self.title = "Notification List"
+        self.title = "Notification List".localized
         tblv.estimatedRowHeight = 80
         tblv.rowHeight = UITableView.automaticDimension
     }
     
     // MARK:- SET UI METHOD
     private func setUI() {
+        lblNoData.text = "No Notification Found".localized
         setNavigationBar()
     }
     
@@ -47,6 +49,15 @@ class NotVC: UIViewController {
         let btnPost = sender.convert(CGPoint.zero, to: self.tblv)
         if let indexPath = self.tblv.indexPathForRow(at: btnPost) {
             deleteNotification(notIndex: indexPath.row)
+        }
+    }
+    
+    @IBAction func btnMenuButtonClicked(_ sender: UIBarButtonItem) {
+        switch Language.language {
+        case .english:
+            self.sideMenuViewController?.presentLeftMenuViewController()
+        case .arabic:
+            self.sideMenuViewController?.presentRightMenuViewController()
         }
     }
 }

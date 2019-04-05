@@ -11,6 +11,7 @@ class AssignVC: UIViewController {
     
     @IBOutlet weak var tblv: UITableView!
     @IBOutlet weak var viewNodata: UIView!
+    @IBOutlet weak var lblNoData: UILabel!
     
     var arrOrder : [OrderMod] = []
     
@@ -41,6 +42,7 @@ class AssignVC: UIViewController {
     
     // MARK: - SET UI
     func setUI(){
+        lblNoData.text = "No Assigned Order Found".localized
     }
 }
 
@@ -172,3 +174,4 @@ extension AssignVC {
     }
 }
 
+//let nav = story.instantiateViewController(withIdentifier: "PickUpConformation") as! PickUpConformation

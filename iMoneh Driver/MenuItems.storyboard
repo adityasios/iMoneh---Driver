@@ -293,7 +293,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="3pQ-0A-WI9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="presentLeftMenuViewController:" destination="1iV-I8-7nS" id="F6b-EM-Wft"/>
+                                <action selector="btnMenuButtonClicked:" destination="1iV-I8-7nS" id="ZHW-lf-aEz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -301,13 +301,17 @@
                     <connections>
                         <outlet property="imgVCar" destination="Y7v-gw-4k9" id="CWm-D7-IoA"/>
                         <outlet property="imgVPro" destination="GmG-Ik-vAl" id="NRC-9g-9y9"/>
+                        <outlet property="lblDel" destination="J8K-Y4-F8t" id="fC7-PT-H8g"/>
                         <outlet property="lblEmail" destination="H1V-z2-csm" id="7eO-1W-pPy"/>
                         <outlet property="lblGender" destination="wl6-2I-36k" id="DbG-vg-e6u"/>
                         <outlet property="lblModel" destination="TOA-Nd-6xP" id="Br3-zd-F9j"/>
+                        <outlet property="lblMyEmail" destination="d3E-Jk-FZ5" id="CJP-ZR-cKv"/>
+                        <outlet property="lblMyPhone" destination="p0g-Zq-vCA" id="OWy-HN-c2c"/>
                         <outlet property="lblName" destination="1pK-bK-DH1" id="fQD-ci-WIw"/>
                         <outlet property="lblNoDeliveries" destination="fmj-Gq-jKP" id="Y8l-D3-QTc"/>
                         <outlet property="lblNoRejected" destination="GJ9-NQ-qvn" id="982-SS-tjP"/>
                         <outlet property="lblPhone" destination="rki-PR-mTj" id="qZl-eR-seE"/>
+                        <outlet property="lblReject" destination="3iP-2s-3ug" id="1WV-8K-ZXj"/>
                         <outlet property="viewHead" destination="ZBb-lL-ceu" id="xqI-dU-qII"/>
                     </connections>
                 </viewController>
@@ -429,12 +433,13 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="b6q-Mc-Rc8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="presentLeftMenuViewController:" destination="zxS-0e-jEy" id="shO-5H-5fT"/>
+                                <action selector="btnMenuButtonClicked:" destination="zxS-0e-jEy" id="MWF-os-XNm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="lblNoData" destination="fxh-qW-mWg" id="ztH-r3-bHS"/>
                         <outlet property="tblv" destination="hiE-iQ-hzs" id="FfD-ko-hNL"/>
                         <outlet property="viewNoData" destination="eWq-xg-OoQ" id="lCj-QA-01X"/>
                     </connections>
@@ -592,13 +597,14 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="D6h-GE-qMY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="presentLeftMenuViewController:" destination="Npg-bP-gus" id="zQZ-3B-Fmk"/>
+                                <action selector="btnMenuButtonClicked:" destination="Npg-bP-gus" id="3Ab-2W-9kD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="lblNodata" destination="VNm-DH-4nO" id="fLk-mh-Wdr"/>
                         <outlet property="tblv" destination="Jn5-AD-igX" id="6LS-Rt-keN"/>
                         <outlet property="viewNodata" destination="MO8-Xg-68E" id="lBF-D9-jCg"/>
                     </connections>

@@ -15,6 +15,7 @@ protocol DialCodeVCDelegate : class {
 class DialCodeVC: UIViewController {
     
     @IBOutlet weak var tblv: UITableView!
+    @IBOutlet weak var lblHeder: UILabel!
     
     var crt_dial_code : String = ""
     var arr_Pass : [CountryMod] = []
@@ -34,6 +35,7 @@ class DialCodeVC: UIViewController {
     // MARK:- SET UI METHOD
     func setUI() {
         view.backgroundColor =  appTrans
+        lblHeder.text = "Select Country Dial Code".localized
     }
     
     // MARK:- BUTTON ACTION

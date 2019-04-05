@@ -17,8 +17,14 @@ public class RootViewController: AKSideMenu {
         initMethod()
         if let storyboard = self.storyboard {
             self.contentViewController = storyboard.instantiateViewController(withIdentifier: "contentViewController")
-            self.leftMenuViewController = storyboard.instantiateViewController(withIdentifier: "leftMenuViewController")
-            //self.rightMenuViewController = storyboard.instantiateViewController(withIdentifier: "rightMenuViewController")
+            switch Language.language {
+            case .english :
+                self.leftMenuViewController = storyboard.instantiateViewController(withIdentifier: "leftMenuViewController")
+                self.rightMenuViewController = nil
+            case .arabic :
+                self.rightMenuViewController = storyboard.instantiateViewController(withIdentifier: "leftMenuViewController")
+                self.leftMenuViewController = nil
+            }
         }
     }
     
@@ -43,8 +49,14 @@ public class RootViewController: AKSideMenu {
 // MARK: Ex - <AKSideMenuDelegate>
 extension RootViewController:AKSideMenuDelegate {
     public func sideMenu(_ sideMenu: AKSideMenu, willShowMenuViewController menuViewController: UIViewController) {
-        let left =  self.leftMenuViewController as! LeftMenuVC
-        ProjectHelper.setProfileImage(imgV: left.imgVProfile)
+        switch Language.language {
+        case .english :
+            let left =  self.leftMenuViewController as! LeftMenuVC
+            ProjectHelper.setProfileImage(imgV: left.imgVProfile)
+        case .arabic :
+            let left =  self.rightMenuViewController as! LeftMenuVC
+            ProjectHelper.setProfileImage(imgV: left.imgVProfile)
+        }
     }
     public func sideMenu(_ sideMenu: AKSideMenu, didShowMenuViewController menuViewController: UIViewController) {
         print("didShowMenuViewController")

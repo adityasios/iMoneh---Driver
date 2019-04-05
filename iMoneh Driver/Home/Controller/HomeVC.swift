@@ -8,6 +8,7 @@
 
 import UIKit
 class HomeVC: UIViewController {
+    
     @IBOutlet weak var stackViewTab: UIStackView!
     @IBOutlet weak var viewNew: UIView!
     @IBOutlet weak var viewAssigned: UIView!
@@ -33,7 +34,7 @@ class HomeVC: UIViewController {
     
     // MARK:- INIT METHOD
     private func initMethod() {
-        title = "Market Order List"
+        title = "Market Order List".localized
     }
     
     // MARK:- SET UI METHOD
@@ -43,6 +44,10 @@ class HomeVC: UIViewController {
     }
     
     private func setNavTabUI(crtIndex:Int) {
+        lblNew.text = "New".localized
+        lblAssign.text = "Assigned".localized
+        lblComp.text = "Completed".localized
+        
         switch crtIndex {
         case 0:
             lblNew.textColor = UIColor.white
@@ -89,6 +94,18 @@ class HomeVC: UIViewController {
         
         let pend = storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
         pageViewControl.setViewControllers([pend],direction: .forward,animated: true,completion: nil)
+    }
+}
+
+// MARK:- extension - button action
+extension HomeVC {
+    @IBAction func btnMenuButtonClicked(_ sender: UIBarButtonItem) {
+        switch Language.language {
+        case .english:
+            self.sideMenuViewController?.presentLeftMenuViewController()
+        case .arabic:
+            self.sideMenuViewController?.presentRightMenuViewController()
+        }
     }
 }
 

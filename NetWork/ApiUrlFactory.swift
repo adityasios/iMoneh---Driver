@@ -30,13 +30,17 @@ struct APIURLFactory {
     static let driver_online : String =  baseURL + "driver/change/online/status"
     static let order_list : String =  baseURL + "driver/orders/list"
     static let not_list : String =  baseURL + "driver/notifications/list"
-    static let not_delete : String =  baseURL + "driver/notification/delete/"
+    static let not_delete : String =  baseURL + "driver/notifications/delete/"
     static let driver_review : String =  baseURL + "driver/reviews/list"
     static let order_detail : String =  baseURL + "driver/orders/details/"
     static let about_us : String =  baseURL + "cms/about_us"
     static let payment_terms : String =  baseURL + "cms/payment_terms"
     static let cms_faq : String =  baseURL + "cms/faq"
     static let cms_terms : String =  baseURL + "cms/terms_conditions"
+    static let cms_feedback : String =  baseURL + "cms/customer/feedback"
+    static let cities_list : String =  baseURL + "cities/list"
+    static let areas_list : String =  baseURL + "areas/list"
+    
     
     //img_paths
     static let profile_img : String =  aWSImgBaseURL + "uploads/vendors/"
@@ -164,12 +168,14 @@ struct Parameters {
     static let gender = "gender"
     static let profile_image = "profile_image"
     static let vehicle_image = "vehicle_image"
-    
+    static let title = "title"
+    static let feedback = "feedback"
+    static let city_id = "city_id"
+    static let area_id = "area_id"
     
     static let kMale = "1"
     static let kFemale = "2"
 }
-
 
 
 
@@ -245,8 +251,6 @@ struct URlErrorHandling {
             BasicUtility.getAlertWithoutVC(titletop: "Error", subtitle: msgError)
         }
     }
-    
-    
 }
 
 // MARK:- Loader

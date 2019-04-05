@@ -15,7 +15,7 @@ class FAQVC: UIViewController {
     //MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "FAQ"
+        title = "FAQ".localized
         tblv.estimatedRowHeight = 50
         tblv.rowHeight = UITableView.automaticDimension
         getFAQAPI()

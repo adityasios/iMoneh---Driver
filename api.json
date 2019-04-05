@@ -1,68 +1,69 @@
 {
-  "msg": "Success",
-  "data": [
-    {
-      "id": 23,
-      "order_id": 113,
-      "order_number": "IMN1551163708360",
-      "total_amount": 124.3,
-      "vendor_id": 296,
-      "delivery_date": "2019-02-26T18:30:00.000Z",
-      "delivery_time": "03:17 PM - 05:17 PM",
-      "status": 1,
-      "order_status": 1,
-      "vendor_address": {
-        "country_name": "Jordan",
-        "city_name": "Amman",
-        "area_name": "Swefieh"
-      },
-      "customer_address": {
-        "country_name": "Jordan",
-        "city_name": "Amman",
-        "area_name": "Daheit Al Rasheed"
-      }
-    },
-    {
-      "id": 24,
-      "order_id": 114,
-      "order_number": "IMN1551163708363",
-      "total_amount": 124.3,
-      "vendor_id": 296,
-      "delivery_date": "2019-02-26T18:30:00.000Z",
-      "delivery_time": "03:19 PM - 05:19 PM",
-      "status": 1,
-      "order_status": 1,
-      "vendor_address": {
-        "country_name": "Jordan",
-        "city_name": "Amman",
-        "area_name": "Swefieh"
-      },
-      "customer_address": {
-        "country_name": "Jordan",
-        "city_name": "Amman",
-        "area_name": "Daheit Al Rasheed"
-      }
-    },
-    {
-      "id": 25,
-      "order_id": 116,
-      "order_number": "IMN1551165247913",
-      "total_amount": 124.3,
-      "vendor_id": 296,
-      "delivery_date": "2019-02-26T18:30:00.000Z",
-      "delivery_time": "03:19 PM - 05:19 PM",
-      "status": 1,
-      "order_status": 1,
-      "vendor_address": {
-        "country_name": "Jordan",
-        "city_name": "Amman",
-        "area_name": "Swefieh"
-      },
-      "customer_address": {
-        "country_name": "Jordan",
-        "city_name": "Amman",
-        "area_name": "Daheit Al Rasheed"
-      }
-    }
-  ]
+    "msg": "Success",
+    "data": [
+        {
+            "id": 23,
+            "order_id": 113,
+            "order_number": "IMN1551163708360",
+            "total_amount": 124.3,
+            "vendor_id": 296,
+            "delivery_date": "2019-02-26T18:30:00.000Z",
+            "delivery_time": "03:17 PM - 05:17 PM",
+            "status": 1,
+            "order_status": 1,
+            "vendor_address": {
+                "country_name": "Jordan",
+                "city_name": "Amman",
+                "area_name": "Swefieh"
+            },
+            "customer_address": {
+                "country_name": "Jordan",
+                "city_name": "Amman",
+                "area_name": "Daheit Al Rasheed"
+            }
+        },
+        {
+            "id": 24,
+            "order_id": 114,
+            "order_number": "IMN1551163708363",
+            "total_amount": 124.3,
+            "vendor_id": 296,
+            "delivery_date": "2019-02-26T18:30:00.000Z",
+            "delivery_time": "03:19 PM - 05:19 PM",
+            "status": 1,
+            "order_status": 1,
+            "vendor_address": {
+                "country_name": "Jordan",
+                "city_name": "Amman",
+                "area_name": "Swefieh"
+            },
+            "customer_address": {
+                "country_name": "Jordan",
+                "city_name": "Amman",
+                "area_name": "Daheit Al Rasheed"
+            }
+        },
+        {
+            "id": 25,
+            "order_id": 116,
+            "order_number": "IMN1551165247913",
+            "total_amount": 124.3,
+            "vendor_id": 296,
+            "delivery_date": "2019-02-26T18:30:00.000Z",
+            "delivery_time": "03:19 PM - 05:19 PM",
+            "status": 1,
+            "order_status": 1,
+            "vendor_address": {
+                "country_name": "Jordan",
+                "city_name": "Amman",
+                "area_name": "Swefieh"
+            },
+            "customer_address": {
+                "country_name": "Jordan",
+                "city_name": "Amman",
+                "area_name": "Daheit Al Rasheed"
+            }
+        }
+    ]
 }
+

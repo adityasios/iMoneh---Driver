@@ -69,12 +69,14 @@ class ViewController: UIViewController {
         btnLogin.setTitleColor(UIColor.darkText, for: .normal)
         btnLogin.setTitleColor(appDarkYellow, for: .highlighted)
         lblLogin.backgroundColor = appDarkYellow
+        btnLogin.setTitle("LOGIN".localized, for: .normal)
         
         //reg
         btnJoin.titleLabel?.font = AppFont.GilroySemiBold.fontSemiBold14
         btnJoin.setTitleColor(UIColor.lightGray, for: .normal)
         btnLogin.setTitleColor(UIColor.black, for: .highlighted)
         lblJoin.backgroundColor = UIColor.clear
+        btnJoin.setTitle("JOIN".localized, for: .normal)
         
         if !isSelLogin {
             UIView.animate(withDuration: 0.5, animations: {
@@ -95,6 +97,7 @@ class ViewController: UIViewController {
         btnFgotPass.setTitleColor(UIColor.white, for: .normal)
         btnFgotPass.setTitleColor(UIColor.black, for: .highlighted)
         btnFgotPass.backgroundColor = UIColor.black
+        btnFgotPass.setTitle("Forget Password".localized, for: .normal)
         
         //btmLogin
         btnBtmLogin.titleLabel?.font = AppFont.GilroySemiBold.fontSemiBold14
@@ -105,13 +108,13 @@ class ViewController: UIViewController {
         if isSelLogin {
             UIView.animate(withDuration: 0.5, animations: {
                 self.btnFgotPass.isHidden = false
-                self.btnBtmLogin.setTitle("Login", for: .normal)
+                self.btnBtmLogin.setTitle("Login".localized, for: .normal)
             })
             
         }else{
             UIView.animate(withDuration: 0.5, animations: {
                 self.btnFgotPass.isHidden = true
-                self.btnBtmLogin.setTitle("Create Account", for: .normal)
+                self.btnBtmLogin.setTitle("Create Account".localized, for: .normal)
             })
         }
     }
@@ -205,7 +208,7 @@ extension ViewController {
         
         //email
         guard var email = login.txfdId.text,Validation.isValidEmail(strEmail: email) == true else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Email")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Valid Email".localized)
             return
         }
         email =  Validation.removeWhiteSpaceAndNewLine(strTemp: email)
@@ -213,25 +216,25 @@ extension ViewController {
         
         //password
         guard var pass = login.txfdPass.text  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Password")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Valid Password".localized)
             return
         }
         pass =  Validation.removeWhiteSpaceAndNewLine(strTemp: pass)
         pass =  Validation.removeDoubleSpace(pass)
         if pass.count < 5 || pass.count > 15 {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Password should be greater than 3 characters")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Password should be greater than 4 characters".localized)
             return
         }
     
         //device_id
         guard let device_Id = Singleton.shared.device_Id  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not able to get Device Id")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Not able to get Device Id".localized)
             return
         }
         
         //fcm
         guard let fcm = Singleton.shared.fcm_Id  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please register for Push Notification")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please register for Push Notification".localized)
             return
         }
         
@@ -249,25 +252,25 @@ extension ViewController {
         
         //terms & cond
         if reg.btnTerms.isSelected == false {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please select Terms & Condition")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please select Terms & Condition".localized)
             return
         }
         
         //name
         guard var mkName = reg.txfdName.text else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Name")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Name".localized)
             return
         }
         mkName =  Validation.removeWhiteSpaceAndNewLine(strTemp: mkName)
         mkName =  Validation.removeDoubleSpace(mkName)
         if mkName.count < 5 || mkName.count > 30 {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Name should be greater then 5 characters and lesser then 30 characters")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Name should be greater then 5 characters and lesser then 30 characters".localized)
             return
         }
         
         //email
         guard var email = reg.txfdEmailAdd.text,Validation.isValidEmail(strEmail: email) == true else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Email")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Valid Email".localized)
             return
         }
         email =  Validation.removeWhiteSpaceAndNewLine(strTemp: email)
@@ -275,54 +278,72 @@ extension ViewController {
         
         //dial code
         guard let dialcode = reg.lblDialCode.text , dialcode.count > 1 else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please Select Dial Code")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Select Dial Code".localized)
             return
         }
         
         //mobile no
         guard let mobile = reg.txfdPhone.text , mobile.count > 6 else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please Enter Valid Mobile Number")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Enter Valid Mobile Number".localized)
             return
         }
         
         //gender
         guard let gender = Int(reg.str_gender),gender > 0 else{
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please Select Gender")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Select Gender".localized)
             return
         }
         
         //location
         guard let add = reg.txfdLoc.text , add.count > 5 else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please Select Dial Code")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Select Location".localized)
+            return
+        }
+        
+        //country
+        guard let country = reg.country_mod else {
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Select Country".localized)
+            return
+        }
+        
+        //city
+        guard let city = reg.city_mod else {
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Select City".localized)
+            return
+        }
+        
+        //area
+        guard let area = reg.area_mod else {
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please Select Area".localized)
             return
         }
         
         //password
         guard var pass = reg.txfdPass.text  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Password")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Valid Password".localized)
             return
         }
         
         pass =  Validation.removeWhiteSpaceAndNewLine(strTemp: pass)
         pass =  Validation.removeDoubleSpace(pass)
         if pass.count < 5 || pass.count > 15 {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Password should be greater than 3 characters")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Password should be greater than 4 characters".localized)
             return
         }
         
         //device_id
         guard let device_Id = Singleton.shared.device_Id  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not able to get Device Id")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Not able to get Device Id".localized)
             return
         }
         
         //fcm
         guard let fcm = Singleton.shared.fcm_Id  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please register for Push Notification")
+            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please register for Push Notification".localized)
             return
         }
         
-        let paraDict = [Parameters.name:mkName,Parameters.email:email,Parameters.dial_code:dialcode,Parameters.mobile:mobile,Parameters.pass:pass,Parameters.gender:reg.str_gender,Parameters.address:add,Parameters.deviceId:device_Id,Parameters.fcmId:fcm,Parameters.deviceType:Parameters.deviceTypeiOS]
+        let paraDict = [Parameters.name:mkName,Parameters.email:email,Parameters.dial_code:dialcode,Parameters.mobile:mobile,Parameters.pass:pass,Parameters.gender:reg.str_gender,Parameters.address:add,Parameters.deviceId:device_Id,Parameters.fcmId:fcm,Parameters.deviceType:Parameters.deviceTypeiOS,Parameters.country_id:String(country.id!),Parameters.city_id:String(city.id!),Parameters.area_id:String(area.id!)]
         postRegAction(para: paraDict)
     }
 }
@@ -455,6 +476,12 @@ extension ViewController {
         reg.txfdLoc.text = nil
         reg.txfdPass.text = nil
         reg.btnTerms.isSelected = false
+        reg.txfdCountry.text = nil
+        reg.txfdCity.text = nil
+        reg.txfdArea.text = nil
+        reg.country_mod = nil
+        reg.city_mod = nil
+        reg.area_mod = nil
     }
 }
 

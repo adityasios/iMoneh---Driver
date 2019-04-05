@@ -11,6 +11,9 @@ class ResetPassVC: UIViewController {
     
     @IBOutlet weak var txfdPassword: UITextField!
     @IBOutlet weak var constraint_btm: NSLayoutConstraint!
+    @IBOutlet weak var lblNewPass: UILabel!
+    @IBOutlet weak var lblEnterNewPass: UILabel!
+    @IBOutlet weak var btnSubmit: UIButton!
     
     var id_driver : String?
     var otp_vendor : String?
@@ -33,34 +36,39 @@ class ResetPassVC: UIViewController {
     
     // MARK:- SET UI METHOD
     private func setUI() {
+        lblNewPass.text = "SET NEW PASSWORD".localized
+        lblNewPass.text = "Please enter new Password".localized
+        btnSubmit.setTitle("Submit".localized, for: .normal)
+        
         txfdPassword.layer.cornerRadius = 4
         txfdPassword.clipsToBounds = true
         txfdPassword.layer.borderColor = UIColor.gray.cgColor
         txfdPassword.layer.borderWidth = 1
+        txfdPassword.placeholder = "Please enter new Password".localized
     }
 
     // MARK:- BUTTON ACTION
     @IBAction func btnSubmitClicked(_ sender: UIButton) {
         guard var pass = txfdPassword.text  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please enter Valid Password")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please enter Valid Password".localized)
             return
         }
         pass =  Validation.removeWhiteSpaceAndNewLine(strTemp: pass)
         pass =  Validation.removeDoubleSpace(pass)
-        if pass.count < 5 || pass.count > 15 {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Password should be greater than 5 characters")
+        if pass.count < 6 || pass.count > 15 {
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Password should be greater than 5 characters".localized)
             return
         }
         
         //device_id
         guard let device_Id = Singleton.shared.device_Id  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not able to get Device Id")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Not able to get Device Id".localized)
             return
         }
         
         //fcm
         guard let fcm = Singleton.shared.fcm_Id  else {
-            BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Please register for Push Notification")
+            BasicUtility.getAlert(view: self, titletop: "Error".localized, subtitle:"Please register for Push Notification".localized)
             return
         }
         
@@ -112,6 +120,10 @@ extension ResetPassVC {
     func jsonParsingResetPass(json:Any) {
         print("json for reset  = \(json)")
         if let jsonTmp = json as? [String: Any]  {
+            guard let msg = jsonTmp["msg"] as? String else {
+                return
+            }
+           navigationController?.dismiss(animated: true, completion: nil)
         }else {
             URlErrorHandling.checkErrorInResponse(json: json)
         }

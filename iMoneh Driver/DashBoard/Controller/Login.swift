@@ -26,10 +26,9 @@ class Login: UITableViewController,UITextFieldDelegate {
     func initMethod() {
     }
     
-    
-    
     // MARK:- SET UI METHOD
     func setUI() {
+        lblTitle.text = "Please Enter Market Login ID".localized
         setTxfd()
     }
     
@@ -42,15 +41,17 @@ class Login: UITableViewController,UITextFieldDelegate {
         txfdId.font = AppFont.GilroyReg.fontReg15
         txfdId.titleActiveTextColour = appDarkYellow
         txfdId.titleFont = AppFont.GilroyBold.fontBold14!
+        txfdId.placeholder = "ID".localized
+        txfdId.textAlignment = (Language.language == .english) ? NSTextAlignment.left : NSTextAlignment.right
         
         //pass
         txfdPass.font = AppFont.GilroyReg.fontReg15
         txfdPass.titleActiveTextColour = appDarkYellow
         txfdPass.titleFont = AppFont.GilroyBold.fontBold14!
+        txfdPass.placeholder = "Password".localized
+        txfdPass.textAlignment = (Language.language == .english) ? NSTextAlignment.left : NSTextAlignment.right
     }
     
-    
-   
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,12 +61,10 @@ class Login: UITableViewController,UITextFieldDelegate {
         return 4
     }
     
-    
     // MARK:- BUTTON ACTION
     @objc func btnFPassClicked() {
         print("Button Clicked")
     }
-    
     
     // MARK:- TEXTFIELD DELEGATE
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

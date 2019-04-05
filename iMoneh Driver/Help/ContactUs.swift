@@ -10,11 +10,23 @@ import UIKit
 import MessageUI
 
 class ContactUs: UIViewController {
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblWebsite: UILabel!
+    @IBOutlet weak var lblFaceBook: UILabel!
+    @IBOutlet weak var lblTwitter: UILabel!
+    @IBOutlet weak var lblInsta: UILabel!
     let composeVC = MFMailComposeViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Contact Us"
+        self.title = "Contact".localized
+        lblTitle.text = "contact_title".localized
+        lblEmail.text = "Email".localized
+        lblWebsite.text = "Website".localized
+        lblFaceBook.text = "Facebook".localized
+        lblTwitter.text = "Twitter".localized
+        lblInsta.text = "Instgram".localized
     }
     
     // MARK:- BUTTON ACTION

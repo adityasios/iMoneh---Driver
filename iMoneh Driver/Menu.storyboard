@@ -129,6 +129,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-Zd-RrJ">
                                         <rect key="frame" x="31" y="14" width="30" height="30"/>
                                         <state key="normal" image="lang"/>
+                                        <connections>
+                                            <action selector="btnLanguageClicked:" destination="HMS-Fl-WMp" eventType="touchUpInside" id="xdV-JR-uzp"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foy-GX-znw">
                                         <rect key="frame" x="28.5" y="42" width="35" height="18"/>
@@ -165,6 +168,7 @@
                     <connections>
                         <outlet property="imgVProfile" destination="TX7-wA-HYH" id="j7W-80-lFk"/>
                         <outlet property="imgVStatus" destination="PSu-WY-iaw" id="fnf-f3-qzD"/>
+                        <outlet property="lblLang" destination="foy-GX-znw" id="BUx-KS-oGq"/>
                         <outlet property="lblName" destination="Jlm-eK-jzC" id="Ej1-Sy-HYW"/>
                         <outlet property="lblOnline" destination="E5y-PD-EV2" id="mHs-Kz-evT"/>
                         <outlet property="tblv" destination="akl-oU-78N" id="l6d-O5-aT6"/>
@@ -307,7 +311,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" style="plain" id="RUR-jm-8zW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="presentLeftMenuViewController:" destination="boE-R2-pVg" id="Uvx-SV-wXy"/>
+                                <action selector="btnMenuButtonClicked:" destination="boE-R2-pVg" id="5NJ-Mk-mgH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -389,6 +393,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="lblNoData" destination="8AV-u8-J53" id="E7T-Xk-X3D"/>
                         <outlet property="tblv" destination="gtd-zF-4oy" id="O1g-L8-jva"/>
                         <outlet property="viewNodata" destination="Mzv-NK-C69" id="PXb-55-hSl"/>
                     </connections>
@@ -451,6 +456,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="lblNoData" destination="GEY-AJ-95N" id="seI-BY-Zhe"/>
                         <outlet property="tblv" destination="Ii1-kC-ItQ" id="Phu-LT-Y3h"/>
                         <outlet property="viewNodata" destination="02i-gz-Kuw" id="U5i-k1-UIg"/>
                     </connections>
@@ -513,6 +519,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="lblNoData" destination="iT9-PM-Ej5" id="k4F-xC-cp2"/>
                         <outlet property="tblv" destination="U3o-cd-wG4" id="aC0-41-bsY"/>
                         <outlet property="viewNodata" destination="p0n-bj-hW2" id="una-4W-MFJ"/>
                     </connections>

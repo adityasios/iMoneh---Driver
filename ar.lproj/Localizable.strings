@@ -1,0 +1,156 @@
+/* 
+  Localizable.strings
+  iMoneh Driver
+
+  Created by Rakhi on 14/03/19.
+  Copyright © 2019 Webmaazix. All rights reserved.
+*/
+
+//dashboard
+"LOGIN" = "دخول";
+"Please Enter Market Login ID" = "الرجاء أدخال أسم المستخدم";
+"ID" = "رقم الهوية";
+"Password" = "كلمة السر";
+"Forget Password" = "نسيت كلمة المرور؟";
+"Login" = "دحول";
+"JOIN" = "أنضم";
+"Please Enter Driver Information" = "الرجاء أدخال معلومات السائق";
+"Name" = "الأسم";
+"Email Address" = "البريد الألكتروني";
+"Phone Number" = "رقم الموبايل";
+"Select Gender" = "الجنس";
+"Please Select an Option" = "الرجاء أختيار";
+"Male" = "ذكر";
+"Female" = "أنثى";
+"Dismiss" = "تجاهل";
+"Address" = "عنوان";
+"I have read Terms & Condition" = "قرأت الشروط والأحكام";
+"Create Account" = "أنشاء حساب";
+"Select Country Dial Code" = "اختر رمز الاتصال بالدولة";
+
+//dashboard alerts
+"Error" = "خطأ";
+"Please enter Valid Email" = "الرجاء أدخال بريد ألكتروني صحيح";
+"Please enter Valid Password" = "الرجاء أدخال كلمة مرور صحيحة";
+"Password should be greater than 4 characters" = "كلمة المرور يجب أن تكون أكثر من 4 حروف";
+"Not able to get Device Id" = "غير قادرين على التعرف الجهاز";
+"Please register for Push Notification" = "الرجاء التسجيل لأستقبال التنبيهات";
+"Please select Terms & Condition" = "الرجاء قرأت الشروط والأحكام";
+"Please enter Name" = "الرجاء أدخال الأسم";
+"Name should be greater then 5 characters and lesser then 30 characters" = "الأسم يجب ان يكون اكثر من 4 حروف وأقل من 30 حرف";
+"Please Select Dial Code" = "الرجاء أختيار كود الدولة";
+"Please Enter Valid Mobile Number" = "الرجاء أدخال رقم موباليل صحيح";
+"Please Select Gender" = "الرجاء أختيار الجنس";
+
+
+//forgot password
+"FORGOT PASSWORD" = "نسيت كلمة المرور؟";
+"Please enter your email address" = "الرجاء أدخال بريد ألكتروني صحيح";
+"Activate" = "فعال";
+"Enter Email" = "أدخال بريد ألكتروني";
+
+"VERIFY OTP" = "تأكيد رمز";
+"Please enter OTP" = "الرجاء أدخال الرمز المرسل ";
+"Verify" = "تأكيد";
+"Enter OTP" = "أدخال الرمز";
+"Please enter 4 digit OTP" = "الرجاء أدخال الرمز المرسل ";
+
+"SET NEW PASSWORD" = "كلمة مرور جديدة";
+"Please enter new Password" = "الرجاء أدخال كلمة مرور جديدة";
+"Submit" = "أدخال";
+"Enter new password" = "أدخل كلمة مرور جديدة";
+
+//menu
+"Online" = "اونلاين";
+"Update Status" = "تحديث الحالة";
+"Offline" = "اوفلاين";
+"Home" = "الشاشة الرئيسية";
+"My Profile" = "معلوماتي";
+"Notifications" = "التنبيهات";
+"Ratings & Reviews" = "تقيمات";
+"Help" = "المساعدة";
+"Share" = "مشاركة";
+"Log Out" = "الخروج";
+"Lang" = "اللغة";
+"Change Language" = "تغير اللغة";
+"Cancel" = "ألغاء";
+"Please Select Language" = "الرجاء أختيار اللغة";
+
+
+//home
+"Market Order List" = "’طلبات المتجر";
+"New" = "بالأنتظار";
+"Assigned" = "تحت التنفيذ";
+"Completed" = "مكتملة";
+"No New Order Found" = "لا يوجد طلبات جديدة";
+"No Assigned Order Found" = "لا يوجد طلبات تحت التنفيذ";
+"No Completed Order Found" = "لا يوجد طلبات مكتملة";
+"Orders" = "الطلبات";
+"From" = ": من";
+"To" = ": الى";
+"Delivery Date" = "تاريخ التوصيل";
+
+//home - comp - details
+"DELIVERED" = "تم التسليم";
+"Order Info" = "معلومات الطلب";
+"Customer Name" = "أسم العميل";
+"Contact Details" = "تفاصيل الاتصال";
+"Delivery Date" = "تاريخ التوصيل";
+"Delivery Time" = "وقت التوصيل";
+"PickUp Date" = "تاريخ أستلام الطلب";
+"PickUp Time" = "وقت أستلام الطلب";
+"Receiver Name" = "أسم المستلم";
+"Sender Name" = "أسم المرسل";
+"Payment Info" = "تفاصيل الدفع";
+"Total Amount" = "السعر الكلي";
+"Delivery Cost" = "سعر التوصيل";
+"Payment Method" = "طريقة الدفع";
+"Payment Status" = "حالة الدفع";
+"Recipient's Signature" = "توقيع المستلم";
+
+//home - assigned - details
+"Sender Name" = "Sender Name";
+"Sender Signature" = "Sender Signature";
+"Clear" = "Clear";
+
+//profile
+"my phone" = "رقم الموبايل";
+"my email" = "الربيد الأكتروني";
+"Deliveries" = "الطلبات";
+"Rejected" = "مرفوضة";
+"Profile" = "معلوماتي";
+
+//notfication
+"Notification List" =  "قائمة التنبيهات";
+"No Notification Found" =  "لا يوجد تنبيهات";
+
+//rating & reviews
+"Rating & Review" =  "تقيمات";
+"No Review Found" = "لم يتم العثور على مراجعة";
+
+//help
+"Help" =  "مساعدة";
+"Need Some helps" =  "هل تحتاج للمساعدة؟";
+"help_desc" =  "هل تشعر بعدم معرفة أستخدام التطبيق؟ الرجاء الأتصال بنا";
+"About" =  "حول اي مونة";
+"Contact" =  "الأتصال بنا";
+"Payments" =  "الدفع";
+"FAQ" =  "الاسئلة المتكررة";
+"Feedback" =  "أرسل رأيك";
+"Terms" =  "الشروط والأحكام";
+"Have Something" =  "هل عندك أي مشكلة؟";
+"Don't hesitate to contact us" =  "لا تتردد بالأتصال بنا";
+"Email" =  "الايميل";
+"Website" =  "الموقع الالكتروني";
+"Facebook" =  "فيسبوك";
+"Twitter" =  "توتير";
+"Instgram" =  "انستجرام";
+"Suggest an Item for iMoneh" =  "أقترح منتج ل اي مونة";
+"We might add it for you" =  "ممكن أضافته لك";
+"Title" =  "العنوان";
+"Write Your Feedback Here" =  "الرجاء كتابة سؤالك هنا";
+"Send" = "أرسل";
+"contact_title" = "لديك شيء؟\n لا تتردد في الاتصال بنا";
+
+//share
+"Share on Social Media" = "شارك على وسائل التواصل";

@@ -15,10 +15,11 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var imgVStatus: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblOnline: UILabel!
+    @IBOutlet weak var lblLang: UILabel!
     @IBOutlet weak var tblv: UITableView!
     
     
-    let menuArray = ["Home","My Profile","Notifications" ,"Ratings & Reviews", "Help", "Share","Log Out"]
+    let menuArray = ["Home".localized,"My Profile".localized,"Notifications".localized ,"Ratings & Reviews".localized, "Help".localized, "Share".localized,"Log Out".localized]
     
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
@@ -37,19 +38,18 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     // MARK: - SET UI
     private func setUI(){
+        lblLang.text = "Lang".localized
+        
         //profile_image
         imgVProfile.backgroundColor = appTrans
         imgVProfile.layer.borderColor = appDarkYellow?.cgColor
         imgVProfile.layer.borderWidth = 2
         //name
         lblName.text = Singleton.shared.userMod?.name
-        lblOnline.text = (Singleton.shared.userMod?.is_online == 1) ? "Online" : "Offline"
+        lblOnline.text = (Singleton.shared.userMod?.is_online == 1) ? "Online".localized : "Offline".localized
         imgVStatus.image = (Singleton.shared.userMod?.is_online == 1) ? UIImage.init(named: "online") : UIImage.init(named: "offline")
     }
-    
-    
-    
-    
+
     // MARK: - TABLEVIEW DATASOURCE
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuArray.count
@@ -111,22 +111,51 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     private func logoutCall(){
-        BasicUtility.removeAllUserDefault()
+        if let arrcode = UserDefaults.standard.stringArray(forKey: AppUserDefault.appleLanguagesKey.rawValue),let lang = arrcode.first{
+            BasicUtility.removeAllUserDefault()
+            UserDefaults.standard.set([lang], forKey: AppUserDefault.appleLanguagesKey.rawValue)
+        }else{
+            BasicUtility.removeAllUserDefault()
+        }
         Singleton.shared.img_profile = nil
     }
     
     // MARK: - BTN ACTION
     @IBAction func btnStatusChangeClicked(_ sender: UIButton) {
-        let text =  (Singleton.shared.userMod?.is_online == 1) ? "Offline" : "Online"
+        let text =  (Singleton.shared.userMod?.is_online == 1) ? "Offline".localized : "Online".localized
         let st = (Singleton.shared.userMod?.is_online == 1) ? 0 : 1
-        let alert = UIAlertController(title: "Update Status", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Update Status".localized, message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: text, style: .default , handler:{ (UIAlertAction) in
             self.changeOnlineStatus(status: st)
         }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "Dismiss".localized, style: .cancel, handler:{ (UIAlertAction) in
         }))
         self.present(alert, animated: true, completion: {
         })
+    }
+    
+    @IBAction func btnLanguageClicked(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Change Language".localized, message:"Please Select Language".localized , preferredStyle: .actionSheet)
+        let engbtn = UIAlertAction(title: "English".localized, style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            if Language.language == .english {
+                self.sideMenuViewController!.hideMenuViewController()
+            }else{
+                Language.language = .english
+            }
+        })
+        let arbtn = UIAlertAction(title: "Arabic".localized, style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            if Language.language == .arabic {
+                self.sideMenuViewController!.hideMenuViewController()
+            }else{
+                Language.language = .arabic
+            }
+        })
+        let canbtn = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+        })
+        alert.addAction(engbtn)
+        alert.addAction(arbtn)
+        alert.addAction(canbtn)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -158,11 +187,12 @@ extension LeftMenuVC {
     
     private func jsonParsingOnlineStatus(json:Any,status:Int) {
         if let json_tmp = json as? [String: Any]  {
-            guard let msg = json_tmp["msg"] as? [String:Any] else {
+            guard let _ = json_tmp["msg"] as? String else {
                 return
             }
             Singleton.shared.userMod?.is_online = status
             ProjectHelper.saveUserModel(userMod: Singleton.shared.userMod!)
+            setUI()
         }else {
             URlErrorHandling.checkErrorInResponse(json: json)
         }
