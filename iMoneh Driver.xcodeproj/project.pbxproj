@@ -10,6 +10,7 @@
 		40269B5A22572C7400AAE219 /* CityAreaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40269B5922572C7400AAE219 /* CityAreaVC.swift */; };
 		4029E711222981200074492C /* RatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4029E710222981200074492C /* RatingVC.swift */; };
 		4029E715222985B00074492C /* RatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4029E714222985B00074492C /* RatingCell.swift */; };
+		4041B6A3226EEF3A00595BA4 /* ViewOrderItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4041B6A2226EEF3A00595BA4 /* ViewOrderItemsVC.swift */; };
 		4049DA3F2230FEF0000E3B55 /* PickUpConformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4049DA3E2230FEF0000E3B55 /* PickUpConformation.swift */; };
 		4049DA412231065D000E3B55 /* YPDrawSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4049DA402231065D000E3B55 /* YPDrawSignatureView.swift */; };
 		404D651F2227CCC500404AAC /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D651E2227CCC500404AAC /* ForgotPassVC.swift */; };
@@ -78,6 +79,8 @@
 		40CA015B22282A8F000A19DE /* NotMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA015A22282A8F000A19DE /* NotMod.swift */; };
 		40CA015D22282AA6000A19DE /* NotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA015C22282AA6000A19DE /* NotCell.swift */; };
 		40CA015F22282AB5000A19DE /* NotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA015E22282AB5000A19DE /* NotVC.swift */; };
+		40D4A1342269966C009E6C24 /* AssignDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D4A1332269966C009E6C24 /* AssignDetailVC.swift */; };
+		40D86079226861080090C054 /* NewOrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D86078226861080090C054 /* NewOrderDetailVC.swift */; };
 		40E11AC32240E48A00CFC1CA /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E11AC22240E48A00CFC1CA /* Localizable.swift */; };
 		E55DF850A90C9538E4D1A3A6 /* Pods_iMoneh_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FBEFC72A2DEB4F9E2345E7 /* Pods_iMoneh_Driver.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +91,7 @@
 		40269B5922572C7400AAE219 /* CityAreaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityAreaVC.swift; sourceTree = "<group>"; };
 		4029E710222981200074492C /* RatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingVC.swift; sourceTree = "<group>"; };
 		4029E714222985B00074492C /* RatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCell.swift; sourceTree = "<group>"; };
+		4041B6A2226EEF3A00595BA4 /* ViewOrderItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOrderItemsVC.swift; sourceTree = "<group>"; };
 		4049DA3E2230FEF0000E3B55 /* PickUpConformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpConformation.swift; sourceTree = "<group>"; };
 		4049DA402231065D000E3B55 /* YPDrawSignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YPDrawSignatureView.swift; sourceTree = "<group>"; };
 		404D651E2227CCC500404AAC /* ForgotPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 		40CA015A22282A8F000A19DE /* NotMod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotMod.swift; sourceTree = "<group>"; };
 		40CA015C22282AA6000A19DE /* NotCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotCell.swift; sourceTree = "<group>"; };
 		40CA015E22282AB5000A19DE /* NotVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotVC.swift; sourceTree = "<group>"; };
+		40D4A1332269966C009E6C24 /* AssignDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignDetailVC.swift; sourceTree = "<group>"; };
+		40D86078226861080090C054 /* NewOrderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderDetailVC.swift; sourceTree = "<group>"; };
 		40DFD0F622413F210003F7E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		40E11AC22240E48A00CFC1CA /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMoneh Driver.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver.release.xcconfig"; sourceTree = "<group>"; };
@@ -450,8 +456,11 @@
 		40980EF9222EA0980076B340 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				40D86078226861080090C054 /* NewOrderDetailVC.swift */,
 				40980EF5222E83590076B340 /* CompDetailVC.swift */,
+				40D4A1332269966C009E6C24 /* AssignDetailVC.swift */,
 				4049DA3E2230FEF0000E3B55 /* PickUpConformation.swift */,
+				4041B6A2226EEF3A00595BA4 /* ViewOrderItemsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -683,6 +692,7 @@
 			files = (
 				405B39D02241240700F4A8B0 /* HelpVC.swift in Sources */,
 				409562C02223F0CB00A9290F /* AppConstant.swift in Sources */,
+				40D86079226861080090C054 /* NewOrderDetailVC.swift in Sources */,
 				409562EB22240C2100A9290F /* RootViewController.swift in Sources */,
 				4049DA412231065D000E3B55 /* YPDrawSignatureView.swift in Sources */,
 				405B39D22241240700F4A8B0 /* TermVC.swift in Sources */,
@@ -692,6 +702,7 @@
 				405505A4222418F200456FC8 /* HomeVC.swift in Sources */,
 				409562DA2223F7DF00A9290F /* ApiUrlFactory.swift in Sources */,
 				4029E711222981200074492C /* RatingVC.swift in Sources */,
+				40D4A1342269966C009E6C24 /* AssignDetailVC.swift in Sources */,
 				404D65222227D26100404AAC /* ResetPassVC.swift in Sources */,
 				405B39D62241240700F4A8B0 /* AboutUsVC.swift in Sources */,
 				405505A622241FC800456FC8 /* NewVC.swift in Sources */,
@@ -713,6 +724,7 @@
 				40E11AC32240E48A00CFC1CA /* Localizable.swift in Sources */,
 				40CA015D22282AA6000A19DE /* NotCell.swift in Sources */,
 				405505AD222428D100456FC8 /* OrderCell.swift in Sources */,
+				4041B6A3226EEF3A00595BA4 /* ViewOrderItemsVC.swift in Sources */,
 				409562C62223F2C000A9290F /* AppFont.swift in Sources */,
 				405505AA22241FE800456FC8 /* CompletedVC.swift in Sources */,
 				405B39D32241240700F4A8B0 /* FAQVC.swift in Sources */,
@@ -887,6 +899,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "iMoneh Driver/iMoneh Driver.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPK4XC758S;
 				INFOPLIST_FILE = "iMoneh Driver/Info.plist";
@@ -897,6 +910,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wm.imdriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -908,6 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "iMoneh Driver/iMoneh Driver.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RPK4XC758S;
 				INFOPLIST_FILE = "iMoneh Driver/Info.plist";
@@ -918,6 +933,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wm.imdriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

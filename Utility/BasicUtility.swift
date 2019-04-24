@@ -11,7 +11,7 @@ import UIKit
 //MARK: - BasicUtility
 class BasicUtility{
     
-    static  func getAlert(view:UIViewController,titletop:String,subtitle:String){
+    static  func getAlert(view:UIViewController,titletop:String?,subtitle:String){
         let AC = UIAlertController(title: titletop, message: subtitle, preferredStyle: .alert)
         let okBtn = UIAlertAction(title: "OK", style: .default, handler: {(_ action: UIAlertAction) -> Void in
         })
@@ -193,6 +193,25 @@ struct ProjectHelper {
             return "COD"
         case 2:
             return "Net Banking"
+        default:
+            return "N/A"
+        }
+    }
+    
+    static func getOrderStatus(st:Int) -> String {
+        switch st {
+        case 1:
+            return "Pending"
+        case 2:
+            return "Driver Assigned"
+        case 3:
+            return "Picked UP"
+        case 4:
+            return "On the way"
+        case 5:
+            return "Delivered"
+        case 6:
+            return "Cancelled"
         default:
             return "N/A"
         }

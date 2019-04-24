@@ -10,6 +10,8 @@ import UIKit
 
 class OrderCell: UITableViewCell {
     
+    @IBOutlet weak var lblMarketName: UILabel!
+    @IBOutlet weak var lblDelCost: UILabel!
     @IBOutlet weak var viewBg: UIView!
     @IBOutlet weak var lblOrder: UILabel!
     @IBOutlet weak var lblPrice: UILabel!

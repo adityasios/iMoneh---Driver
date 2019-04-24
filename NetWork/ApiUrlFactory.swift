@@ -40,6 +40,11 @@ struct APIURLFactory {
     static let cms_feedback : String =  baseURL + "cms/customer/feedback"
     static let cities_list : String =  baseURL + "cities/list"
     static let areas_list : String =  baseURL + "areas/list"
+    static let orders_accept : String =  baseURL + "driver/orders/accept/"
+    static let orders_reject : String =  baseURL + "driver/orders/reject/"
+    static let update_sign : String =  baseURL + "driver/orders/image/update"
+    static let update_status : String =  baseURL + "driver/orders/change/status"
+    static let product_details : String =  baseURL + "driver/order/product/details"
     
     
     //img_paths
@@ -48,6 +53,7 @@ struct APIURLFactory {
     static let pro_img : String =  aWSImgBaseURL + "uploads/products/"
     static let cust_proimg : String =  aWSImgBaseURL + "uploads/images/"
     static let country_flag : String =  aWSImgBaseURL + "uploads/countries/"
+    
     
     //requests - post
     static func createPostRequest(url : URL, isToken : Bool) -> URLRequest{
@@ -172,7 +178,7 @@ struct Parameters {
     static let feedback = "feedback"
     static let city_id = "city_id"
     static let area_id = "area_id"
-    
+    static let image = "image"
     static let kMale = "1"
     static let kFemale = "2"
 }

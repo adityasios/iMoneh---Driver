@@ -8,17 +8,16 @@
 
 import UIKit
 class HomeVC: UIViewController {
-    
     @IBOutlet weak var stackViewTab: UIStackView!
     @IBOutlet weak var viewNew: UIView!
     @IBOutlet weak var viewAssigned: UIView!
     @IBOutlet weak var viewCompleted: UIView!
     @IBOutlet weak var lblNewUndeline: UILabel!
-    @IBOutlet weak var lblNew: UILabel!
+    @IBOutlet weak var btnNew: UIButton!
     @IBOutlet weak var lblAssignUndeline: UILabel!
-    @IBOutlet weak var lblAssign: UILabel!
+    @IBOutlet weak var btnAssign: UIButton!
     @IBOutlet weak var lblCompUndeline: UILabel!
-    @IBOutlet weak var lblComp: UILabel!
+    @IBOutlet weak var btnComp: UIButton!
     
     private var pageViewControl:UIPageViewController!
     
@@ -44,33 +43,33 @@ class HomeVC: UIViewController {
     }
     
     private func setNavTabUI(crtIndex:Int) {
-        lblNew.text = "New".localized
-        lblAssign.text = "Assigned".localized
-        lblComp.text = "Completed".localized
+        btnNew.setTitle("New".localized, for: .normal)
+        btnAssign.setTitle("Assigned".localized, for: .normal)
+        btnComp.setTitle("Completed".localized, for: .normal)
         
         switch crtIndex {
         case 0:
-            lblNew.textColor = UIColor.white
-            lblAssign.textColor = UIColor.darkGray
-            lblComp.textColor = UIColor.darkGray
+            btnNew.setTitleColor(UIColor.white, for: .normal)
+            btnAssign.setTitleColor(UIColor.darkGray, for: .normal)
+            btnComp.setTitleColor(UIColor.darkGray, for: .normal)
             
             lblNewUndeline.backgroundColor = UIColor.gray
             lblNewUndeline.isHidden = false
             lblAssignUndeline.isHidden = true
             lblCompUndeline.isHidden = true
         case 1:
-            lblNew.textColor = UIColor.darkGray
-            lblAssign.textColor = UIColor.white
-            lblComp.textColor = UIColor.darkGray
+            btnNew.setTitleColor(UIColor.darkGray, for: .normal)
+            btnAssign.setTitleColor(UIColor.white, for: .normal)
+            btnComp.setTitleColor(UIColor.darkGray, for: .normal)
             
             lblAssignUndeline.backgroundColor = UIColor.gray
             lblNewUndeline.isHidden = true
             lblAssignUndeline.isHidden = false
             lblCompUndeline.isHidden = true
         case 2:
-            lblNew.textColor = UIColor.darkGray
-            lblAssign.textColor = UIColor.darkGray
-            lblComp.textColor = UIColor.white
+            btnNew.setTitleColor(UIColor.darkGray, for: .normal)
+            btnAssign.setTitleColor(UIColor.darkGray, for: .normal)
+            btnComp.setTitleColor(UIColor.white, for: .normal)
             
             lblCompUndeline.backgroundColor = UIColor.gray
             lblNewUndeline.isHidden = true
@@ -106,6 +105,22 @@ extension HomeVC {
         case .arabic:
             self.sideMenuViewController?.presentRightMenuViewController()
         }
+    }
+    
+    @IBAction func btnNewClicked(_ sender: UIButton) {
+        setNavTabUI(crtIndex: 0)
+        let newVC = storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
+        pageViewControl.setViewControllers([newVC],direction: .forward,animated: true,completion: nil)
+    }
+    @IBAction func btnAssignClicked(_ sender: UIButton) {
+        setNavTabUI(crtIndex: 1)
+        let assignVC = storyboard?.instantiateViewController(withIdentifier:"AssignVC") as! AssignVC
+        pageViewControl.setViewControllers([assignVC],direction: .forward,animated: true,completion: nil)
+    }
+    @IBAction func btnHistoryClicked(_ sender: UIButton) {
+        setNavTabUI(crtIndex: 2)
+        let compVC = storyboard?.instantiateViewController(withIdentifier:"CompletedVC") as! CompletedVC
+        pageViewControl.setViewControllers([compVC],direction: .forward,animated: true,completion: nil)
     }
 }
 

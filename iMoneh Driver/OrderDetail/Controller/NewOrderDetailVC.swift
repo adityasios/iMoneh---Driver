@@ -1,25 +1,22 @@
 //
-//  CompDetailVC.swift
+//  NewOrderDetailVC.swift
 //  iMoneh Driver
 //
-//  Created by Rakhi on 05/03/19.
+//  Created by Rakhi on 18/04/19.
 //  Copyright © 2019 Webmaazix. All rights reserved.
 //
 
 import UIKit
-class CompDetailVC: UIViewController {
+
+class NewOrderDetailVC: UIViewController {
     
     @IBOutlet weak var tblv: UITableView!
-    @IBOutlet weak var viewBg: UIView!
-    @IBOutlet weak var imgVSign: UIImageView!
-    @IBOutlet weak var btnViewItems: UIButton!
-    @IBOutlet weak var imgVendorSign: UIImageView!
-    @IBOutlet weak var lblRecSign: UILabel!
-    @IBOutlet weak var lblVendSign: UILabel!
+    @IBOutlet weak var lblStatus: UILabel!
     
-    var order_pass : OrderMod! = nil
+    var order_pass : OrderMod!
     var arr_temp1 : [OrderTemoMod] = []
-    var arr_temp2 : [OrderTemoMod] = []
+    var arr_temp2 : [SinglePayment] = []
+    var onBookingAccept: ((_ accept: Bool) -> ())?
     
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
@@ -29,14 +26,9 @@ class CompDetailVC: UIViewController {
         getOrderDetail()
     }
     
-    deinit {
-        print("CompDetailVC deinit")
-    }
-    
     // MARK: - INIT METHOD
-    func initMethod(){
-        tblv.estimatedRowHeight = 150
-        tblv.rowHeight = UITableView.automaticDimension
+    private func initMethod(){
+        title = "Order Detail".localized
         registerCell()
     }
     
@@ -46,24 +38,27 @@ class CompDetailVC: UIViewController {
     }
     
     // MARK: - SET UI
-    func setUI(){
-        btnViewItems.layer.cornerRadius = 2
-        btnViewItems.layer.borderColor = UIColor.white.cgColor
-        btnViewItems.layer.borderWidth = 1.0
+    private func setUI(){
+        lblStatus.text = "PENDING".localized
         
-        viewBg.layer.cornerRadius = 8
-        viewBg.clipsToBounds = true
     }
-    
-    @IBAction func btnViewItemsClicked(_ sender: UIButton) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ViewOrderItemsVC") as!  ViewOrderItemsVC
-        vc.order_pass = order_pass
-        navigationController?.pushViewController(vc, animated: true)
+}
+
+// MARK:- Ex - BUTTON ACTION
+extension NewOrderDetailVC {
+    @IBAction func btnAcceptClicked(_ sender: UIButton) {
+        let passID = (order_pass.id)!
+        let orderID = (order_pass.order_id)!
+        acceptOrderRequest(id: String(passID), order_id: String(orderID))
+    }
+    @IBAction func btnRejectClicked(_ sender: UIButton) {
+        let passID = (order_pass.id)!
+        rejectOrderRequest(id: String(passID))
     }
 }
 
 // MARK:- Ex - API
-extension CompDetailVC {
+extension NewOrderDetailVC {
     private func getOrderDetail() {
         let strUrl = APIURLFactory.order_detail + String(order_pass.id!)
         guard let req = APIURLFactory.createGetRequestWithPara(strAbs: strUrl, isToken: true, para:[:]) else {
@@ -75,8 +70,55 @@ extension CompDetailVC {
             if let data = data {
                 do {
                     let json_det = try JSONSerialization.jsonObject(with: data, options: [])
-                    print("json_det = \(json_det)")
                     self.jsonParsingOrderDetail(json: json_det)
+                } catch {
+                    BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not Able to Parse Json")
+                }
+            }
+            if let err = err {
+                BasicUtility.getAlert(view: self, titletop: "Error", subtitle:err)
+            }
+        }
+    }
+    
+    private func acceptOrderRequest(id:String,order_id:String) {
+        let strUrl = APIURLFactory.orders_accept + id + "/" + order_id
+        print("strUrl \(strUrl)")
+        guard let req = APIURLFactory.createGetRequestWithPara(strAbs: strUrl, isToken: true, para:[:]) else {
+            return
+        }
+        
+        Loader.showLoadingView(view: view)
+        URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
+            Loader.hideLoadingView(view: self.view)
+            if let data = data {
+                do {
+                    let json_det = try JSONSerialization.jsonObject(with: data, options: [])
+                    self.jsonParsingOrderAccept(json: json_det)
+                } catch {
+                    BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not Able to Parse Json")
+                }
+            }
+            if let err = err {
+                BasicUtility.getAlert(view: self, titletop: "Error", subtitle:err)
+            }
+        }
+    }
+    
+    private func rejectOrderRequest(id:String) {
+        let strUrl = APIURLFactory.orders_reject + id
+        print("strUrl \(strUrl)")
+        guard let req = APIURLFactory.createGetRequestWithPara(strAbs: strUrl, isToken: true, para:[:]) else {
+            return
+        }
+        
+        Loader.showLoadingView(view: view)
+        URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
+            Loader.hideLoadingView(view: self.view)
+            if let data = data {
+                do {
+                    let json_det = try JSONSerialization.jsonObject(with: data, options: [])
+                    self.jsonParsingOrderAccept(json: json_det)
                 } catch {
                     BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not Able to Parse Json")
                 }
@@ -89,14 +131,14 @@ extension CompDetailVC {
 }
 
 // MARK:- Ex - API PARSING METHODS
-extension CompDetailVC {
+extension NewOrderDetailVC {
     private  func jsonParsingOrderDetail(json:Any) {
         if let jsonTemp = json as? [String: Any]  {
             //data_order
             guard let data = jsonTemp["data"] as? [String:Any] else {
                 return
             }
-            
+            print("data new order \(data)")
             //modelling
             do {
                 let dataOrder = try JSONSerialization.data(withJSONObject: data, options:[])
@@ -112,10 +154,67 @@ extension CompDetailVC {
             URlErrorHandling.checkErrorInResponse(json: json)
         }
     }
+    
+    private  func jsonParsingOrderAccept(json:Any) {
+        if let jsonTemp = json as? [String: Any]  {
+            print("jsonTemp accept/reject \(jsonTemp)")
+            self.onBookingAccept!(true)
+            self.navigationController?.popViewController(animated: true)
+        }else {
+            URlErrorHandling.checkErrorInResponse(json: json)
+        }
+    }
+}
+
+// MARK:- EXT - Helper Method
+extension NewOrderDetailVC {
+    func helperCreateDetailModel(){
+        
+        //cust name & mobile
+        let phone = (order_pass.customer?.dial_code)! + " " +  (order_pass.customer?.mobile)!
+        let mod1 = OrderTemoMod.init(title_one: "Customer Name".localized, desc_one:order_pass.customer?.name, img_one:"cust_name", title_two: "Contact Details".localized, desc_two:phone, img_two:"cust_mob")
+        arr_temp1.append(mod1)
+        
+        //delivery date  & time
+        let del_date = DateHelper.getDeliveryDateInLocalFromUTC(crt: order_pass.delivery_date!)
+        let mod2 = OrderTemoMod.init(title_one: "Delivery Date".localized, desc_one:del_date, img_one:"et", title_two: "Delivery Time".localized, desc_two:order_pass.delivery_time, img_two:"et")
+        arr_temp1.append(mod2)
+        
+        //payment_staus & payment_method
+        let pay_method =  ProjectHelper.getPaymentMethod(st: order_pass.payment_method!)
+        let pay_status =  ProjectHelper.getPaymentStatus(st: order_pass.payment_status!)
+        let mod3 = OrderTemoMod.init(title_one: "Payment Method".localized, desc_one:pay_method, img_one:"pay_method", title_two: "Payment Status".localized, desc_two:pay_status, img_two:"et")
+        arr_temp1.append(mod3)
+        
+        //sub total amt
+        let subtotal = (String(order_pass.currency!) + " " + (order_pass.sub_total)!.clean)
+        let modsub = SinglePayment.init(title_one: "Subtotal".localized, desc_one: subtotal)
+        arr_temp2.append(modsub)
+        
+        //delivery cost
+        let delivery = (String(order_pass.currency!) + " " + (order_pass.delivery_cost)!.clean)
+        let moddel = SinglePayment.init(title_one: "Delivery".localized, desc_one: delivery)
+        arr_temp2.append(moddel)
+        
+        //tax (%)
+        let taxp = SinglePayment.init(title_one: "Tax(%)", desc_one: String(order_pass.tax_percentage!))
+        arr_temp2.append(taxp)
+        
+        //tax
+        let taxap = (String(order_pass.currency!) + " " + (order_pass.tax_amount)!.clean)
+        let tax = SinglePayment.init(title_one: "Tax".localized, desc_one:taxap)
+        arr_temp2.append(tax)
+        
+        //total_amount
+        let totalAmt = (String(order_pass.currency!) + " " + (order_pass.total_amount)!.clean)
+        let total = SinglePayment.init(title_one: "Total Amount".localized, desc_one:totalAmt)
+        arr_temp2.append(total)
+    }
 }
 
 // MARK:- EXT - UITableViewDataSource
-extension CompDetailVC : UITableViewDataSource{
+extension NewOrderDetailVC : UITableViewDataSource{
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -134,9 +233,7 @@ extension CompDetailVC : UITableViewDataSource{
                 let attbuteTitle = [NSAttributedString.Key.font : AppFont.GilroySemiBold.fontSemiBold13!, NSAttributedString.Key.foregroundColor: UIColor.darkText]
                 
                 //from - to
-                var vendor_add = (order_pass.vendor_address?.owner_name ?? "")
-                vendor_add.append("\u{00a0}")
-                vendor_add.append(order_pass.vendor_address?.area_name ?? "")
+                var vendor_add = (order_pass.vendor_address?.area_name ?? "")
                 vendor_add.append("\u{00a0}")
                 vendor_add.append((order_pass.vendor_address?.city_name ?? ""))
                 vendor_add.append("\u{00a0}")
@@ -145,9 +242,7 @@ extension CompDetailVC : UITableViewDataSource{
                 let from = NSMutableAttributedString(string:"From : ", attributes:attbuteHead)
                 let from_add = NSMutableAttributedString(string:"\(vendor_add)\n", attributes:attbuteTitle)
                 
-                var cust_add = (order_pass.customer_address?.address ?? "")
-                cust_add.append("\u{00a0}")
-                cust_add.append(order_pass.customer_address?.area_name ?? "")
+                var cust_add = (order_pass.customer_address?.area_name ?? "")
                 cust_add.append("\u{00a0}")
                 cust_add.append((order_pass.customer_address?.city_name ?? ""))
                 cust_add.append("\u{00a0}")
@@ -174,26 +269,26 @@ extension CompDetailVC : UITableViewDataSource{
                 return tcell
             }
         }else{
-            let tcell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailCell", for: indexPath) as! OrderDetailCell
             let mod = arr_temp2[indexPath.row]
-            tcell.lblTitleOne.text = mod.title_one
-            tcell.lblTitleTwo.text = mod.title_two
-            tcell.lblDecOne.text = mod.desc_one
-            tcell.lblDecTwo.text = mod.desc_two
-            tcell.imgVOne.image = UIImage.init(named: mod.img_one!)
-            tcell.imgVTwo.image = UIImage.init(named: mod.img_two!)
+            let tcell = tableView.dequeueReusableCell(withIdentifier: "cellprice", for: indexPath)
+            let lblTitle = tcell.viewWithTag(10) as! UILabel
+            let lblDesc = tcell.viewWithTag(20) as! UILabel
+            lblTitle.text = mod.title_one
+            lblDesc.text = mod.desc_one
             return tcell
         }
     }
 }
 
 // MARK:- EXT - UITableViewDelegate
-extension CompDetailVC : UITableViewDelegate{
+extension NewOrderDetailVC : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0 {
             return UITableView.automaticDimension
-        }else{
+        }else if indexPath.section == 0{
             return 55
+        }else{
+            return 40
         }
     }
     
@@ -214,79 +309,12 @@ extension CompDetailVC : UITableViewDelegate{
     }
 }
 
-// MARK:- EXT - Helper Method
-extension CompDetailVC {
-    func helperCreateDetailModel(){
-        
-        //cust name & mobile
-        let phone = (order_pass.customer?.dial_code)! + " " +  (order_pass.customer?.mobile)!
-        let mod1 = OrderTemoMod.init(title_one: "Customer Name".localized, desc_one:order_pass.customer?.name, img_one:"cust_name", title_two: "Contact Details".localized, desc_two:phone, img_two:"cust_mob")
-        arr_temp1.append(mod1)
-        
-        //delivery date  & time
-        let del_date = DateHelper.getDeliveryDateInLocalFromUTC(crt: order_pass.delivery_date!)
-        let mod2 = OrderTemoMod.init(title_one: "Delivery Date".localized, desc_one:del_date, img_one:"et", title_two: "Delivery Time".localized, desc_two:order_pass.delivery_time, img_two:"et")
-        arr_temp1.append(mod2)
-        
-        //pick up date-time / drop off date-time
-        let pick_date = DateHelper.getNotDateInLocalFromUTC(crt: order_pass.pickup_datetime!)
-        let pick_time = DateHelper.getNotDateInLocalFromUTC(crt: order_pass.deliver_datetime!)
-        let mod3 = OrderTemoMod.init(title_one: "PickUp Time".localized, desc_one:pick_date, img_one:"et", title_two: "DropOff Time".localized, desc_two:pick_time, img_two:"et")
-        arr_temp1.append(mod3)
-        
-        //receiver name  & sender
-        let mod4 = OrderTemoMod.init(title_one: "Sender Name".localized, desc_one:order_pass.sender_name, img_one:"cust_name", title_two: "Recipient's Name".localized, desc_two:order_pass.receiver_name, img_two:"cust_name")
-        arr_temp1.append(mod4)
-        
-        //total amt & delivery cost
-        let mod5 = OrderTemoMod.init(title_one: "Total Amount".localized, desc_one:(String(order_pass.currency!) + " " + String(order_pass.total_amount!)), img_one: "total_amt", title_two: "Delivery Cost".localized, desc_two:(String(order_pass.currency!) + String(order_pass.delivery_cost!)), img_two: "del_cost")
-        arr_temp2.append(mod5)
-        
-        //payment_staus & payment_method
-        let pay_method =  ProjectHelper.getPaymentMethod(st: order_pass.payment_method!)
-        let pay_status =  ProjectHelper.getPaymentStatus(st: order_pass.payment_status!)
-        let mod6 = OrderTemoMod.init(title_one: "Payment Method".localized, desc_one:pay_method, img_one:"pay_method", title_two: "Payment Status".localized, desc_two:pay_status, img_two:"et")
-        arr_temp2.append(mod6)
-        
-        //sign image rec
-        imgVSign.layer.cornerRadius = 2
-        imgVSign.clipsToBounds = true
-        imgVSign.contentMode = .scaleAspectFill
-        imgVSign.layer.borderColor = UIColor.lightGray.cgColor
-        imgVSign.layer.borderWidth = 1
-        if let str_pro = order_pass.pickup_signature_image,let urlimg = URL.init(string: APIURLFactory.cust_proimg + str_pro) {
-            imgVSign.sd_setImage(with: urlimg) { (img, err, type, url) in
-            }
-        }
-        
-        //sign image vendor
-        imgVendorSign.layer.cornerRadius = 2
-        imgVendorSign.clipsToBounds = true
-        imgVendorSign.contentMode = .scaleAspectFill
-        imgVendorSign.layer.borderColor = UIColor.lightGray.cgColor
-        imgVendorSign.layer.borderWidth = 1
-        if let str_pro = order_pass.deliver_signature_image,let urlimg = URL.init(string: APIURLFactory.cust_proimg + str_pro) {
-            imgVendorSign.sd_setImage(with: urlimg) { (img, err, type, url) in
-            }
-        }
-        
-    }
-}
-
-
-//cellgen
 /*
- Order Details
- driver/orders/details{id}
+ Accept Order
+ driver/orders/accept/{id}
  GET
  Yes
- 
- "receiver_name" = Arun;
- "sender_name" = Pavan;
- 
- "payment_method" = 1;
- "payment_status" = 2;
- 
- 
- "deliver_datetime" = "2019-03-01T18:08:44.000Z";
+ {"msg":"Success"}
+ id: from api # 6.
  */
+

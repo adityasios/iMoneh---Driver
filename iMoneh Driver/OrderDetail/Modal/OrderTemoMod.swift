@@ -16,8 +16,15 @@ struct OrderTemoMod{
     let img_two: String?
 }
 
+struct SinglePayment{
+    let title_one: String?
+    let desc_one: String?
+}
 
-
-
+struct OrderItemMod:Codable{
+    let quantity: Int?
+    let product_image: String?
+    let product_name: String?
+}
 
 
