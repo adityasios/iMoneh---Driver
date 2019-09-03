@@ -91,7 +91,6 @@ struct APIURLFactory {
     
     //requests - get
     static func createGetRequestWithPara(strAbs : String, isToken : Bool,para : [String:String]) -> URLRequest?{
-        
         guard var components = URLComponents(string: strAbs) else {
             return nil
         }

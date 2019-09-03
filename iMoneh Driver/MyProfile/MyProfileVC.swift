@@ -61,6 +61,7 @@ class MyProfileVC: UIViewController {
         //view
         viewHead.layer.cornerRadius = 4
         viewHead.clipsToBounds = true
+        viewHead.semanticContentAttribute = .forceLeftToRight
         
         //profile
         imgVPro.layer.cornerRadius = (AppDevice.ScreenSize.SCREEN_HEIGHT * 0.25)/4

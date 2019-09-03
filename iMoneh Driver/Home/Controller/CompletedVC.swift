@@ -35,6 +35,14 @@ class CompletedVC: UIViewController {
         tblv.estimatedRowHeight = 150
         tblv.rowHeight = UITableView.automaticDimension
         registerCell()
+        setRefreshControl()
+    }
+    
+    private func setRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = appDarkYellow
+        refreshControl.addTarget(self, action: #selector(reloadData(sender:)), for: UIControl.Event.valueChanged)
+        tblv.refreshControl = refreshControl
     }
     
     private func registerCell() {
@@ -45,6 +53,13 @@ class CompletedVC: UIViewController {
     // MARK: - SET UI
     func setUI(){
         lblNoData.text = "No Completed Order Found".localized
+    }
+}
+
+//MARK:- extension - Actions
+extension CompletedVC{
+    @objc func reloadData(sender:UIRefreshControl) {
+        getOrderList()
     }
 }
 
@@ -72,7 +87,7 @@ extension CompletedVC : UITableViewDataSource{
         let attbuteTitle = [NSAttributedString.Key.font : AppFont.GilroySemiBold.fontSemiBold14!, NSAttributedString.Key.foregroundColor: UIColor.darkText]
         let strOrder = "Orders" + " #: "
         let order = NSMutableAttributedString(string:strOrder, attributes:attbuteHead)
-        let order_id = NSMutableAttributedString(string:String(order_mod.order_number!), attributes:attbuteTitle)
+        let order_id = NSMutableAttributedString(string:String((order_mod.order_number ?? "NA")), attributes:attbuteTitle)
         order.append(order_id)
         tcell.lblOrder.attributedText = order
         
@@ -154,6 +169,7 @@ extension CompletedVC {
         activityView.startAnimating()
         URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
             self.activityView.stopAnimating()
+            self.tblv.refreshControl!.endRefreshing()
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])

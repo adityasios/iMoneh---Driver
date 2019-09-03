@@ -19,6 +19,7 @@ class Singleton {
     var userMod: UserMod?
     var keyboard_ht: CGFloat?
     var img_profile: UIImage?
+    var isDeliveryCompany: Bool = false
 }
 
 

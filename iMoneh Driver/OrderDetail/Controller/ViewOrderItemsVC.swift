@@ -60,7 +60,7 @@ extension ViewOrderItemsVC : UITableViewDataSource,UITableViewDelegate{
 // MARK:- Ex - API
 extension ViewOrderItemsVC {
     private func getOrderItemsDetail() {
-        let strUrl = APIURLFactory.product_details + "/" + String(order_pass.id!)
+        let strUrl = APIURLFactory.product_details + "/" + String(order_pass.order_id!)
         guard let req = APIURLFactory.createGetRequestWithPara(strAbs: strUrl, isToken: true, para:[:]) else {
             return
         }

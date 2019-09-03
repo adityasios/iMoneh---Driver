@@ -15,6 +15,8 @@ class PickUpConformation: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var viewSign: YPDrawSignatureView!
     @IBOutlet weak var txfdSender: UITextField!
     @IBOutlet weak var imgVSign: UIImageView!
+    @IBOutlet weak var lblSender: UILabel!
+    @IBOutlet weak var lblSenderSign: UILabel!
     
     var order_status: Int!
     var order_pass: OrderMod!
@@ -52,6 +54,11 @@ class PickUpConformation: UIViewController,UITextFieldDelegate{
         if order_status == 2 {
             txfdSender.text =  order_pass.vendor_address?.owner_name
             txfdSender.isUserInteractionEnabled = false
+            lblSender.text = "Sender".localized
+            lblSender.text = "Sender Name".localized
+        }else{
+            lblSender.text = "Receiver".localized
+            lblSender.text = "Receiver Name".localized
         }
     }
     

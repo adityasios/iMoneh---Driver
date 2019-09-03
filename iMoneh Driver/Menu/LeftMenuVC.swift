@@ -8,6 +8,7 @@
 
 import UIKit
 import AKSideMenu
+import ZDCChat
 
 class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -18,8 +19,7 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var lblLang: UILabel!
     @IBOutlet weak var tblv: UITableView!
     
-    
-    let menuArray = ["Home".localized,"My Profile".localized,"Notifications".localized ,"Ratings & Reviews".localized, "Help".localized, "Share".localized,"Log Out".localized]
+    let menuArray = ["Home".localized,"My Profile".localized,"Notifications".localized ,"Ratings & Reviews".localized, "Help".localized, "Share".localized,"Chat".localized,"Log Out".localized]
     
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
@@ -100,6 +100,8 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             self.sideMenuViewController?.setContentViewController(nav, animated: true)
             self.sideMenuViewController?.hideMenuViewController()
         case 6:
+            ZDCChat.start(in: self.navigationController, withConfig: nil)
+        case 7:
             logoutCall()
             let story = UIStoryboard.init(name: "Main", bundle: nil)
             let root = story.instantiateViewController(withIdentifier: "ViewController") as! ViewController

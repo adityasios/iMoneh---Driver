@@ -139,6 +139,10 @@ class Reg: UITableViewController,DialCodeVCDelegate {
     }
     
     @IBAction func btnTermsClicked(_ sender: UIButton) {
+        let story = UIStoryboard.init(name: "Help", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "TermVC") as! TermVC
+        let nav = UINavigationController.init(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
     }
     
     // MARK:- DELEGATE METHODS
@@ -148,7 +152,6 @@ class Reg: UITableViewController,DialCodeVCDelegate {
         }else{
             setCountryField(countMod: countMod)
         }
-        
     }
 }
 

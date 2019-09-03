@@ -440,14 +440,23 @@ extension ViewController {
 
     func saveUserModel(userMod:UserMod) {
         DispatchQueue.main.async {
-            Singleton.shared.userMod = userMod
-            //save token
-            UserDefaults.standard.set(Singleton.shared.token!, forKey: AppUserDefault.token.rawValue)
-            
-            //save login data
-            let data = try! PropertyListEncoder().encode(userMod)
-            UserDefaults.standard.set(data, forKey: AppUserDefault.login_data.rawValue)
-            self.navigateToHome()
+            if let status = userMod.status,status == 1 {
+                Singleton.shared.userMod = userMod
+                //delivery company
+                if let deliveryComp = userMod.delivery_company_id,deliveryComp > 0 {
+                    Singleton.shared.isDeliveryCompany = true
+                }else{
+                    Singleton.shared.isDeliveryCompany = false
+                }
+                //save token
+                UserDefaults.standard.set(Singleton.shared.token!, forKey: AppUserDefault.token.rawValue)
+                //save login data
+                let data = try! PropertyListEncoder().encode(userMod)
+                UserDefaults.standard.set(data, forKey: AppUserDefault.login_data.rawValue)
+                self.navigateToHome()
+            }else{
+                BasicUtility.getAlert(view: self, titletop:nil, subtitle:"Your account is not activated yet".localized)
+            }
         }
     }
     

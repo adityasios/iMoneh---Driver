@@ -229,8 +229,8 @@ extension CompDetailVC {
         arr_temp1.append(mod2)
         
         //pick up date-time / drop off date-time
-        let pick_date = DateHelper.getNotDateInLocalFromUTC(crt: order_pass.pickup_datetime!)
-        let pick_time = DateHelper.getNotDateInLocalFromUTC(crt: order_pass.deliver_datetime!)
+        let pick_date =   (order_pass.pickup_datetime  == nil) ? "NA" :  DateHelper.getNotDateInLocalFromUTC(crt: order_pass.pickup_datetime!)
+        let pick_time = (order_pass.deliver_datetime  == nil) ? "NA" :  DateHelper.getNotDateInLocalFromUTC(crt: order_pass.deliver_datetime!)
         let mod3 = OrderTemoMod.init(title_one: "PickUp Time".localized, desc_one:pick_date, img_one:"et", title_two: "DropOff Time".localized, desc_two:pick_time, img_two:"et")
         arr_temp1.append(mod3)
         
@@ -254,7 +254,7 @@ extension CompDetailVC {
         imgVSign.contentMode = .scaleAspectFill
         imgVSign.layer.borderColor = UIColor.lightGray.cgColor
         imgVSign.layer.borderWidth = 1
-        if let str_pro = order_pass.pickup_signature_image,let urlimg = URL.init(string: APIURLFactory.cust_proimg + str_pro) {
+        if let str_pro = order_pass.deliver_signature_image,let urlimg = URL.init(string: APIURLFactory.cust_proimg + str_pro) {
             imgVSign.sd_setImage(with: urlimg) { (img, err, type, url) in
             }
         }
@@ -265,11 +265,10 @@ extension CompDetailVC {
         imgVendorSign.contentMode = .scaleAspectFill
         imgVendorSign.layer.borderColor = UIColor.lightGray.cgColor
         imgVendorSign.layer.borderWidth = 1
-        if let str_pro = order_pass.deliver_signature_image,let urlimg = URL.init(string: APIURLFactory.cust_proimg + str_pro) {
+        if let str_pro = order_pass.pickup_signature_image,let urlimg = URL.init(string: APIURLFactory.cust_proimg + str_pro) {
             imgVendorSign.sd_setImage(with: urlimg) { (img, err, type, url) in
             }
         }
-        
     }
 }
 

@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+
+//MARK: - ZENDESKKEY (PAVAN)
+let kzenDeskKey = "6SclsnSmh5SmcKRLcmiyzcXVzGawQuh2"
+
+
 //MARK: - APP COLORS
 let appDarkYellow = UIColor(named: "appDarkYellow")
 let appYellow = UIColor(named: "appYellow")

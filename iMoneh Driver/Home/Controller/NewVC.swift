@@ -31,8 +31,16 @@ class NewVC: UIViewController {
         tblv.estimatedRowHeight = 150
         tblv.rowHeight = UITableView.automaticDimension
         registerCell()
+        setRefreshControl()
     }
-
+    
+    private func setRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = appDarkYellow
+        refreshControl.addTarget(self, action: #selector(reloadData(sender:)), for: UIControl.Event.valueChanged)
+        tblv.refreshControl = refreshControl
+    }
+    
     private func registerCell() {
         let nibSt = UINib.init(nibName: "OrderCell", bundle: nil)
         self.tblv.register(nibSt, forCellReuseIdentifier: "OrderCell")
@@ -41,6 +49,13 @@ class NewVC: UIViewController {
     // MARK: - SET UI
     func setUI(){
         lblNoData.text = "No New Order Found".localized
+    }
+}
+
+//MARK:- extension - Actions
+extension NewVC{
+    @objc func reloadData(sender:UIRefreshControl) {
+        getOrderList()
     }
 }
 
@@ -153,6 +168,7 @@ extension NewVC {
         activityView.startAnimating()
         URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
             self.activityView.stopAnimating()
+            self.tblv.refreshControl!.endRefreshing()
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])

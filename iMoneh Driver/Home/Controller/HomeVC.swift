@@ -38,11 +38,14 @@ class HomeVC: UIViewController {
     
     // MARK:- SET UI METHOD
     private func setUI() {
-        setNavTabUI(crtIndex: 0)
+        let index = Singleton.shared.isDeliveryCompany ? 1:0
+        setNavTabUI(crtIndex: index)
         setPageViewController()
     }
     
     private func setNavTabUI(crtIndex:Int) {
+        
+        viewNew.isHidden = Singleton.shared.isDeliveryCompany ? true:false
         btnNew.setTitle("New".localized, for: .normal)
         btnAssign.setTitle("Assigned".localized, for: .normal)
         btnComp.setTitle("Completed".localized, for: .normal)
@@ -91,7 +94,7 @@ class HomeVC: UIViewController {
         pageViewControl.didMove(toParent: self)
         self.view.bringSubviewToFront(stackViewTab)
         
-        let pend = storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
+        let pend = Singleton.shared.isDeliveryCompany ? storyboard?.instantiateViewController(withIdentifier:"AssignVC") as! AssignVC  : storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
         pageViewControl.setViewControllers([pend],direction: .forward,animated: true,completion: nil)
     }
 }
@@ -126,10 +129,10 @@ extension HomeVC {
 
 // MARK:- Ex - UIPageViewControllerDelegate
 extension HomeVC : UIPageViewControllerDelegate,UIPageViewControllerDataSource {
-
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController is AssignVC {
-            let pendVC = storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
+            let pendVC = Singleton.shared.isDeliveryCompany ? nil : storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
             return pendVC
         }else if viewController is CompletedVC {
             let ongVC = storyboard?.instantiateViewController(withIdentifier:"AssignVC") as! AssignVC
@@ -150,7 +153,7 @@ extension HomeVC : UIPageViewControllerDelegate,UIPageViewControllerDataSource {
             return nil
         }
     }
-
+    
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             guard  let vc = pageViewControl.viewControllers?.first else{
@@ -166,6 +169,7 @@ extension HomeVC : UIPageViewControllerDelegate,UIPageViewControllerDataSource {
         }
     }
 }
+
 
 
 

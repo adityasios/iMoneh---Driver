@@ -24,7 +24,7 @@
 "Female" = "Female";
 "Dismiss" = "Dismiss";
 "Address" = "Address";
-"I have read Terms & Condition" = "I have read Terms & Conditio";
+"I have read Terms & Condition" = "I have read Terms & Conditions";
 "Create Account" = "Create Account";
 
 //dashboard alerts
@@ -74,7 +74,7 @@
 "Please Select Language" = "Please Select Language";
 
 //home
-"Market Order List" = "Market Order List";
+"Market Order List" = "Order List";
 "New" = "New";
 "Assigned" = "Assigned";
 "Completed" = "Completed";

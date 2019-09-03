@@ -21,6 +21,7 @@ class TermVC: UIViewController {
         getTermAPI()
     }
 }
+
 // MARK:- Ext - API CALL  METHODS
 extension TermVC {
     func getTermAPI() {
@@ -73,6 +74,13 @@ extension TermVC:UITableViewDataSource {
         lblTitle.textColor = (indexPath.row == 0) ? UIColor.gray : UIColor.darkGray
         lblTitle.text = (indexPath.row == 0) ? str_title : str_desc
         return tcell;
+    }
+}
+
+// MARK:- BUTTON ACTION
+extension TermVC {
+    @IBAction func btnCloseClicked(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -67,8 +67,10 @@ class HelpVC: UIViewController {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "FeedBackVC") as! FeedBackVC
             self.navigationController?.pushViewController(vc, animated: true)
         case 5:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TermVC") as! TermVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            let story = UIStoryboard.init(name: "Help", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "TermVC") as! TermVC
+            let nav = UINavigationController.init(rootViewController: vc)
+            present(nav, animated: true, completion: nil)
         default:
             break
         }

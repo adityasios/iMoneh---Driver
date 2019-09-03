@@ -11,13 +11,14 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import UserNotificationsUI
+import ZDCChat
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        ZDCChat.initialize(withAccountKey: kzenDeskKey)
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         print(documentsPath)
         initPushNotification(application)
@@ -26,25 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkAutoLogin()
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
@@ -76,11 +77,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate,MessagingDelegate {
         application.registerForRemoteNotifications()
     }
     
-    
     // MARK:- MESSAGEING DELEGATE
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        Singleton.shared.fcm_Id = fcmToken
         print("Singleton.shared.fcm_Id: \(Singleton.shared.fcm_Id)")
+        Singleton.shared.fcm_Id = fcmToken
     }
     
     // MARK:- UNUserNotificationCenterDelegate
@@ -94,6 +94,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate,MessagingDelegate {
         let userInfo = response.notification.request.content.userInfo
         print(userInfo)
         completionHandler()
+    }
+    
+    func application(_ application: UIApplication,didReceiveRemoteNotification userInfo: [AnyHashable : Any],fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void){
+        print(userInfo)
     }
 }
 
@@ -120,6 +124,12 @@ extension AppDelegate{
             //user data
             let user: UserMod = try! PropertyListDecoder().decode(UserMod.self, from: storedObject)
             Singleton.shared.userMod = user
+            //delivery company
+            if let deliveryComp = user.delivery_company_id,deliveryComp > 0 {
+                Singleton.shared.isDeliveryCompany = true
+            }else{
+                Singleton.shared.isDeliveryCompany = false
+            }
             //save token
             let token = UserDefaults.standard.object(forKey: AppUserDefault.token.rawValue) as! String
             Singleton.shared.token = token

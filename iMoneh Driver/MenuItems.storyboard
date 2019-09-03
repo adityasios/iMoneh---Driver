@@ -516,6 +516,28 @@
                                                     <fontDescription key="fontDescription" name="Gilroy-Regular" family="Gilroy" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsA-SW-QYY" customClass="FloatRatingView" customModule="FloatRatingView">
+                                                    <rect key="frame" x="114" y="55" width="100" height="26"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" name="appDarkYellow"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="7CI-5f-Iay"/>
+                                                        <constraint firstAttribute="width" constant="100" id="Ecw-n0-bHa"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="empty_star"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="full_star"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HKR-jQ-Uoa" firstAttribute="top" secondItem="Rcf-ua-Lcc" secondAttribute="bottom" constant="8" id="69I-ka-th4"/>
@@ -525,6 +547,7 @@
                                                 <constraint firstItem="HKR-jQ-Uoa" firstAttribute="leading" secondItem="e6y-eS-axE" secondAttribute="leading" id="92t-Sg-BLm"/>
                                                 <constraint firstAttribute="bottom" secondItem="HKR-jQ-Uoa" secondAttribute="bottom" id="D7u-dC-zTM"/>
                                                 <constraint firstItem="Rcf-ua-Lcc" firstAttribute="top" secondItem="J7N-Ik-dOA" secondAttribute="bottom" id="Ffo-jy-VTR"/>
+                                                <constraint firstItem="tsA-SW-QYY" firstAttribute="leading" secondItem="vpy-iF-ZcC" secondAttribute="trailing" constant="8" id="GKw-60-A2n"/>
                                                 <constraint firstItem="c6L-ff-nIR" firstAttribute="leading" secondItem="e6y-eS-axE" secondAttribute="leading" constant="10" id="NNs-3d-f8l"/>
                                                 <constraint firstItem="vpy-iF-ZcC" firstAttribute="top" secondItem="qEc-lF-y8w" secondAttribute="bottom" constant="2" id="TZX-gp-Wz1"/>
                                                 <constraint firstItem="KUQ-1h-4Ru" firstAttribute="centerY" secondItem="aft-ea-AYD" secondAttribute="centerY" id="TlF-IR-HS0"/>
@@ -538,6 +561,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="qEc-lF-y8w" secondAttribute="trailing" constant="4" id="kzl-uA-6pN"/>
                                                 <constraint firstItem="qEc-lF-y8w" firstAttribute="leading" secondItem="c6L-ff-nIR" secondAttribute="trailing" constant="8" id="rCB-1k-lny"/>
                                                 <constraint firstItem="c6L-ff-nIR" firstAttribute="top" secondItem="e6y-eS-axE" secondAttribute="top" constant="10" id="up6-Ys-mQe"/>
+                                                <constraint firstItem="tsA-SW-QYY" firstAttribute="centerY" secondItem="vpy-iF-ZcC" secondAttribute="centerY" constant="4" id="v5q-fL-fbT"/>
                                                 <constraint firstItem="vpy-iF-ZcC" firstAttribute="leading" secondItem="qEc-lF-y8w" secondAttribute="leading" id="yTq-b5-FRn"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -549,6 +573,7 @@
                                             <outlet property="lblOrder" destination="aft-ea-AYD" id="afL-Cc-W8Q"/>
                                             <outlet property="lblRating" destination="vpy-iF-ZcC" id="qVm-Fz-csP"/>
                                             <outlet property="lblTitle" destination="J7N-Ik-dOA" id="FA5-qT-0Ta"/>
+                                            <outlet property="viewRate" destination="tsA-SW-QYY" id="EcV-wn-S8w"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -611,12 +636,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7q-xL-id2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2417" y="145"/>
+            <point key="canvasLocation" x="2416.875" y="144.71830985915494"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera" width="20" height="20"/>
         <image name="email_pro" width="30" height="30"/>
+        <image name="empty_star" width="24" height="24"/>
+        <image name="full_star" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
         <image name="not" width="33" height="33"/>
         <image name="phone_pro" width="30" height="30"/>

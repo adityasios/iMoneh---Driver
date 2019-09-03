@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FloatRatingView
 class RatingCell: UITableViewCell {
     @IBOutlet weak var imgVPro: UIImageView!
     @IBOutlet weak var lblOrder: UILabel!
@@ -15,6 +16,7 @@ class RatingCell: UITableViewCell {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDesc: UILabel!
+    @IBOutlet weak var viewRate: FloatRatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

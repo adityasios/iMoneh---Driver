@@ -153,7 +153,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" text="Order # :  23456789" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTR-zG-KHk">
-                                <rect key="frame" x="8" y="32" width="292" height="18"/>
+                                <rect key="frame" x="8" y="32" width="131.5" height="18"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -177,7 +177,6 @@
                             <constraint firstItem="F2d-Bd-c72" firstAttribute="leading" secondItem="Dcn-aB-6CG" secondAttribute="leading" id="d7M-4z-EGp"/>
                             <constraint firstItem="oXU-RB-7SY" firstAttribute="leading" secondItem="Dcn-aB-6CG" secondAttribute="leading" id="fP8-TM-cl3"/>
                             <constraint firstItem="CG0-Tb-m6R" firstAttribute="top" secondItem="NnP-LX-NxB" secondAttribute="bottom" constant="8" id="i6d-mq-yYY"/>
-                            <constraint firstItem="vTR-zG-KHk" firstAttribute="trailing" secondItem="KFK-q4-SBP" secondAttribute="trailing" id="kD4-AR-uXY"/>
                             <constraint firstItem="NnP-LX-NxB" firstAttribute="top" secondItem="oXU-RB-7SY" secondAttribute="bottom" constant="4" id="kZi-HI-jtM"/>
                             <constraint firstItem="KFK-q4-SBP" firstAttribute="leading" secondItem="Dcn-aB-6CG" secondAttribute="leading" id="mUn-Ce-BOg"/>
                             <constraint firstAttribute="trailing" secondItem="CG0-Tb-m6R" secondAttribute="trailing" constant="8" id="pOH-Qn-VV9"/>

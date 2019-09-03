@@ -330,6 +330,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="imgVSign" destination="sa7-rX-2bu" id="0VT-Ow-pbS"/>
+                        <outlet property="lblSender" destination="yc9-2b-mbh" id="jz2-Xs-IrQ"/>
+                        <outlet property="lblSenderSign" destination="dhu-57-782" id="eqK-G9-aON"/>
                         <outlet property="txfdSender" destination="UMx-jj-bZo" id="yds-1D-AJm"/>
                         <outlet property="viewBg" destination="UU6-MW-Kd2" id="yZv-HQ-yp9"/>
                         <outlet property="viewSign" destination="S1f-rZ-ZJJ" id="VA4-Kz-O2a"/>

@@ -34,6 +34,14 @@ class AssignVC: UIViewController {
         tblv.estimatedRowHeight = 150
         tblv.rowHeight = UITableView.automaticDimension
         registerCell()
+        setRefreshControl()
+    }
+    
+    private func setRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = appDarkYellow
+        refreshControl.addTarget(self, action: #selector(reloadData(sender:)), for: UIControl.Event.valueChanged)
+        tblv.refreshControl = refreshControl
     }
     
     private func registerCell() {
@@ -46,6 +54,14 @@ class AssignVC: UIViewController {
         lblNoData.text = "No Assigned Order Found".localized
     }
 }
+
+//MARK:- extension - Actions
+extension AssignVC{
+    @objc func reloadData(sender:UIRefreshControl) {
+        getOrderList()
+    }
+}
+
 
 // MARK:- EXT - UITableViewDataSource
 extension AssignVC : UITableViewDataSource,UITableViewDelegate{
@@ -158,6 +174,7 @@ extension AssignVC {
         activityView.startAnimating()
         URlSessionWrapper.getDatefromSession(request: req) { (data, err) in
             self.activityView.stopAnimating()
+            self.tblv.refreshControl!.endRefreshing()
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])

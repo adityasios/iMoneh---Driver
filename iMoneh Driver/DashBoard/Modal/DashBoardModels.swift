@@ -54,6 +54,8 @@ struct UserMod : Codable {
     let address: String?
     let created_at: String?
     let updated_at: String?
+    let status: Int?
+    
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -73,6 +75,7 @@ struct UserMod : Codable {
         case address
         case created_at
         case updated_at
+        case status
     }
 }
 

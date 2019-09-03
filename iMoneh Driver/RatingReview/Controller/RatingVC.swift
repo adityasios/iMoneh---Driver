@@ -111,8 +111,10 @@ extension RatingVC : UITableViewDataSource {
         tcell.lblName.text = rate_mod.customer_name
         if let star =  rate_mod.rating{
             tcell.lblRating.text = String(star)
+            tcell.viewRate.rating = Float(star)
         }else{
             tcell.lblRating.text = "0"
+            tcell.viewRate.rating = 0
         }
         tcell.lblDate.text = DateHelper.getReviewDateInLocalFromUTC(crt: rate_mod.created_at!)
         tcell.lblTitle.text = rate_mod.title
