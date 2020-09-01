@@ -41,10 +41,11 @@ struct APIURLFactory {
     static let cities_list : String =  baseURL + "cities/list"
     static let areas_list : String =  baseURL + "areas/list"
     static let orders_accept : String =  baseURL + "driver/orders/accept/"
-    static let orders_reject : String =  baseURL + "driver/orders/reject/"
+    static let orders_reject : String =  baseURL + "driver/orders/reject"
     static let update_sign : String =  baseURL + "driver/orders/image/update"
     static let update_status : String =  baseURL + "driver/orders/change/status"
     static let product_details : String =  baseURL + "driver/order/product/details"
+    static let order_cancellation_reason : String =  baseURL + "cancellation/reasons/list"
     
     
     //img_paths
@@ -180,10 +181,9 @@ struct Parameters {
     static let image = "image"
     static let kMale = "1"
     static let kFemale = "2"
+    static let comments = "comments"
+    static let id = "id"
 }
-
-
-
 
 // MARK:- URlSessionWrapper
 struct URlSessionWrapper {

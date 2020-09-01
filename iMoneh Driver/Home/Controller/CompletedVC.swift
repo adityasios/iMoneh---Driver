@@ -154,6 +154,7 @@ extension CompletedVC : UITableViewDelegate{
         let story = UIStoryboard.init(name: "OrderDetail", bundle: nil)
         let nav = story.instantiateViewController(withIdentifier: "CompDetailVC") as! CompDetailVC
         nav.order_pass =  arrOrder[indexPath.row]
+        //nav.subOrderId =  arrOrder[indexPath.row].sub_order_id ?? 0
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }

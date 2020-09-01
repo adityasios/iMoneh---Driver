@@ -55,6 +55,7 @@ struct UserMod : Codable {
     let created_at: String?
     let updated_at: String?
     let status: Int?
+    let ratings: Float?
     
     
     enum CodingKeys: String, CodingKey {
@@ -76,6 +77,7 @@ struct UserMod : Codable {
         case created_at
         case updated_at
         case status
+        case ratings
     }
 }
 

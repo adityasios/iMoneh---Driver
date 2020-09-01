@@ -154,6 +154,7 @@ extension AssignVC : UITableViewDataSource,UITableViewDelegate{
         let nav = story.instantiateViewController(withIdentifier: "AssignDetailVC") as! AssignDetailVC
         nav.order_status = mod.order_status
         nav.order_pass =  mod
+        nav.subOrderId = mod.sub_order_id ?? 0
         nav.onBookingAccept = { (accept) in
             if accept {
                 self.getOrderList()

@@ -109,8 +109,8 @@ extension RatingVC : UITableViewDataSource {
         let tcell = tableView.dequeueReusableCell(withIdentifier: "RatingCell", for: indexPath) as! RatingCell
         tcell.lblOrder.text = "#" + rate_mod.order_code!
         tcell.lblName.text = rate_mod.customer_name
-        if let star =  rate_mod.rating{
-            tcell.lblRating.text = String(star)
+        if let star =  rate_mod.rating {
+            tcell.lblRating.text = "\(Float(star))"
             tcell.viewRate.rating = Float(star)
         }else{
             tcell.lblRating.text = "0"

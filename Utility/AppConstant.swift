@@ -59,3 +59,41 @@ struct AppDevice {
 
 
 
+enum OrderOption:String{
+    case knock =  "Please do not ring the bell, Knock on the door"
+    case securityGuard = "Leave order at the security guard"
+    case doorstep = "Leave order at the home doorstep"
+    
+    static func getOrderOptionString(opt:Int)->String{
+        if opt == 1 {
+            return "Please do not ring the bell, Knock on the door".localized
+        }else if opt == 2{
+            return "Leave order at the security guard".localized
+        }else if opt == 3{
+            return "Leave order at the home doorstep".localized
+        }else {
+            return ""
+        }
+    }
+}
+
+
+enum ProductNotAvailable:String{
+    case callYou =  "Call you"
+    case removeItemFromCart = "Remove item from the cart"
+    case exchangeItemWithSimilarOne = "Exchange product with similar prduct"
+    
+    static func getProductNotAvailableOptionString(opt:Int)->String{
+        if opt == 1 {
+            return "Call you".localized
+        }else if opt == 2{
+            return "Remove item from the cart".localized
+        }else if opt == 3{
+            return "Exchange product with similar prduct".localized
+        }else {
+            return "Unauthorize Option".localized
+        }
+    }
+}
+
+

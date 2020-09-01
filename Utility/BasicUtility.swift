@@ -130,7 +130,7 @@ struct DateHelper {
             return "-"
         }
         
-        dateFormatter.dateFormat = "MMM dd,yyyy | HH:mm"
+        dateFormatter.dateFormat = "dd MMM, yyyy | hh:mm a"
         dateFormatter.timeZone = TimeZone.current
         let date_tmp = dateFormatter.string(from: date_Crt)
         return date_tmp
@@ -203,7 +203,7 @@ struct ProjectHelper {
         case 1:
             return "Pending"
         case 2:
-            return "Driver Assigned"
+            return "Assigned"
         case 3:
             return "Picked UP"
         case 4:

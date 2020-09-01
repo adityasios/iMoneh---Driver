@@ -154,3 +154,18 @@
 
 //share
 "Share on Social Media" = "شارك على وسائل التواصل";
+
+// MARK:- CLIENT UPDATES
+"Please Enter Reason" = "الرجاء إدخال السبب";
+"Reason" = "السبب";
+"Submit" = "تقديم";
+"Please Enter a Valid Reason" = "الرجاء إدخال سبب وجيه";
+"Cancel" = "إلغاء";
+"Call you" = "أتصل بك";
+"Remove item from the cart" = "إزالة العنصر من العربة";
+"Exchange product with similar prduct" = "تبادل المنتج مع prduct مماثلة";
+"Unauthorize Option" = "خيار غير مصرح به";
+"If Product Not Available" = "إذا كان المنتج غير متوفر";
+"Order Options" = "خيارات الطلب";
+"Notes" = "ملاحظات";
+

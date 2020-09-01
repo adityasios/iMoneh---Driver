@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import SimpleImageViewer
+
 
 class ViewOrderItemsVC: UIViewController {
     
@@ -48,12 +50,34 @@ extension ViewOrderItemsVC : UITableViewDataSource,UITableViewDelegate{
         }
         
         let lblTitle = tcell.viewWithTag(20) as! UILabel
-        lblTitle.text = mod.product_name! + "\n" + "Qty :" + String(mod.quantity!)
+        let price = "\t" + "Price :" +  "\u{00a0}" + mod.currency! + "\u{00a0}" +  (mod.price!).clean
+        lblTitle.text = mod.product_name! + "\n" + "Qty :" +  "\u{00a0}"  + String(mod.quantity!) + price
+        
+        //info
+        let btnInfo = tcell.viewWithTag(100) as! UIButton
+        if let notes = mod.notes,notes.count > 2 {
+            btnInfo.isHidden = false
+            btnInfo.addTarget(self, action: #selector(btnNotesInfoClicked(_:)), for: .touchUpInside)
+        }else{
+            btnInfo.isHidden = true
+        }
         return tcell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let tcell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        let imgV = tcell.viewWithTag(10) as! UIImageView
+        let configuration = ImageViewerConfiguration { config in
+            config.imageView = imgV
+        }
+        let imageViewerController = ImageViewerController(configuration: configuration)
+        present(imageViewerController, animated: true)
     }
 }
 
@@ -70,6 +94,7 @@ extension ViewOrderItemsVC {
             if let data = data {
                 do {
                     let json_det = try JSONSerialization.jsonObject(with: data, options: [])
+                    print("json_det \(json_det)")
                     self.jsonParsingProductList(json: json_det)
                 } catch {
                     BasicUtility.getAlert(view: self, titletop: "Error", subtitle:"Not Able to Parse Json")
@@ -109,3 +134,15 @@ extension ViewOrderItemsVC {
         }
     }
 }
+
+// MARK:- BUTTON ACTION
+extension ViewOrderItemsVC {
+    @objc func btnNotesInfoClicked(_ sender: UIButton) {
+        let btnPost = sender.convert(CGPoint.zero, to: self.tblv)
+        if let indexPath = self.tblv.indexPathForRow(at: btnPost) {
+            let mod = arrOrder[indexPath.row]
+            BasicUtility.getAlert(view: self, titletop: "Notes".localized, subtitle: (mod.notes ?? ""))
+        }
+    }
+}
+

@@ -25,6 +25,20 @@ struct OrderItemMod:Codable{
     let quantity: Int?
     let product_image: String?
     let product_name: String?
+    let price: Float?
+    let currency: String?
+    let notes: String?
 }
 
 
+struct OrderCancellationReasonMod: Codable {
+    
+    let id          : Int?
+    let title       : String?
+    var isSelected  : Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case id     = "id"
+        case title  = "title"
+    }
+}

@@ -18,6 +18,7 @@ class PickUpConformation: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var lblSender: UILabel!
     @IBOutlet weak var lblSenderSign: UILabel!
     
+    var subOrderId: Int = 0
     var order_status: Int!
     var order_pass: OrderMod!
     var onPickUpConfirmation: ((_ confirm: Bool) -> ())?
@@ -207,7 +208,7 @@ extension PickUpConformation {
         let orderID  = (order_pass.order_id)!
         let vendorID = (order_pass.vendor_id)!
         let strUrl = APIURLFactory.update_status + "/" + String(orderID) + "/"
-            + String(vendorID)
+            + String(vendorID) + "/" + String(subOrderId)
         
         let orderTemp = order_status + 1
         let paraTemp : [String:String] = [Parameters.status:String(orderTemp),Parameters.name:txfdSender.text!,Parameters.image:proImg]
@@ -236,7 +237,7 @@ extension PickUpConformation {
 
 // MARK:- Ex - API PARSING METHODS
 extension PickUpConformation {
-    private  func jsonParsingSignDetail(json:Any) {
+    private func jsonParsingSignDetail(json:Any) {
         print("json Sign \(json)")
         if let jsonTemp = json as? [String: Any]  {
             //data_order
@@ -255,7 +256,7 @@ extension PickUpConformation {
         }
     }
     
-    private  func jsonParsingOrderUpdate(json:Any) {
+    private func jsonParsingOrderUpdate(json:Any) {
         print("json OrderUpdate \(json)")
         if let jsonTemp = json as? [String: Any]  {
             guard let _ = jsonTemp["msg"] as? String else {
@@ -263,7 +264,7 @@ extension PickUpConformation {
             }
             self.onPickUpConfirmation!(true)
             self.navigationController?.popToRootViewController(animated: true)
-        }else {
+        } else {
             URlErrorHandling.checkErrorInResponse(json: json)
         }
     }

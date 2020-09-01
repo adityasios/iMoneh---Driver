@@ -149,3 +149,21 @@
 
 //share
 "Share on Social Media" = "Share on Social Media";
+
+// MARK:- CLIENT UPDATES
+"Please Enter Reason" = "Please Enter Reason";
+"Reason" = "Reason";
+"Submit" = "Submit";
+"Please Enter a Valid Reason" = "Please Enter a Valid Reason";
+"Cancel" = "Cancel";
+"Call you" = "Call you";
+"Remove item from the cart" = "Remove item from the cart";
+"Exchange product with similar prduct" = "Exchange product with similar prduct";
+"Unauthorize Option" = "Unauthorize Option";
+"If Product Not Available" = "If Product Not Available";
+"Order Options" = "Order Options";
+"Notes" = "Notes";
+
+
+
+

@@ -11,6 +11,7 @@ import Foundation
 struct OrderMod : Codable {
     let id: Int?
     let order_id: Int?
+    let sub_order_id: Int?
     let order_number: String?
     let vendor_id: Int?
     let delivery_date: String?
@@ -29,6 +30,7 @@ struct OrderMod : Codable {
     let pickup_signature_image,deliver_signature_image: String?
     let payment_method: Int?
     let payment_status: Int?
+    let change_amount: Int?
     
     //price
     let sub_total: Float?
@@ -39,6 +41,12 @@ struct OrderMod : Codable {
     
     //new data
     let market_name: String?
+
+    //order_options
+    let order_options: String?
+    
+    //product_not_available_option
+    let product_not_available_option: Int?
 }
 
 struct AddMod : Codable {

@@ -91,14 +91,14 @@ class MyProfileVC: UIViewController {
         lblEmail.text = Singleton.shared.userMod?.email
         
         //accepted order
-        if let total_accepted_orders = Singleton.shared.userMod?.total_accepted_orders{
+        if let total_accepted_orders = Singleton.shared.userMod?.total_accepted_orders {
             lblNoDeliveries.text = String(total_accepted_orders)
         }else {
             lblNoDeliveries.text = "0"
         }
         
         //rejected order
-        if let total_rejected_orders = Singleton.shared.userMod?.total_accepted_orders{
+        if let total_rejected_orders = Singleton.shared.userMod?.total_rejected_orders {
             lblNoRejected.text = String(total_rejected_orders)
         }else {
             lblNoRejected.text = "0"
@@ -110,7 +110,6 @@ class MyProfileVC: UIViewController {
 extension MyProfileVC {
     
     private func getProfiledata() {
-        
         //url
         let strUrl = APIURLFactory.profile_info
         guard let request = APIURLFactory.createGetRequestWithPara(strAbs: strUrl, isToken: true, para: [:]) else {
@@ -194,6 +193,7 @@ extension MyProfileVC {
 // MARK:- Ex - API PARSING METHODS
 extension MyProfileVC {
     private func jsonParsingProfileData(json:Any) {
+        print("Profile data json \(json)")
         if let jsonMain = json as? [String: Any]  {
             //user
             guard let user = jsonMain["user"] as? [String:Any] else {

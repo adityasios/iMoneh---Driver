@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -82,6 +82,8 @@
 		40D4A1342269966C009E6C24 /* AssignDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D4A1332269966C009E6C24 /* AssignDetailVC.swift */; };
 		40D86079226861080090C054 /* NewOrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D86078226861080090C054 /* NewOrderDetailVC.swift */; };
 		40E11AC32240E48A00CFC1CA /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E11AC22240E48A00CFC1CA /* Localizable.swift */; };
+		853B12BA23AA05B7007D3400 /* OrderCancelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B12B923AA05B7007D3400 /* OrderCancelVC.swift */; };
+		853B12BC23AA05DE007D3400 /* OrderCancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853B12BB23AA05DE007D3400 /* OrderCancelCell.swift */; };
 		E55DF850A90C9538E4D1A3A6 /* Pods_iMoneh_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FBEFC72A2DEB4F9E2345E7 /* Pods_iMoneh_Driver.framework */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +170,8 @@
 		40DFD0F622413F210003F7E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		40E11AC22240E48A00CFC1CA /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		73521ABF6AC15FCE589F345B /* Pods-iMoneh Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMoneh Driver.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver.release.xcconfig"; sourceTree = "<group>"; };
+		853B12B923AA05B7007D3400 /* OrderCancelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCancelVC.swift; sourceTree = "<group>"; };
+		853B12BB23AA05DE007D3400 /* OrderCancelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCancelCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,10 +461,11 @@
 			isa = PBXGroup;
 			children = (
 				40D86078226861080090C054 /* NewOrderDetailVC.swift */,
-				40980EF5222E83590076B340 /* CompDetailVC.swift */,
 				40D4A1332269966C009E6C24 /* AssignDetailVC.swift */,
+				40980EF5222E83590076B340 /* CompDetailVC.swift */,
 				4049DA3E2230FEF0000E3B55 /* PickUpConformation.swift */,
 				4041B6A2226EEF3A00595BA4 /* ViewOrderItemsVC.swift */,
+				853B12B923AA05B7007D3400 /* OrderCancelVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 			children = (
 				40980EFC222EA1110076B340 /* OrderDetailCell.swift */,
 				40980EFD222EA1110076B340 /* OrderDetailCell.xib */,
+				853B12BB23AA05DE007D3400 /* OrderCancelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -658,22 +664,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-resources.sh",
-				"${PODS_ROOT}/ZDCChat/ZDCChatStrings.bundle",
-				"${PODS_ROOT}/ZDCChat/ZDCChat.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZDCChatStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZDCChat.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B0309BE85AB76CFF50D0943D /* [CP] Embed Pods Frameworks */ = {
@@ -682,32 +681,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AKSideMenu/AKSideMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RSLoadingView/RSLoadingView.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKSideMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatRatingView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSLoadingView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iMoneh Driver/Pods-iMoneh Driver-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -719,6 +701,7 @@
 			files = (
 				405B39D02241240700F4A8B0 /* HelpVC.swift in Sources */,
 				409562C02223F0CB00A9290F /* AppConstant.swift in Sources */,
+				853B12BC23AA05DE007D3400 /* OrderCancelCell.swift in Sources */,
 				40D86079226861080090C054 /* NewOrderDetailVC.swift in Sources */,
 				409562EB22240C2100A9290F /* RootViewController.swift in Sources */,
 				4049DA412231065D000E3B55 /* YPDrawSignatureView.swift in Sources */,
@@ -730,6 +713,7 @@
 				409562DA2223F7DF00A9290F /* ApiUrlFactory.swift in Sources */,
 				4029E711222981200074492C /* RatingVC.swift in Sources */,
 				40D4A1342269966C009E6C24 /* AssignDetailVC.swift in Sources */,
+				853B12BA23AA05B7007D3400 /* OrderCancelVC.swift in Sources */,
 				404D65222227D26100404AAC /* ResetPassVC.swift in Sources */,
 				405B39D62241240700F4A8B0 /* AboutUsVC.swift in Sources */,
 				405505A622241FC800456FC8 /* NewVC.swift in Sources */,

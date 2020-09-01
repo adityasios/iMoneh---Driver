@@ -11,9 +11,3 @@ bin@yopmail.com
 
 Delivery Company . -  Crown Logistics Ltd (TEST) -  Driver - Md. Mohammed Ali Bin Shekh (test)
 Vendor - Cozmo (TEST) --  كراون لوجيستيكس ليمتد(TEST)  
-
-
-
-
-
-

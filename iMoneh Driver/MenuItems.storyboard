@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1iV-I8-7nS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1iV-I8-7nS">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -487,8 +487,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpy-iF-ZcC">
-                                                    <rect key="frame" x="84" y="54.5" width="22" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpy-iF-ZcC">
+                                                    <rect key="frame" x="84" y="57.5" width="18.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -512,12 +512,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feb 21,2018 | 10.00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUQ-1h-4Ru">
-                                                    <rect key="frame" x="173" y="14.5" width="139" height="16.5"/>
-                                                    <fontDescription key="fontDescription" name="Gilroy-Regular" family="Gilroy" pointSize="14"/>
+                                                    <rect key="frame" x="183" y="15" width="129" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="Gilroy-Regular" family="Gilroy" pointSize="13"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tsA-SW-QYY" customClass="FloatRatingView" customModule="FloatRatingView">
-                                                    <rect key="frame" x="114" y="55" width="100" height="26"/>
+                                                    <rect key="frame" x="110.5" y="54" width="100" height="26"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" name="appDarkYellow"/>
                                                     <constraints>
@@ -549,7 +549,8 @@
                                                 <constraint firstItem="Rcf-ua-Lcc" firstAttribute="top" secondItem="J7N-Ik-dOA" secondAttribute="bottom" id="Ffo-jy-VTR"/>
                                                 <constraint firstItem="tsA-SW-QYY" firstAttribute="leading" secondItem="vpy-iF-ZcC" secondAttribute="trailing" constant="8" id="GKw-60-A2n"/>
                                                 <constraint firstItem="c6L-ff-nIR" firstAttribute="leading" secondItem="e6y-eS-axE" secondAttribute="leading" constant="10" id="NNs-3d-f8l"/>
-                                                <constraint firstItem="vpy-iF-ZcC" firstAttribute="top" secondItem="qEc-lF-y8w" secondAttribute="bottom" constant="2" id="TZX-gp-Wz1"/>
+                                                <constraint firstItem="tsA-SW-QYY" firstAttribute="centerY" secondItem="vpy-iF-ZcC" secondAttribute="centerY" id="SvK-VI-dJA"/>
+                                                <constraint firstItem="vpy-iF-ZcC" firstAttribute="top" secondItem="qEc-lF-y8w" secondAttribute="bottom" constant="5" id="TZX-gp-Wz1"/>
                                                 <constraint firstItem="KUQ-1h-4Ru" firstAttribute="centerY" secondItem="aft-ea-AYD" secondAttribute="centerY" id="TlF-IR-HS0"/>
                                                 <constraint firstItem="J7N-Ik-dOA" firstAttribute="top" secondItem="c6L-ff-nIR" secondAttribute="bottom" constant="8" id="WKw-bQ-Vl5"/>
                                                 <constraint firstItem="Rcf-ua-Lcc" firstAttribute="trailing" secondItem="J7N-Ik-dOA" secondAttribute="trailing" id="akX-s4-E6i"/>
@@ -561,7 +562,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="qEc-lF-y8w" secondAttribute="trailing" constant="4" id="kzl-uA-6pN"/>
                                                 <constraint firstItem="qEc-lF-y8w" firstAttribute="leading" secondItem="c6L-ff-nIR" secondAttribute="trailing" constant="8" id="rCB-1k-lny"/>
                                                 <constraint firstItem="c6L-ff-nIR" firstAttribute="top" secondItem="e6y-eS-axE" secondAttribute="top" constant="10" id="up6-Ys-mQe"/>
-                                                <constraint firstItem="tsA-SW-QYY" firstAttribute="centerY" secondItem="vpy-iF-ZcC" secondAttribute="centerY" constant="4" id="v5q-fL-fbT"/>
                                                 <constraint firstItem="vpy-iF-ZcC" firstAttribute="leading" secondItem="qEc-lF-y8w" secondAttribute="leading" id="yTq-b5-FRn"/>
                                             </constraints>
                                         </tableViewCellContentView>

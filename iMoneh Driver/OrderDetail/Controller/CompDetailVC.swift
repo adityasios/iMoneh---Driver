@@ -65,7 +65,7 @@ class CompDetailVC: UIViewController {
 // MARK:- Ex - API
 extension CompDetailVC {
     private func getOrderDetail() {
-        let strUrl = APIURLFactory.order_detail + String(order_pass.id!)
+        let strUrl = APIURLFactory.order_detail + String(order_pass.id ?? 0) + "/\(String(order_pass.sub_order_id ?? 0))"
         guard let req = APIURLFactory.createGetRequestWithPara(strAbs: strUrl, isToken: true, para:[:]) else {
             return
         }
@@ -117,11 +117,26 @@ extension CompDetailVC {
 // MARK:- EXT - UITableViewDataSource
 extension CompDetailVC : UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if order_pass.product_not_available_option != nil && order_pass.order_options != nil  {
+            return 4
+        }else if order_pass.product_not_available_option != nil || order_pass.order_options != nil  {
+            return 3
+        }else{
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? (arr_temp1.count + 1) : arr_temp2.count
+        switch section {
+        case 0:
+            return (arr_temp1.count + 1)
+        case 1:
+            return arr_temp2.count
+        case 2,3:
+            return 1
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -173,7 +188,7 @@ extension CompDetailVC : UITableViewDataSource{
                 tcell.imgVTwo.image = UIImage.init(named: mod.img_two!)
                 return tcell
             }
-        }else{
+        }else if indexPath.section == 1{
             let tcell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailCell", for: indexPath) as! OrderDetailCell
             let mod = arr_temp2[indexPath.row]
             tcell.lblTitleOne.text = mod.title_one
@@ -182,6 +197,31 @@ extension CompDetailVC : UITableViewDataSource{
             tcell.lblDecTwo.text = mod.desc_two
             tcell.imgVOne.image = UIImage.init(named: mod.img_one!)
             tcell.imgVTwo.image = UIImage.init(named: mod.img_two!)
+            return tcell
+        }else if indexPath.section == 2{
+            let tcell = tableView.dequeueReusableCell(withIdentifier: "celldesc", for: indexPath)
+            let lblTitle = tcell.viewWithTag(10) as! UILabel
+            if let orderOpt = order_pass.product_not_available_option {
+                lblTitle.text =  ProductNotAvailable.getProductNotAvailableOptionString(opt: orderOpt)
+            }
+            return tcell
+        }else {
+            let tcell = tableView.dequeueReusableCell(withIdentifier: "celldesc", for: indexPath)
+            let lblTitle = tcell.viewWithTag(10) as! UILabel
+            if let orderOpt = order_pass.order_options{
+                var option = ""
+                var indexTemp = 1
+                let arrTemp = Array(orderOpt)
+                for str in arrTemp {
+                    if let intValue = Int(String(str)){
+                        option += String(indexTemp) + "\u{00a0}" + OrderOption.getOrderOptionString(opt: intValue)
+                        indexTemp += 1
+                        option.append("\n")
+                    }
+                }
+                lblTitle.text =  option
+                print("option is \(option)")
+            }
             return tcell
         }
     }
@@ -192,13 +232,28 @@ extension CompDetailVC : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0 {
             return UITableView.automaticDimension
+        }else if indexPath.section == 2 {
+            return UITableView.automaticDimension
+        }else if indexPath.section == 3 {
+            return UITableView.automaticDimension
         }else{
             return 55
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (section == 0) ? "Order Info".localized : "Payment Info".localized
+        switch section {
+        case 0:
+            return "Order Info".localized
+        case 1:
+            return "Payment Info".localized
+        case 2:
+            return "If Product Not Available".localized
+        case 3:
+            return "Order Options".localized
+        default:
+            return ""
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -235,11 +290,11 @@ extension CompDetailVC {
         arr_temp1.append(mod3)
         
         //receiver name  & sender
-        let mod4 = OrderTemoMod.init(title_one: "Sender Name".localized, desc_one:order_pass.sender_name, img_one:"cust_name", title_two: "Recipient's Name".localized, desc_two:order_pass.receiver_name, img_two:"cust_name")
+        let mod4 = OrderTemoMod.init(title_one: "Sender Name".localized, desc_one:order_pass.sender_name ?? "N/A", img_one:"cust_name", title_two: "Recipient's Name".localized, desc_two: order_pass.receiver_name ?? "N/A", img_two:"cust_name")
         arr_temp1.append(mod4)
         
         //total amt & delivery cost
-        let mod5 = OrderTemoMod.init(title_one: "Total Amount".localized, desc_one:(String(order_pass.currency!) + " " + String(order_pass.total_amount!)), img_one: "total_amt", title_two: "Delivery Cost".localized, desc_two:(String(order_pass.currency!) + String(order_pass.delivery_cost!)), img_two: "del_cost")
+        let mod5 = OrderTemoMod.init(title_one: "Total Amount".localized, desc_one:(String(order_pass.currency!) + " " + String(order_pass.total_amount!)), img_one: "total_amt", title_two: "Service Charge".localized, desc_two:(String(order_pass.currency!) + " " + String(order_pass.delivery_cost!)), img_two: "del_cost")
         arr_temp2.append(mod5)
         
         //payment_staus & payment_method
@@ -289,3 +344,4 @@ extension CompDetailVC {
  
  "deliver_datetime" = "2019-03-01T18:08:44.000Z";
  */
+

@@ -9,6 +9,7 @@
 import UIKit
 import AKSideMenu
 import ZDCChat
+import FloatRatingView
 
 class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -18,6 +19,8 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var lblOnline: UILabel!
     @IBOutlet weak var lblLang: UILabel!
     @IBOutlet weak var tblv: UITableView!
+    @IBOutlet weak var lblRate: UILabel!
+    @IBOutlet weak var viewRate: FloatRatingView!
     
     let menuArray = ["Home".localized,"My Profile".localized,"Notifications".localized ,"Ratings & Reviews".localized, "Help".localized, "Share".localized,"Chat".localized,"Log Out".localized]
     
@@ -28,12 +31,21 @@ class LeftMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         setUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear LeftMenuVC")
+        viewRate.tintColor = .black
+        lblRate.text = "\(Singleton.shared.userMod?.ratings ?? 0.0)"
+        viewRate.rating = Singleton.shared.userMod?.ratings ?? 0.0
+    }
+    
     deinit {
         print("LeftMenuVC deinit")
     }
     
     // MARK: - INIT METHOD
     private func initMethod(){
+        
     }
     
     // MARK: - SET UI

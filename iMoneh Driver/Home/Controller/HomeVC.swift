@@ -21,6 +21,18 @@ class HomeVC: UIViewController {
     
     private var pageViewControl:UIPageViewController!
     
+    private lazy var newVC: NewVC = {
+        return storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
+    }()
+    
+    private lazy var assignVC: AssignVC = {
+        return storyboard?.instantiateViewController(withIdentifier:"AssignVC") as! AssignVC
+    }()
+    
+    private lazy var compVC: CompletedVC = {
+        return storyboard?.instantiateViewController(withIdentifier:"CompletedVC") as! CompletedVC
+    }()
+    
     // MARK:- VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,18 +124,15 @@ extension HomeVC {
     
     @IBAction func btnNewClicked(_ sender: UIButton) {
         setNavTabUI(crtIndex: 0)
-        let newVC = storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
-        pageViewControl.setViewControllers([newVC],direction: .forward,animated: true,completion: nil)
+        pageViewControl.setViewControllers([newVC],direction: .forward,animated: true, completion: nil)
     }
     @IBAction func btnAssignClicked(_ sender: UIButton) {
         setNavTabUI(crtIndex: 1)
-        let assignVC = storyboard?.instantiateViewController(withIdentifier:"AssignVC") as! AssignVC
-        pageViewControl.setViewControllers([assignVC],direction: .forward,animated: true,completion: nil)
+        pageViewControl.setViewControllers([assignVC], direction: .forward,animated: true, completion: nil)
     }
     @IBAction func btnHistoryClicked(_ sender: UIButton) {
         setNavTabUI(crtIndex: 2)
-        let compVC = storyboard?.instantiateViewController(withIdentifier:"CompletedVC") as! CompletedVC
-        pageViewControl.setViewControllers([compVC],direction: .forward,animated: true,completion: nil)
+        pageViewControl.setViewControllers([compVC],direction: .forward,animated: true, completion: nil)
     }
 }
 
@@ -132,7 +141,7 @@ extension HomeVC : UIPageViewControllerDelegate,UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController is AssignVC {
-            let pendVC = Singleton.shared.isDeliveryCompany ? nil : storyboard?.instantiateViewController(withIdentifier:"NewVC") as! NewVC
+            let pendVC = Singleton.shared.isDeliveryCompany ? nil : storyboard?.instantiateViewController(withIdentifier:"NewVC") as? NewVC
             return pendVC
         }else if viewController is CompletedVC {
             let ongVC = storyboard?.instantiateViewController(withIdentifier:"AssignVC") as! AssignVC
